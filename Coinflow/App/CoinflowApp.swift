@@ -11,7 +11,7 @@ import SwiftUI
 struct CoinflowApp: App {
     var body: some Scene {
         WindowGroup {
-            EmptyView()
+            AppEntryView()
         }
     }
 }
