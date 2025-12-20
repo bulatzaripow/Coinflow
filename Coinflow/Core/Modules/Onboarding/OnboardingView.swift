@@ -42,7 +42,7 @@ struct OnboardingView: View {
                 }) {
                     Text("Continue")
                         .font(.headline)
-                        .foregroundColor(.init(hex: "#267871"))
+                        .foregroundColor(Color(.appPrimary))
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(.white)

@@ -13,7 +13,7 @@ struct AppEntryView: View {
     var body: some View {
         ZStack {
             if hasSeenOnboarding {
-                HomeView()
+                HomeBuilder.build()
                     .transition(.move(edge: .trailing))
             } else {
                 OnboardingView()
