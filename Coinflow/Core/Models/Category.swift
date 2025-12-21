@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 final class Category {
     var id: UUID = UUID()
     var name: String = ""
@@ -14,4 +16,18 @@ final class Category {
     var sortOrder: Int = 0
     var isDefault: Bool = false
     var createdAt: Date = Date()
+    
+    init(
+        name: String,
+        iconName: String,
+        sortOrder: Int,
+        isDefault: Bool,
+        createdAt: Date
+    ) {
+        self.name = name
+        self.iconName = iconName
+        self.sortOrder = sortOrder
+        self.isDefault = isDefault
+        self.createdAt = createdAt
+    }
 }

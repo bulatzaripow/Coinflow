@@ -7,13 +7,12 @@
 
 import SwiftUI
 import Combine
+import SwiftData
 
 class HomeViewModel: ObservableObject {
-    @Published var accounts = Account.demoAccounts
-    @Published var transactions = Transaction.demoTransactions
     @Published var selectedAccountIndex = 0
     
-    var totalBalance: Double {
+    func totalBalance(accounts: [Account]) -> Double {
         accounts.reduce(0) { $0 + $1.balance }
     }
 }

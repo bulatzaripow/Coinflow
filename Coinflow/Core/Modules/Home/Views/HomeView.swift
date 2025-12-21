@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
     
     // MARK: - Props
     
+    @Environment(\.modelContext) var modelContext
     @ObservedObject private var viewModel: HomeViewModel
+    @Query private var accounts: [Account]
+    @Query private var transactions: [Transaction]
     
     // MARK: - Init
     
@@ -58,10 +62,10 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
                             
                             // Accounts
-                            AccountCarouselTabView(accounts: viewModel.accounts)
+                            AccountCarouselTabView(accounts: accounts)
                             
                             // Transactions
-                            TransactionsListView(transactions: viewModel.transactions)
+                            TransactionsListView(transactions: transactions)
                                 .padding(.bottom, 70)
                         }
                     }
