@@ -86,11 +86,3 @@ struct TransactionRowView: View {
         )
     }
 }
-
-#Preview {
-    TransactionRowView(transaction: Transaction.demoTransactions.first!)
-        .padding()
-        .background(Color(hex: "#F6F7F8"))
-}
-
-

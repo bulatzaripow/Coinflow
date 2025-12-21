@@ -78,12 +78,3 @@ struct TransactionsListView: View {
         }
     }
 }
-
-#Preview {
-    ScrollView {
-        TransactionsListView(transactions: Transaction.demoTransactions)
-    }
-    .background(Color(hex: "#F6F7F8"))
-}
-
-

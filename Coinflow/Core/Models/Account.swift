@@ -6,24 +6,43 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 final class Account: Identifiable {
-    let id = UUID()
+    var id = UUID()
     var name: String
     var balance: Double = 0
     var isDefault: Bool = false
-    var currency: Currency?
-    var accountPattern: String? = nil
+//    var currency: Currency?
+    var accountBackgroundPattern: String? = nil
     var createdAt: Date = Date()
+    
+    @Relationship(deleteRule: .nullify)
+    var currency: Currency?
+    
+    @Relationship(deleteRule: .cascade, inverse: \Transaction.account)
+    var transactions: [Transaction]? = []
     
     init(name: String, balance: Double) {
         self.name = name
         self.balance = balance
     }
     
-    convenience init(name: String, balance: Double, accountPattern: String) {
+    convenience init(name: String, balance: Double, accountBackgroundPattern: String?) {
         self.init(name: name, balance: balance)
-        self.accountPattern = accountPattern
+        self.accountBackgroundPattern = accountBackgroundPattern
+    }
+    
+    convenience init(
+        name: String,
+        balance: Double,
+        currency: Currency,
+        isDefault: Bool = false,
+        accountBackgroundPattern: String? = nil
+    ) {
+        self.init(name: name, balance: balance, accountBackgroundPattern: accountBackgroundPattern)
+        self.isDefault = isDefault
     }
 }
 
@@ -36,10 +55,4 @@ extension Account {
         )
         return CurrencyFormatter.format(balance, currency: currency)
     }
-    
-    static let demoAccounts = [
-        Account(name: "Cash Wallet", balance: 250.146, accountPattern: "formal-invitation"),
-        Account(name: "Main Bank", balance: 4500.0, accountPattern: "brick-wall"),
-        Account(name: "Credit Card", balance: -320.0, accountPattern: "charlie-brown"),
-    ]
 }

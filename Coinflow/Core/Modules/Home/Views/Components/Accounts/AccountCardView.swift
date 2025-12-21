@@ -12,7 +12,7 @@ struct AccountCardView: View {
     
     var body: some View {
         ZStack {
-            if let pattern = account.accountPattern {
+            if let pattern = account.accountBackgroundPattern {
                 Image(pattern)
                     .resizable(resizingMode: .tile)
                     .renderingMode(.template)
