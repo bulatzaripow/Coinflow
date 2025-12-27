@@ -13,8 +13,8 @@ struct HomeView: View {
     // MARK: - Props
     
     @Environment(\.modelContext) var modelContext
+    @Query(sort: \Account.sortIndex) private var accounts: [Account]
     @ObservedObject private var viewModel: HomeViewModel
-    @Query private var accounts: [Account]
     @Query private var transactions: [Transaction]
     
     // MARK: - Init
@@ -61,7 +61,9 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         
                         // Accounts
-                        AccountCarouselTabView(accounts: accounts)
+                        AccountCarouselView(accounts: accounts) {
+                            // TODO: add account action
+                        }
                     }
                     
                     // Transactions

@@ -12,7 +12,11 @@ struct AccountCardView: View {
     
     var body: some View {
         ZStack {
-            if let pattern = account.accountBackgroundPattern {
+            if let color = account.backgroundColor {
+                AppColors(rawValue: color)?.gradient
+            }
+            
+            if let pattern = account.backgroundPattern {
                 Image(pattern)
                     .resizable(resizingMode: .tile)
                     .renderingMode(.template)
@@ -37,13 +41,15 @@ struct AccountCardView: View {
                 }
             }
             .padding(20)
-            .frame(maxWidth: .infinity, minHeight: 140, alignment: .topLeading)
+            .frame(maxWidth: .infinity, minHeight: 160, alignment: .topLeading)
+            .foregroundColor(account.backgroundColor != nil ? .white : .primary)
         }
+        .containerRelativeFrame(.horizontal)
         .background(.white)
-        .cornerRadius(30)
+        .cornerRadius(15)
         .shadow(
-            color: Color.gray.opacity(0.1),
-            radius: 30,
+            color: Color.gray.opacity(0.4),
+            radius: 20,
             y: 5
         )
     }
