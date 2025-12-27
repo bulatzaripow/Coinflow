@@ -55,9 +55,9 @@ private func createDefaultDataIfNeeded(context: ModelContext) {
     
     print("Creating default data...")
     
-    let currencyService: CurrencyInitializerProtocol = CurrencyService(context: context)
-    let categoryService: CategoryInitializerProtocol = CategoryService(context: context)
-    let accountService: AccountInitializerProtocol = AccountService(context: context, currencyService: currencyService)
+    let currencyService: CurrencyInitializerProtocol = CurrencyInitializerService(context: context)
+    let categoryService: CategoryInitializerProtocol = CategoryInitializerService(context: context)
+    let accountService: AccountInitializerProtocol = AccountInitializerService(context: context, currencyService: currencyService)
     
     currencyService.setupDefaultCurrenciesIfNeeded()
     categoryService.setupDefaultCategoriesIfNeeded()

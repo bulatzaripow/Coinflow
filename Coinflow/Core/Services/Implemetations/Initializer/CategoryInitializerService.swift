@@ -1,5 +1,5 @@
 //
-//  CategoryService.swift
+//  CategoryInitializerService.swift
 //  Coinflow
 //
 //  Created by Bulat Zaripov on 20.12.2025.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-final class CategoryService: CategoryInitializerProtocol {
+final class CategoryInitializerService: CategoryInitializerProtocol {
     
     // MARK: - Props
     

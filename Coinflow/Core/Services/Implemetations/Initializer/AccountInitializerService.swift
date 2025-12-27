@@ -1,5 +1,5 @@
 //
-//  AccountService.swift
+//  AccountInitializerService.swift
 //  Coinflow
 //
 //  Created by Bulat Zaripov on 21.12.2025.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-final class AccountService: AccountInitializerProtocol {
+final class AccountInitializerService: AccountInitializerProtocol {
     
     // MARK: - Props
     
@@ -34,7 +34,7 @@ final class AccountService: AccountInitializerProtocol {
         }
         
         // Default currency
-        var preferredCurrencyCode = currencyService.detectUserCurrency()
+        let preferredCurrencyCode = currencyService.detectUserCurrency()
         let currencyDescriptor = FetchDescriptor<Currency>(
             predicate: #Predicate<Currency> {
                 $0.code == preferredCurrencyCode
