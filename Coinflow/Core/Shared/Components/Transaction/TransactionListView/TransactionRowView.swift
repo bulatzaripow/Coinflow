@@ -13,7 +13,7 @@ struct TransactionRowView: View {
     // MARK: - Private
     
     private var isIncome: Bool {
-        transaction.type == .income || transaction.amount > 0
+        return transaction.type == .income
     }
     
     private var amountText: String {
@@ -38,16 +38,22 @@ struct TransactionRowView: View {
             // Icon
             ZStack {
                 Circle()
-                    .fill(Color.orange.opacity(0.15))
-                Image(systemName: "cup.and.saucer.fill")
-                    .foregroundStyle(.orange)
+                    .fill(
+                        Color(hex: transaction.category?.color ?? "#000000").opacity(0.9)
+                    )
+                Image(transaction.category?.icon ?? "questionmark")
+                    .resizable()
+                    .renderingMode(.template)
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.white)
                     .font(.system(size: 18))
             }
             .frame(width: 40, height: 40)
             
             // Info
             VStack(alignment: .leading, spacing: 4) {
-                Text(transaction.title)
+                Text(transaction.category?.name ?? "Other")
                     .font(.headline)
                     .lineLimit(1)
                     .truncationMode(.tail)
@@ -76,7 +82,7 @@ struct TransactionRowView: View {
         .padding(.vertical, 12)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.white)
-        .cornerRadius(26)
+        .cornerRadius(15)
         .clipped()
         .shadow(
             color: Color.black.opacity(0.03),

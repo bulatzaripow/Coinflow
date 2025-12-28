@@ -31,45 +31,65 @@ struct HomeView: View {
                 Color(.appBackground)
                     .ignoresSafeArea()
                 
-                ScrollView {
-                    VStack(spacing: 20) {
-                        // Header
-                        HStack(spacing: 0) {
-                            VStack(alignment: .leading, spacing: 3) {
-                                Text(DateFormatterHelper.formatDayMonth(Date()))
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
+                List {
+                    Section {
+                        VStack(spacing: 20) {
+                            // Header
+                            HStack(spacing: 0) {
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text(DateFormatterHelper.formatDayMonth(Date()))
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                    
+                                    Text("Good Morning, Bulat")
+                                        .fontWeight(.bold)
+                                }
                                 
-                                Text("Good Morning, Bulat")
-                                    .fontWeight(.bold)
-                            }
-                            
-                            Spacer()
-                            
-                            NavigationLink {
+                                Spacer()
                                 
-                            } label: {
-                                Image("user-beard")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 38, height: 38)
-                                    .background(.gray.opacity(0.2))
-                                    .clipShape(Circle())
+                                NavigationLink {
+                                    
+                                } label: {
+                                    Image("user-beard")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 38, height: 38)
+                                        .background(.gray.opacity(0.2))
+                                        .clipShape(Circle())
+                                }
                             }
-                        }
-                        .padding(.top, 10)
-                        .padding(.horizontal, 20)
-                        
-                        // Accounts
-                        AccountCarouselView(accounts: accounts) {
-                            // TODO: add account action
+                            .padding(.top, 10)
+                            .padding(.horizontal, 20)
+                            
+                            // Accounts
+                            AccountCarouselView(accounts: accounts) {
+                                // TODO: add account action
+                            }
                         }
                     }
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
                     
                     // Transactions
-                    TransactionsListView(transactions: transactions)
-                        .padding(.bottom, 70)
+                    Section {
+                        TransactionsListView(transactions: transactions)
+                    } header: {
+                        // Section header
+                        Text("Recent activity")
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 10)
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .listRowSpacing(12)
                 }
+                .listStyle(.plain)
+                .listRowSpacing(10)
+                .listSectionSpacing(0)
+                .scrollContentBackground(.hidden)
+                
                 
                 // Bottom actions
                 HStack(spacing: 18) {
