@@ -47,8 +47,8 @@ struct HomeView: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink {
-                                    
+                                Button {
+                                    viewModel.showSettings = true
                                 } label: {
                                     Image("user-beard")
                                         .resizable()
@@ -142,6 +142,9 @@ struct HomeView: View {
                     x: 0,
                     y: 10
                 )
+            }
+            .navigationDestination(isPresented: $viewModel.showSettings) {
+                EmptyView()
             }
         }
     }
