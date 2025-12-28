@@ -11,7 +11,6 @@ import SwiftData
 @Model
 final class Transaction: Identifiable {
     var id = UUID()
-    var title: String
     var note: String? = nil
     var amount: Double = 0
     var date: Date
@@ -23,17 +22,15 @@ final class Transaction: Identifiable {
     var category: Category? = nil
     
     init(
-        title: String,
         note: String? = nil,
         amount: Double,
         date: Date,
+        type: TransactionType = .expense,
         isHidden: Bool = false,
         createdAt: Date = Date(),
-        type: TransactionType = .expense,
         category: Category? = nil,
         account: Account? = nil,
     ) {
-        self.title = title
         self.note = note
         self.amount = amount
         self.date = date

@@ -14,8 +14,9 @@ final class Account: Identifiable {
     var name: String
     var balance: Double = 0
     var isDefault: Bool = false
-//    var currency: Currency?
-    var accountBackgroundPattern: String? = nil
+    var sortIndex: Int = 0
+    var backgroundColor: String? = nil
+    var backgroundPattern: String? = nil
     var createdAt: Date = Date()
     
     @Relationship(deleteRule: .nullify)
@@ -29,20 +30,24 @@ final class Account: Identifiable {
         self.balance = balance
     }
     
-    convenience init(name: String, balance: Double, accountBackgroundPattern: String?) {
+    convenience init(name: String, balance: Double, backgroundPattern: String?) {
         self.init(name: name, balance: balance)
-        self.accountBackgroundPattern = accountBackgroundPattern
+        self.backgroundPattern = backgroundPattern
     }
     
     convenience init(
         name: String,
         balance: Double,
         currency: Currency,
+        sortIndex: Int,
         isDefault: Bool = false,
-        accountBackgroundPattern: String? = nil
+        backgroundPattern: String? = nil,
+        backgroundColor: String? = nil
     ) {
-        self.init(name: name, balance: balance, accountBackgroundPattern: accountBackgroundPattern)
+        self.init(name: name, balance: balance, backgroundPattern: backgroundPattern)
+        self.sortIndex = sortIndex
         self.isDefault = isDefault
+        self.backgroundColor = backgroundColor
     }
 }
 

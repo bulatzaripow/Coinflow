@@ -13,8 +13,8 @@ struct HomeView: View {
     // MARK: - Props
     
     @Environment(\.modelContext) var modelContext
+    @Query(sort: \Account.sortIndex) private var accounts: [Account]
     @ObservedObject private var viewModel: HomeViewModel
-    @Query private var accounts: [Account]
     @Query private var transactions: [Transaction]
     
     // MARK: - Init
@@ -27,12 +27,12 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .bottom) {
                 Color(.appBackground)
                     .ignoresSafeArea()
                 
-                ZStack(alignment: .bottom) {
-                    ScrollView {
+                List {
+                    Section {
                         VStack(spacing: 20) {
                             // Header
                             HStack(spacing: 0) {
@@ -47,8 +47,8 @@ struct HomeView: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink {
-                                    
+                                Button {
+                                    viewModel.showSettings = true
                                 } label: {
                                     Image("user-beard")
                                         .resizable()
@@ -62,66 +62,89 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
                             
                             // Accounts
-                            AccountCarouselTabView(accounts: accounts)
-                            
-                            // Transactions
-                            TransactionsListView(transactions: transactions)
-                                .padding(.bottom, 70)
+                            AccountCarouselView(accounts: accounts) {
+                                // TODO: add account action
+                            }
                         }
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    
+                    // Transactions
+                    Section {
+                        TransactionsListView(transactions: transactions)
+                    } header: {
+                        // Section header
+                        Text("Recent activity")
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 10)
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .listRowSpacing(12)
+                }
+                .listStyle(.plain)
+                .listRowSpacing(10)
+                .listSectionSpacing(0)
+                .scrollContentBackground(.hidden)
+                
+                
+                // Bottom actions
+                HStack(spacing: 18) {
+                    Button(action: {
+                        // TODO: open accounts / wallet
+                    }) {
+                        Image("chart-simple")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(13)
+                            .font(.system(size: 20, weight: .semibold))
+                            .frame(width: 45, height: 45)
+                            .background(.white)
+                            .clipShape(Circle())
+                            .shadow(
+                                color: Color.black.opacity(0.06),
+                                radius: 14,
+                                x: 0,
+                                y: 6
+                            )
                     }
                     
-                    // Bottom actions
-                    HStack(spacing: 18) {
-                        Button(action: {
-                            // TODO: open accounts / wallet
-                        }) {
-                            Image("chart-simple")
-                                .resizable()
-                                .scaledToFit()
-                                .padding(13)
-                                .font(.system(size: 20, weight: .semibold))
-                                .frame(width: 45, height: 45)
-                                .background(.white)
-                                .clipShape(Circle())
-                                .shadow(
-                                    color: Color.black.opacity(0.06),
-                                    radius: 14,
-                                    x: 0,
-                                    y: 6
-                                )
+                    Button(action: {
+                        // TODO: add expense
+                    }) {
+                        HStack(spacing: 5) {
+                            Image(systemName: "plus")
+                                .font(.headline)
+                            
+                            Text("Add")
+                                .font(.headline)
                         }
-                        
-                        Button(action: {
-                            // TODO: add expense
-                        }) {
-                            HStack(spacing: 5) {
-                                Image(systemName: "plus")
-                                    .font(.headline)
-                                
-                                Text("Add")
-                                    .font(.headline)
-                            }
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity, maxHeight: 45)
-                            .background(Color(.appPrimary))
-                            .clipShape(Capsule())
-                            .shadow(
-                                color: Color.black.opacity(0.08),
-                                radius: 20,
-                                x: 0,
-                                y: 10
-                            )
-                        }
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 45)
+                        .background(Color(.appPrimary))
+                        .clipShape(Capsule())
+                        .shadow(
+                            color: Color.black.opacity(0.08),
+                            radius: 20,
+                            x: 0,
+                            y: 10
+                        )
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 5)
-                    .shadow(
-                        color: Color.black.opacity(0.08),
-                        radius: 20,
-                        x: 0,
-                        y: 10
-                    )
                 }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 5)
+                .shadow(
+                    color: Color.black.opacity(0.08),
+                    radius: 20,
+                    x: 0,
+                    y: 10
+                )
+            }
+            .navigationDestination(isPresented: $viewModel.showSettings) {
+                EmptyView()
             }
         }
     }
