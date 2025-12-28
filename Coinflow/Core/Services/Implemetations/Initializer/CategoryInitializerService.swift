@@ -33,7 +33,9 @@ final class CategoryInitializerService: CategoryInitializerProtocol {
         for categoryData in defaultCategories {
             let category = Category(
                 name: categoryData.name,
-                iconName: categoryData.iconName,
+                type: categoryData.type,
+                icon: categoryData.icon,
+                color: categoryData.color,
                 sortOrder: sortOrder,
                 isDefault: true,
                 createdAt: Date()
@@ -55,31 +57,44 @@ final class CategoryInitializerService: CategoryInitializerProtocol {
         }
     }
     
-    private func getDefaultCategories() -> [(name: String, iconName: String)] {
+    private func getDefaultCategories() -> [(name: String, icon: String, type: CategoryType, color: String)] {
         
         return [
-            ("Other", "questionmark.circle"),
-            ("Groceries", "cart"),
-            ("Restaurant", "fork.knife"),
-            ("Coffee", "cup.and.saucer"),
-            ("Delivery", "car"),
-            ("Taxi", "car.fill"),
-            ("Public Transport", "bus.fill"),
-            ("Fuel", "drop.fill"),
-            ("Parking", "p.square"),
-            ("Clothing", "tshirt"),
-            ("Electronics", "iphone"),
-            ("Gifts", "gift"),
-            ("Rent", "house"),
-            ("Utilities", "bolt"),
-            ("Pharmacy", "pills"),
-            ("Doctor", "stethoscope"),
-            ("Cinema", "film"),
-            ("Subscriptions", "bolt.circle"),
-            ("Hobbies", "puzzlepiece"),
-            ("Courses", "graduationcap"),
-            ("Books", "book"),
-            ("Pet Care", "dog"),
+            // Expenses
+            ("Other", "interrogation", CategoryType.expense, "#757575"),
+            ("Groceries", "grocery-bag", CategoryType.expense, "#4CAF50"),
+            ("Restaurant", "utensils", CategoryType.expense, "#FF9800"),
+            ("Shopping", "shopping-cart", CategoryType.expense, "#2196F3"),
+            ("Coffee", "mug-hot-alt", CategoryType.expense, "#795548"),
+            ("Delivery", "car-alt", CategoryType.expense, "#FF7043"),
+            ("Taxi", "taxi", CategoryType.expense, "#FF5722"),
+            ("Public Transport", "bus-alt", CategoryType.expense, "#42A5F5"),
+            ("Fuel", "gas-pump-alt", CategoryType.expense, "#FFB300"),
+            ("Parking", "parking-circle", CategoryType.expense, "#5C6BC0"),
+            ("Clothing", "tshirt", CategoryType.expense, "#EC407A"),
+            ("Electronics", "mobile-notch", CategoryType.expense, "#00ACC1"),
+            ("Gifts", "gift", CategoryType.expense, "#AB47BC"),
+            ("Rent", "city", CategoryType.expense, "#7E57C2"),
+            ("Utilities", "bolt", CategoryType.expense, "#FFEE58"),
+            ("Pharmacy", "pills", CategoryType.expense, "#66BB6A"),
+            ("Doctor", "stethoscope", CategoryType.expense, "#EF5350"),
+            ("Cinema", "clapper-open", CategoryType.expense, "#BA68C8"),
+            ("Subscriptions", "subscription", CategoryType.expense, "#26A69A"),
+            ("Hobbies", "puzzle", CategoryType.expense, "#FFA726"),
+            ("Courses", "lesson", CategoryType.expense, "#5C6BC0"),
+            ("Books", "books", CategoryType.expense, "#8D6E63"),
+            ("Pet Care", "dog", CategoryType.expense, "#FF8A65"),
+
+            // Income
+            ("Salary", "wallet-income", CategoryType.income, "#2E7D32"),
+            ("Bonus", "bonus-alt", CategoryType.income, "#FF8F00"),
+            ("Business", "briefcase", CategoryType.income, "#546E7A"),
+            ("Investment Income", "growth-chart-invest", CategoryType.income, "#00897B"),
+            ("Gift Received", "hand-present", CategoryType.income, "#D81B60"),
+            ("Cashback / Refund", "refund-alt", CategoryType.income, "#7CB342"),
+            ("Dividends", "investment", CategoryType.income, "#00695C"),
+            ("Rental Income", "rent", CategoryType.income, "#5E35B1"),
+            ("Government Support", "government-budget", CategoryType.income, "#455A64"),
         ]
     }
 }
