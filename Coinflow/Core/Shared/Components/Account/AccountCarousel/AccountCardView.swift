@@ -30,10 +30,10 @@ struct AccountCardView: View {
                         .foregroundStyle(.secondary)
                     
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(account.name)
+                        Text(account.name.isEmpty ? "Default" : account.name)
                             .font(.headline)
                         
-                        Text(String(account.formattedBalance()))
+                        Text(String(CurrencyFormatter.format(account.balance, currency: account.currency)))
                             .font(.system(size: 28, weight: .bold))
                     }
                     
@@ -47,10 +47,5 @@ struct AccountCardView: View {
         .containerRelativeFrame(.horizontal)
         .background(.white)
         .cornerRadius(15)
-        .shadow(
-            color: Color.gray.opacity(0.4),
-            radius: 20,
-            y: 5
-        )
     }
 }

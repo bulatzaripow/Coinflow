@@ -13,25 +13,31 @@ final class Account: Identifiable {
     var id = UUID()
     var name: String
     var balance: Double = 0
-    var isDefault: Bool = false
+    var isDefault: Int = 0
     var sortIndex: Int = 0
     var backgroundColor: String? = nil
     var backgroundPattern: String? = nil
     var createdAt: Date = Date()
     
-    @Relationship(deleteRule: .nullify)
-    var currency: Currency?
+    @Relationship
+    var currency: Currency
     
     @Relationship(deleteRule: .cascade, inverse: \Transaction.account)
     var transactions: [Transaction]? = []
     
-    init(name: String, balance: Double) {
+    init(name: String, balance: Double, currency: Currency) {
         self.name = name
         self.balance = balance
+        self.currency = currency
     }
     
-    convenience init(name: String, balance: Double, backgroundPattern: String?) {
-        self.init(name: name, balance: balance)
+    convenience init(
+        name: String,
+        balance: Double,
+        currency: Currency,
+        backgroundPattern: String?
+    ) {
+        self.init(name: name, balance: balance, currency: currency)
         self.backgroundPattern = backgroundPattern
     }
     
@@ -40,24 +46,13 @@ final class Account: Identifiable {
         balance: Double,
         currency: Currency,
         sortIndex: Int,
-        isDefault: Bool = false,
+        isDefault: Int = 0,
         backgroundPattern: String? = nil,
         backgroundColor: String? = nil
     ) {
-        self.init(name: name, balance: balance, backgroundPattern: backgroundPattern)
+        self.init(name: name, balance: balance, currency: currency, backgroundPattern: backgroundPattern)
         self.sortIndex = sortIndex
         self.isDefault = isDefault
         self.backgroundColor = backgroundColor
-    }
-}
-
-extension Account {
-    func formattedBalance() -> String {
-        let currency = self.currency ?? Currency(
-            code: "USD",
-            symbol: "$",
-            name: "US Dollar",
-        )
-        return CurrencyFormatter.format(balance, currency: currency)
     }
 }

@@ -13,9 +13,15 @@ struct HomeView: View {
     // MARK: - Props
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Account.sortIndex) private var accounts: [Account]
-    @ObservedObject private var viewModel: HomeViewModel
+    
+    @Query(sort: [
+        SortDescriptor(\Account.isDefault, order: .reverse),
+        SortDescriptor(\Account.sortIndex)
+    ])
+    private var accounts: [Account]
     @Query private var transactions: [Transaction]
+    
+    @ObservedObject private var viewModel: HomeViewModel
     
     // MARK: - Init
     
@@ -63,7 +69,7 @@ struct HomeView: View {
                             
                             // Accounts
                             AccountCarouselView(accounts: accounts) {
-                                // TODO: add account action
+                                viewModel.showAddAccountSheet = true
                             }
                         }
                     }
@@ -145,6 +151,12 @@ struct HomeView: View {
             }
             .navigationDestination(isPresented: $viewModel.showSettings) {
                 EmptyView()
+            }
+            .sheet(isPresented: $viewModel.showAddAccountSheet) {
+                AccountManageViewBuilder.build(
+                    modelContext: modelContext
+                )
+                    .presentationDragIndicator(.visible)
             }
         }
     }

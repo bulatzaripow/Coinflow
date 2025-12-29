@@ -15,12 +15,20 @@ final class Currency {
     var symbol: String = ""
     var name: String = ""
     var isBaseCurrency: Bool = false
+    var sortIndex: Int = 0
     var createdAt: Date = Date()
 
-    init(code: String, symbol: String, name: String, createdAt: Date = Date()) {
+    init(
+        code: String,
+        symbol: String,
+        name: String,
+        sortIndex: Int = 0,
+        createdAt: Date = Date()
+    ) {
         self.code = code
         self.symbol = symbol
         self.name = name
+        self.sortIndex = sortIndex
         self.createdAt = createdAt
     }
 }
