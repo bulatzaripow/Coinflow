@@ -13,6 +13,7 @@ class HomeViewModel: ObservableObject {
     @Published var selectedAccountIndex = 0
     @Published var showSettings: Bool = false
     @Published var showAddAccountSheet: Bool = false
+    @Published var accountToEdit: Account?
     
     func totalBalance(accounts: [Account]) -> Double {
         accounts.reduce(0) { $0 + $1.balance }

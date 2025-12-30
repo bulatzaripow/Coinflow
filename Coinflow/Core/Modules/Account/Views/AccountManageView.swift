@@ -23,11 +23,11 @@ struct AccountManageView: View {
             Form {
                 Section {
                     AccountCardView(account: Account(
-                        name: viewModel.account?.name ?? viewModel.name,
-                        balance: viewModel.account?.balance ?? viewModel.balance,
-                        currency: viewModel.account?.currency ?? viewModel.selectedCurrency,
-                        sortIndex: 0,
-                        isDefault: 1,
+                        name: viewModel.name,
+                        balance: viewModel.balance,
+                        currency: viewModel.selectedCurrency,
+                        sortIndex: viewModel.sortIndex,
+                        isDefault: viewModel.isDefault ? 1 : 0,
                         backgroundPattern: viewModel.backgroundPattern,
                         backgroundColor: viewModel.backgroundColor
                     ))
@@ -99,10 +99,6 @@ struct AccountManageView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: AccountRoutes.self) { route in
                 switch route {
-                case .account:
-                    AccountManageViewBuilder.build(
-                        modelContext: modelContext
-                    )
                 case .currency:
                     SelectCurrencyViewBuilder.build(
                         modelContext: modelContext
@@ -154,6 +150,5 @@ struct AccountManageView: View {
             }
         }
         .navigationViewStyle(.stack)
-        
     }
 }

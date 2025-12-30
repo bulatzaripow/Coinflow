@@ -8,6 +8,5 @@
 import Foundation
 
 enum AccountRoutes {
-    case account
     case currency
 }

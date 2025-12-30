@@ -70,6 +70,8 @@ struct HomeView: View {
                             // Accounts
                             AccountCarouselView(accounts: accounts) {
                                 viewModel.showAddAccountSheet = true
+                            } onSelectAccount: { account in
+                                viewModel.accountToEdit = account
                             }
                         }
                     }
@@ -156,7 +158,14 @@ struct HomeView: View {
                 AccountManageViewBuilder.build(
                     modelContext: modelContext
                 )
-                    .presentationDragIndicator(.visible)
+                .presentationDragIndicator(.visible)
+            }
+            .sheet(item: $viewModel.accountToEdit) { account in
+                AccountManageViewBuilder.build(
+                    account,
+                    modelContext: modelContext
+                )
+                .presentationDragIndicator(.visible)
             }
         }
     }

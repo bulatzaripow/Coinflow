@@ -34,6 +34,12 @@ final class AccountManageService: AccountManageServiceProtocol {
         }
     }
     
+    func fetchAccount(id: UUID) -> Account? {
+        let predicate = #Predicate<Account> { $0.id == id }
+        let descriptor = FetchDescriptor<Account>(predicate: predicate)
+        return try? context.fetch(descriptor).first
+    }
+    
     func saveAccount(_ account: Account) {
         context.insert(account)
         

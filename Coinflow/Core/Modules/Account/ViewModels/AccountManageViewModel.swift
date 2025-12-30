@@ -17,60 +17,21 @@ class AccountManageViewModel: ObservableObject {
     private let currencyService: CurrencyManageServiceProtocol
     private let accountService: AccountManageServiceProtocol
     
-    @Published var name: String = "" {
-        didSet {
-            if let account = account {
-                account.name = name
-            }
-        }
-    }
+    private let accountId: UUID?
     
-    @Published var balance: Double = 0 {
-        didSet {
-            if let account = account {
-                account.balance = balance
-            }
-        }
-    }
-    
-    @Published var isDefault: Bool = false {
-        didSet {
-            if let account = account {
-                account.isDefault = isDefault ? 1 : 0
-            }
-        }
-    }
-    
-    @Published var selectedCurrency: Currency {
-        didSet {
-            if let account = account {
-                account.currency = selectedCurrency
-            }
-        }
-    }
-    
-    @Published var backgroundColor: String? = nil {
-        didSet {
-            if let account = account {
-                account.backgroundColor = backgroundColor
-            }
-        }
-    }
-    
-    @Published var backgroundPattern: String? = nil {
-        didSet {
-            if let account = account {
-                account.backgroundPattern = backgroundPattern
-            }
-        }
-    }
+    @Published var name: String = ""
+    @Published var balance: Double = 0
+    @Published var isDefault: Bool = false
+    @Published var sortIndex: Int = 0
+    @Published var selectedCurrency: Currency
+    @Published var backgroundColor: String?
+    @Published var backgroundPattern: String?
     
     @Published var selectedColor: AppColors?
     @Published var selectedPattern: String?
     
     @Published var showSelectCurrencySheet: Bool = false
     @Published var path = NavigationPath()
-    @Published var route: AccountRoutes = .account
     
     var canSave: Bool {
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
@@ -83,6 +44,7 @@ class AccountManageViewModel: ObservableObject {
         currencyService: CurrencyManageService,
         accountService: AccountManageServiceProtocol,
     ) {
+        self.accountId = account?.id
         self.account = account
         self.currencyService = currencyService
         self.accountService = accountService
@@ -92,9 +54,10 @@ class AccountManageViewModel: ObservableObject {
         if let account = self.account {
             name = account.name
             balance = account.balance
+            sortIndex = account.sortIndex
             isDefault = account.isDefault > 0
             backgroundColor = account.backgroundColor
-            backgroundColor = account.backgroundPattern
+            backgroundPattern = account.backgroundPattern
             
             selectedColor = AppColors(rawValue: account.backgroundColor ?? "")
             selectedPattern = account.backgroundPattern
@@ -104,17 +67,34 @@ class AccountManageViewModel: ObservableObject {
     // MARK: - Methods
     
     func saveAccount(_ modelContext: ModelContext) {
-        let account = self.account ?? Account(
-            name: name,
-            balance: balance,
-            currency: selectedCurrency,
-            sortIndex: accountService.accountsCount(),
-            isDefault: isDefault ? 1 : 0,
-            backgroundPattern: backgroundPattern,
-            backgroundColor: backgroundColor,
-        )
-        
-        accountService.saveAccount(account)
+        if let accountId = accountId {
+            do {
+                if let existingAccount = accountService.fetchAccount(id: accountId) {
+                    existingAccount.name = name
+                    existingAccount.balance = balance
+                    existingAccount.currency = selectedCurrency
+                    existingAccount.isDefault = isDefault ? 1 : 0
+                    existingAccount.backgroundColor = backgroundColor
+                    existingAccount.backgroundPattern = backgroundPattern
+                    
+                    try modelContext.save()
+                }
+            } catch {
+                print("Error updating account: \(error)")
+            }
+        } else {
+            let newAccount = Account(
+                name: name,
+                balance: balance,
+                currency: selectedCurrency,
+                sortIndex: accountService.accountsCount(),
+                isDefault: isDefault ? 1 : 0,
+                backgroundPattern: backgroundPattern,
+                backgroundColor: backgroundColor,
+            )
+            
+            accountService.saveAccount(newAccount)
+        }
     }
     
     func selectColor(_ color: AppColors?) {

@@ -41,9 +41,10 @@ struct AccountCardView: View {
                 }
             }
             .padding(20)
-            .frame(maxWidth: .infinity, minHeight: 160, alignment: .topLeading)
+            .frame(maxWidth: .infinity, alignment: .topLeading)
             .foregroundColor(account.backgroundColor != nil ? .white : .primary)
         }
+        .frame(maxWidth: .infinity, maxHeight: 160)
         .containerRelativeFrame(.horizontal)
         .background(.white)
         .cornerRadius(15)
