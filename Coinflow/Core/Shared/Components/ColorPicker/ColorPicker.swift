@@ -41,7 +41,6 @@ struct ColorPicker: View {
                             .foregroundColor(selectedColor == nil ? .blue : .gray)
                     }
                 }
-                .padding(.leading, 14)
                 
                 ForEach(AppColors.allCases) { color in
                     Button {
@@ -64,6 +63,7 @@ struct ColorPicker: View {
                 }
             }
             .padding(.vertical, 2)
+            .padding(.horizontal, 14)
         }
     }
 }

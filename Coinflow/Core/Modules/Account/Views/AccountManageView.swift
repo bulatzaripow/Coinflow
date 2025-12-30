@@ -85,6 +85,14 @@ struct AccountManageView: View {
                         }
                     )
                     .padding(.vertical, 12)
+                    
+                    PatternPicker(
+                        selectedPattern: $viewModel.selectedPattern,
+                        action: { pattern in
+                            viewModel.selectPattern(pattern)
+                        }
+                    )
+                    .padding(.vertical, 12)
                 }
                 .listRowInsets(EdgeInsets())
             }

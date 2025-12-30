@@ -66,6 +66,7 @@ class AccountManageViewModel: ObservableObject {
     }
     
     @Published var selectedColor: AppColors?
+    @Published var selectedPattern: String?
     
     @Published var showSelectCurrencySheet: Bool = false
     @Published var path = NavigationPath()
@@ -94,6 +95,9 @@ class AccountManageViewModel: ObservableObject {
             isDefault = account.isDefault > 0
             backgroundColor = account.backgroundColor
             backgroundColor = account.backgroundPattern
+            
+            selectedColor = AppColors(rawValue: account.backgroundColor ?? "")
+            selectedPattern = account.backgroundPattern
         }
     }
     
@@ -115,5 +119,9 @@ class AccountManageViewModel: ObservableObject {
     
     func selectColor(_ color: AppColors?) {
         backgroundColor = color != nil ? color?.rawValue : nil
+    }
+    
+    func selectPattern(_ pattern: String?) {
+        backgroundPattern = pattern
     }
 }
