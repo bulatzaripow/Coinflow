@@ -28,8 +28,11 @@ struct AccountManageView: View {
                         currency: viewModel.account?.currency ?? viewModel.selectedCurrency,
                         sortIndex: 0,
                         isDefault: 1,
+                        backgroundPattern: viewModel.backgroundPattern,
+                        backgroundColor: viewModel.backgroundColor
                     ))
                 }
+                .listRowInsets(EdgeInsets())
                 
                 Section {
                     HStack {
@@ -73,6 +76,17 @@ struct AccountManageView: View {
                     }
                     .buttonStyle(.plain)
                 }
+                
+                Section("Design") {
+                    ColorPicker(
+                        selectedColor: $viewModel.selectedColor,
+                        action: { color in
+                            viewModel.selectColor(color)
+                        }
+                    )
+                    .padding(.vertical, 12)
+                }
+                .listRowInsets(EdgeInsets())
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: AccountRoutes.self) { route in

@@ -65,6 +65,8 @@ class AccountManageViewModel: ObservableObject {
         }
     }
     
+    @Published var selectedColor: AppColors?
+    
     @Published var showSelectCurrencySheet: Bool = false
     @Published var path = NavigationPath()
     @Published var route: AccountRoutes = .account
@@ -109,5 +111,9 @@ class AccountManageViewModel: ObservableObject {
         )
         
         accountService.saveAccount(account)
+    }
+    
+    func selectColor(_ color: AppColors?) {
+        backgroundColor = color != nil ? color?.rawValue : nil
     }
 }
