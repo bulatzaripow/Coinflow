@@ -27,7 +27,8 @@ struct AccountCarouselView: View {
         return cards
     }
     
-    var addAccountAction: () -> Void = { }
+    var onAddAccount: () -> Void = { }
+    var onSelectAccount: (Account) -> Void = { _ in }
     
     // MARK: - UI
     
@@ -46,11 +47,11 @@ struct AccountCarouselView: View {
                             case .account(let account):
                                 AccountCardView(account: account)
                                     .onTapGesture {
-                                        selectedAccount = account
+                                        onSelectAccount(account)
                                     }
                             case .addAccount:
                                 AddAccountCardView() {
-                                    addAccountAction()
+                                    onAddAccount()
                                 }
                             }
                         }

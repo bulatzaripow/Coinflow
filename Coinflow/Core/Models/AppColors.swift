@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum AppColors: String {
+enum AppColors: String, CaseIterable, Identifiable {
     case sunset = "sunset"
     case ocean = "ocean"
     case forest = "forest"
@@ -22,6 +22,8 @@ enum AppColors: String {
     case ice = "ice"
     case spring = "spring"
     case autumn = "autumn"
+    
+    var id: String { self.rawValue }
     
     var colors: [Color] {
         switch self {

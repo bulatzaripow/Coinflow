@@ -53,15 +53,18 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
         let defaultCurrencies = getDefaultCurrencies()
         var currencies: [Currency] = []
         
+        var sortIndex = 0
         for currencyData in defaultCurrencies {
             let currency = Currency(
                 code: currencyData.code,
                 symbol: currencyData.symbol,
                 name: currencyData.name,
+                sortIndex: sortIndex,
                 createdAt: Date()
             )
             context.insert(currency)
             currencies.append(currency)
+            sortIndex += 1
         }
         
         return currencies
@@ -141,7 +144,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             
             // Other
             ("KZT", "₸", "Kazakhstani Tenge"),
-            ("UZS", "сўм", "Uzbekistani Som"),
+            ("UZS", "soʻm", "Uzbekistani Som"),
             ("AZN", "₼", "Azerbaijani Manat"),
             ("GEL", "₾", "Georgian Lari"),
             ("AMD", "֏", "Armenian Dram"),
@@ -213,7 +216,6 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("XOF", "CFA", "West African CFA Franc"),
             ("XAF", "FCFA", "Central African CFA Franc"),
             ("MRU", "UM", "Mauritanian Ouguiya"),
-            ("STN", "Db", "São Tomé & Príncipe Dobra"),
             ("ERN", "Nfk", "Eritrean Nakfa"),
             ("SZL", "L", "Swazi Lilangeni"),
             ("LSL", "L", "Lesotho Loti"),

@@ -52,7 +52,7 @@ final class AccountInitializerService: AccountInitializerProtocol {
             balance: 0,
             currency: defaultCurrency,
             sortIndex: 0,
-            isDefault: true,
+            isDefault: 1,
         )
         
         // Insert account
