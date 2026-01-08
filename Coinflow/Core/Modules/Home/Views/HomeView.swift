@@ -19,7 +19,9 @@ struct HomeView: View {
         SortDescriptor(\Account.sortIndex)
     ])
     private var accounts: [Account]
-    @Query private var transactions: [Transaction]
+    
+    @Query(sort: \Transaction.date, order: .reverse)
+    private var transactions: [Transaction]
     
     @ObservedObject private var viewModel: HomeViewModel
     
