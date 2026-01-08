@@ -9,6 +9,7 @@ import SwiftData
 
 struct TransactionManageViewBuilder {
     static func build(
+        _ transaction: Transaction? = nil,
         activeAccount: Account,
         context: ModelContext
     ) -> TransactionManageView {
@@ -17,6 +18,7 @@ struct TransactionManageViewBuilder {
         let categoryService = CategoryManageService(context: context)
         
         let vm = TransactionManageViewModel(
+            transaction: transaction,
             transactionService: transactionService,
             accountService: accountService,
             categoryService: categoryService,

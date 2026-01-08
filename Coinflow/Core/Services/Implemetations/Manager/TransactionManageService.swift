@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 final class TransactionManageService: TransactionManageServiceProtocol {
-    
+
     // MARK: - Props
     
     private let context: ModelContext
@@ -22,13 +22,27 @@ final class TransactionManageService: TransactionManageServiceProtocol {
     
     // MARK: - Methods
     
-    func saveTransaction(_ transaction: Transaction) {
+    func fetch(id: UUID) -> Transaction? {
+        let predicate = #Predicate<Transaction> { $0.id == id }
+        let descriptor = FetchDescriptor<Transaction>(predicate: predicate)
+        return try? context.fetch(descriptor).first
+    }
+    
+    func save(_ transaction: Transaction) {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving transaction: \(transaction)")
+        }
+    }
+    
+    func create(_ transaction: Transaction) {
         context.insert(transaction)
         
         do {
             try context.save()
         } catch {
-            print("Error saving transaction: \(transaction)")
+            print("Error creating transaction: \(transaction)")
         }
     }
 }

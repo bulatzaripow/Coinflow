@@ -83,7 +83,9 @@ struct HomeView: View {
                     
                     // Transactions
                     Section {
-                        TransactionsListView(transactions: transactions)
+                        TransactionsListView(transactions: transactions) { transaction in
+                            viewModel.chooseTransactionToEdit(transaction)
+                        }
                     } header: {
                         // Section header
                         Text("Recent activity")
@@ -182,6 +184,16 @@ struct HomeView: View {
             .sheet(isPresented: $viewModel.showAddTransactionSheet) {
                 if let account = viewModel.selectedAccount {
                     TransactionManageViewBuilder.build(
+                        activeAccount: account,
+                        context: modelContext,
+                    )
+                    .presentationDragIndicator(.visible)
+                }
+            }
+            .sheet(item: $viewModel.transactionToEdit) { account in
+                if let account = viewModel.selectedAccount {
+                    TransactionManageViewBuilder.build(
+                        viewModel.transactionToEdit,
                         activeAccount: account,
                         context: modelContext,
                     )

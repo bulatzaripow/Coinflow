@@ -8,5 +8,7 @@
 import Foundation
 
 protocol TransactionManageServiceProtocol {
-    func saveTransaction(_ transaction: Transaction)
+    func fetch(id: UUID) -> Transaction?
+    func save(_ transaction: Transaction)
+    func create(_ transaction: Transaction)
 }

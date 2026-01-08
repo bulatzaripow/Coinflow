@@ -21,6 +21,8 @@ class TransactionManageViewModel: ObservableObject {
     var accounts: [Account]
     var categories: [Category]
     
+    @Published var transaction: Transaction? = nil
+    
     @Published var type: TransactionType = .expense
     @Published var note: String = ""
     @Published var amount: String = ""
@@ -52,11 +54,13 @@ class TransactionManageViewModel: ObservableObject {
     // MARK: - Init
     
     init(
+        transaction: Transaction? = nil,
         transactionService: TransactionManageServiceProtocol,
         accountService: AccountManageServiceProtocol,
         categoryService: CategoryManageServiceProtocol,
         activeAccount: Account
     ) {
+        self.transaction = transaction
         self.transactionService = transactionService
         self.accountService = accountService
         self.categoryService = categoryService
@@ -64,9 +68,21 @@ class TransactionManageViewModel: ObservableObject {
         
         self.accounts = accountService.fetchAccounts()
         self.categories = categoryService.fetchCategories()
-        self.selectedAccount = accounts.first
         self.selectedToAccount = accounts.first
-        self.selectedCategory = categories.first
+        
+        if let transaction = self.transaction {
+            type = transaction.type
+            note = transaction.note ?? ""
+            amount = String(transaction.amount)
+            date = transaction.date
+            
+            selectedAccount = transaction.account
+            selectedToAccount = transaction.toAccount ?? accounts.first
+            selectedCategory = transaction.category
+        } else {
+            self.selectedAccount = accounts.first
+            self.selectedCategory = categories.first
+        }
     }
     
     // MARK: - Methods
@@ -84,17 +100,34 @@ class TransactionManageViewModel: ObservableObject {
     }
     
     func saveTransaction() {
-        let transaction = Transaction(
-            note: note,
-            amount: Double(amount) ?? 0,
-            date: date,
-            type: type,
-            isHidden: false,
-            createdAt: Date(),
-            category: selectedCategory,
-            account: selectedAccount,
-        )
-        transactionService.saveTransaction(transaction)
+        if let transaction = self.transaction {
+            transaction.note = note
+            transaction.amount = Double(amount) ?? 0
+            transaction.type = type
+            transaction.date = date
+            transaction.date = date
+            transaction.category = selectedCategory
+            transaction.account = selectedAccount
+            
+            if type == .transfer {
+                transaction.toAccount = selectedToAccount
+            }
+            
+            transactionService.save(transaction)
+        } else {
+            let transaction = Transaction(
+                note: note,
+                amount: Double(amount) ?? 0,
+                date: date,
+                type: type,
+                isHidden: false,
+                createdAt: Date(),
+                category: selectedCategory,
+                account: selectedAccount,
+            )
+            
+            transactionService.create(transaction)
+        }
     }
 
 }
