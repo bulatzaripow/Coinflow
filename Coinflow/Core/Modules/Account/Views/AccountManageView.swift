@@ -26,6 +26,7 @@ struct AccountManageView: View {
                         name: viewModel.name,
                         balance: viewModel.balance,
                         currency: viewModel.selectedCurrency,
+                        icon: viewModel.icon,
                         sortIndex: viewModel.sortIndex,
                         isDefault: viewModel.isDefault ? 1 : 0,
                         backgroundPattern: viewModel.backgroundPattern,

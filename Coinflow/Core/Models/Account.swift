@@ -15,6 +15,7 @@ final class Account: Identifiable {
     var balance: Double = 0
     var isDefault: Int = 0
     var sortIndex: Int = 0
+    var icon: String = "cash"
     var backgroundColor: String? = nil
     var backgroundPattern: String? = nil
     var createdAt: Date = Date()
@@ -35,9 +36,11 @@ final class Account: Identifiable {
         name: String,
         balance: Double,
         currency: Currency,
+        icon: String,
         backgroundPattern: String?
     ) {
         self.init(name: name, balance: balance, currency: currency)
+        self.icon = icon
         self.backgroundPattern = backgroundPattern
     }
     
@@ -45,12 +48,19 @@ final class Account: Identifiable {
         name: String,
         balance: Double,
         currency: Currency,
+        icon: String,
         sortIndex: Int,
         isDefault: Int = 0,
         backgroundPattern: String? = nil,
         backgroundColor: String? = nil
     ) {
-        self.init(name: name, balance: balance, currency: currency, backgroundPattern: backgroundPattern)
+        self.init(
+            name: name,
+            balance: balance,
+            currency: currency,
+            icon: icon,
+            backgroundPattern: backgroundPattern
+        )
         self.sortIndex = sortIndex
         self.isDefault = isDefault
         self.backgroundColor = backgroundColor

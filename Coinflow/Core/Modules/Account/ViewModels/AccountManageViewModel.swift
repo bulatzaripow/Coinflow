@@ -23,6 +23,7 @@ class AccountManageViewModel: ObservableObject {
     @Published var balance: Double = 0
     @Published var isDefault: Bool = false
     @Published var sortIndex: Int = 0
+    @Published var icon: String = "cash"
     @Published var selectedCurrency: Currency
     @Published var backgroundColor: String?
     @Published var backgroundPattern: String?
@@ -87,6 +88,7 @@ class AccountManageViewModel: ObservableObject {
                 name: name,
                 balance: balance,
                 currency: selectedCurrency,
+                icon: icon,
                 sortIndex: accountService.accountsCount(),
                 isDefault: isDefault ? 1 : 0,
                 backgroundPattern: backgroundPattern,

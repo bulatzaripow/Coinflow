@@ -51,6 +51,7 @@ final class AccountInitializerService: AccountInitializerProtocol {
             name: "Default",
             balance: 0,
             currency: defaultCurrency,
+            icon: "cash",
             sortIndex: 0,
             isDefault: 1,
         )
