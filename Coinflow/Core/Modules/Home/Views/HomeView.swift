@@ -58,11 +58,10 @@ struct HomeView: View {
                                 Button {
                                     viewModel.showSettings = true
                                 } label: {
-                                    Image("user-beard")
+                                    Image("settings")
                                         .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 38, height: 38)
-                                        .background(.gray.opacity(0.2))
+                                        .scaledToFit()
+                                        .frame(width: 35, height: 35)
                                         .clipShape(Circle())
                                 }
                             }
