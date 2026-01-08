@@ -40,6 +40,12 @@ final class AccountManageService: AccountManageServiceProtocol {
         return try? context.fetch(descriptor).first
     }
     
+    func fetchAccounts() -> [Account] {
+        let descriptor = FetchDescriptor<Account>()
+        let accounts = try? context.fetch(descriptor)
+        return accounts ?? []
+    }
+    
     func saveAccount(_ account: Account) {
         context.insert(account)
         

@@ -31,6 +31,22 @@ struct TransactionRowView: View {
         return formatter.string(from: transaction.date)
     }
     
+    private var transactionText: String {
+        guard transaction.type != .transfer else {
+            return "Transfer"
+        }
+        
+        return transaction.category?.name ?? "Other"
+    }
+    
+    private var transactionIcon: Image {
+        guard transaction.type != .transfer else {
+            return Image("send-dollars")
+        }
+        
+        return Image(transaction.category?.icon ?? "questionmark")
+    }
+    
     // MARK: - UI
     
     var body: some View {
@@ -39,26 +55,25 @@ struct TransactionRowView: View {
             ZStack {
                 Circle()
                     .fill(
-                        Color(hex: transaction.category?.color ?? "#000000").opacity(0.9)
+                        Color(.systemGray6)
                     )
-                Image(transaction.category?.icon ?? "questionmark")
+                transactionIcon
                     .resizable()
                     .renderingMode(.template)
                     .scaledToFit()
                     .frame(width: 24, height: 24)
-                    .foregroundColor(.white)
                     .font(.system(size: 18))
             }
             .frame(width: 40, height: 40)
             
             // Info
             VStack(alignment: .leading, spacing: 4) {
-                Text(transaction.category?.name ?? "Other")
+                Text(transactionText)
                     .font(.headline)
                     .lineLimit(1)
                     .truncationMode(.tail)
                 
-                if let note = transaction.note {
+                if let note = transaction.note, !note.isEmpty {
                     Text(note)
                         .font(.caption)
                         .lineLimit(2)

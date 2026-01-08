@@ -19,6 +19,7 @@ final class Transaction: Identifiable {
     var type: TransactionType
     
     var account: Account? = nil
+    var toAccount: Account? = nil
     var category: Category? = nil
     
     init(
@@ -30,6 +31,7 @@ final class Transaction: Identifiable {
         createdAt: Date = Date(),
         category: Category? = nil,
         account: Account? = nil,
+        toAccount: Account? = nil,
     ) {
         self.note = note
         self.amount = amount
@@ -39,6 +41,7 @@ final class Transaction: Identifiable {
         self.type = type
         self.category = category
         self.account = account
+        self.toAccount = toAccount
     }
 }
 

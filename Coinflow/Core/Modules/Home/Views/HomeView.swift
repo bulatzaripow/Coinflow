@@ -19,7 +19,9 @@ struct HomeView: View {
         SortDescriptor(\Account.sortIndex)
     ])
     private var accounts: [Account]
-    @Query private var transactions: [Transaction]
+    
+    @Query(sort: \Transaction.date, order: .reverse)
+    private var transactions: [Transaction]
     
     @ObservedObject private var viewModel: HomeViewModel
     
@@ -68,7 +70,7 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
                             
                             // Accounts
-                            AccountCarouselView(accounts: accounts) {
+                            AccountCarouselView(accounts: accounts, selectedAccount: $viewModel.selectedAccount) {
                                 viewModel.showAddAccountSheet = true
                             } onSelectAccount: { account in
                                 viewModel.accountToEdit = account
@@ -81,7 +83,9 @@ struct HomeView: View {
                     
                     // Transactions
                     Section {
-                        TransactionsListView(transactions: transactions)
+                        TransactionsListView(transactions: transactions) { transaction in
+                            viewModel.chooseTransactionToEdit(transaction)
+                        }
                     } header: {
                         // Section header
                         Text("Recent activity")
@@ -121,7 +125,7 @@ struct HomeView: View {
                     }
                     
                     Button(action: {
-                        // TODO: add expense
+                        viewModel.showAddTransactionSheet = true
                     }) {
                         HStack(spacing: 5) {
                             Image(systemName: "plus")
@@ -151,6 +155,16 @@ struct HomeView: View {
                     y: 10
                 )
             }
+            .onAppear {
+                if viewModel.selectedAccount == nil {
+                    viewModel.selectedAccount = accounts.first
+                }
+            }
+            .onChange(of: accounts) { _, newAccounts in
+                if viewModel.selectedAccount == nil {
+                    viewModel.selectedAccount = newAccounts.first
+                }
+            }
             .navigationDestination(isPresented: $viewModel.showSettings) {
                 EmptyView()
             }
@@ -166,6 +180,25 @@ struct HomeView: View {
                     modelContext: modelContext
                 )
                 .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $viewModel.showAddTransactionSheet) {
+                if let account = viewModel.selectedAccount {
+                    TransactionManageViewBuilder.build(
+                        activeAccount: account,
+                        context: modelContext,
+                    )
+                    .presentationDragIndicator(.visible)
+                }
+            }
+            .sheet(item: $viewModel.transactionToEdit) { account in
+                if let account = viewModel.selectedAccount {
+                    TransactionManageViewBuilder.build(
+                        viewModel.transactionToEdit,
+                        activeAccount: account,
+                        context: modelContext,
+                    )
+                    .presentationDragIndicator(.visible)
+                }
             }
         }
     }

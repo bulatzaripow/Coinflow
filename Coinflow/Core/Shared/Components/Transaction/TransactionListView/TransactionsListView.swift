@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TransactionsListView: View {
     let transactions: [Transaction]
+    let onTap: (Transaction) -> Void
     
     var body: some View {
         if !transactions.isEmpty {
@@ -26,6 +27,9 @@ struct TransactionsListView: View {
                         } label: {
                             Image(systemName: "eye.slash")
                         }
+                    }
+                    .onTapGesture {
+                        onTap(transaction)
                     }
                     .padding(.horizontal, 20)
             }

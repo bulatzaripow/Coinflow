@@ -14,7 +14,7 @@ struct AccountCarouselView: View {
     
     let accounts: [Account]
     @State private var scrollProgressX: CGFloat = 0
-    @State private var selectedAccount: Account?
+    @Binding var selectedAccount: Account?
     
     private let spacing: CGFloat = 10
     
@@ -47,6 +47,7 @@ struct AccountCarouselView: View {
                             case .account(let account):
                                 AccountCardView(account: account)
                                     .onTapGesture {
+                                        selectedAccount = account
                                         onSelectAccount(account)
                                     }
                             case .addAccount:
@@ -73,6 +74,12 @@ struct AccountCarouselView: View {
                     let maxValue = CGFloat(max(allCards.count, 0))
                     scrollProgressX = min(max(newValue, 0), maxValue)
                 }
+                .onScrollPhaseChange { _, phase in
+                    if phase == .idle {
+                        let index = Int(round(scrollProgressX))
+                        updateSelectedAccount(for: index)
+                    }
+                }
                 
                 // Page indicators
                 ScrollViewPageIndicators(
@@ -82,6 +89,18 @@ struct AccountCarouselView: View {
             }
         }
         .padding(.vertical, 10)
+    }
+    
+    // MARK: - Methods
+    
+    private func updateSelectedAccount(for index: Int) {
+        guard index >= 0, index < allCards.count else { return }
+
+        if case let .account(account) = allCards[index],
+           selectedAccount?.id != account.id {
+            selectedAccount = account
+            onSelectAccount(account)
+        }
     }
 }
 
