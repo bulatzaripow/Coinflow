@@ -86,6 +86,7 @@ final class CategoryInitializerService: CategoryInitializerProtocol {
             ("Pet Care", "dog", CategoryType.expense, "#FF8A65"),
 
             // Income
+            ("Other", "interrogation", CategoryType.income, "#757575"),
             ("Salary", "wallet-income", CategoryType.income, "#2E7D32"),
             ("Bonus", "bonus-alt", CategoryType.income, "#FF8F00"),
             ("Business", "briefcase", CategoryType.income, "#546E7A"),
