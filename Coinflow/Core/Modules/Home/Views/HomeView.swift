@@ -70,7 +70,7 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
                             
                             // Accounts
-                            AccountCarouselView(accounts: accounts) {
+                            AccountCarouselView(accounts: accounts, selectedAccount: $viewModel.selectedAccount) {
                                 viewModel.showAddAccountSheet = true
                             } onSelectAccount: { account in
                                 viewModel.accountToEdit = account
@@ -123,7 +123,7 @@ struct HomeView: View {
                     }
                     
                     Button(action: {
-                        // TODO: add expense
+                        viewModel.showAddTransactionSheet = true
                     }) {
                         HStack(spacing: 5) {
                             Image(systemName: "plus")
@@ -153,6 +153,16 @@ struct HomeView: View {
                     y: 10
                 )
             }
+            .onAppear {
+                if viewModel.selectedAccount == nil {
+                    viewModel.selectedAccount = accounts.first
+                }
+            }
+            .onChange(of: accounts) { _, newAccounts in
+                if viewModel.selectedAccount == nil {
+                    viewModel.selectedAccount = newAccounts.first
+                }
+            }
             .navigationDestination(isPresented: $viewModel.showSettings) {
                 EmptyView()
             }
@@ -168,6 +178,15 @@ struct HomeView: View {
                     modelContext: modelContext
                 )
                 .presentationDragIndicator(.visible)
+            }
+            .sheet(isPresented: $viewModel.showAddTransactionSheet) {
+                if let account = viewModel.selectedAccount {
+                    TransactionManageViewBuilder.build(
+                        activeAccount: account,
+                        context: modelContext,
+                    )
+                    .presentationDragIndicator(.visible)
+                }
             }
         }
     }
