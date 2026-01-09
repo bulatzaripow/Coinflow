@@ -58,11 +58,11 @@ struct HomeView: View {
                                 Button {
                                     viewModel.showSettings = true
                                 } label: {
-                                    Image("settings")
+                                    Image("menu-dots-vertical")
                                         .resizable()
                                         .scaledToFit()
+                                        .padding(6)
                                         .frame(width: 35, height: 35)
-                                        .clipShape(Circle())
                                 }
                             }
                             .padding(.top, 10)
