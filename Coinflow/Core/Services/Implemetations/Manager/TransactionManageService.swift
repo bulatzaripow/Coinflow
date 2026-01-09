@@ -45,4 +45,14 @@ final class TransactionManageService: TransactionManageServiceProtocol {
             print("Error creating transaction: \(transaction)")
         }
     }
+    
+    func delete(_ transaction: Transaction) {
+        context.delete(transaction)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error deleting transaction: \(transaction)")
+        }
+    }
 }

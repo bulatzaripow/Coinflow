@@ -6,11 +6,20 @@
 //
 
 import Foundation
+import SwiftData
 
 struct HomeBuilder {
-    static func build() -> HomeView {
-        let viewModel = HomeViewModel()
+    static func build(
+        context: ModelContext
+    ) -> HomeView {
+        let transactionService = TransactionManageService(context: context)
+        
+        let viewModel = HomeViewModel(
+            transactionService: transactionService
+        )
+        
         let view = HomeView(viewModel: viewModel)
+        
         return view
     }
 }

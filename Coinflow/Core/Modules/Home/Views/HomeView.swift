@@ -20,7 +20,13 @@ struct HomeView: View {
     ])
     private var accounts: [Account]
     
-    @Query(sort: \Transaction.date, order: .reverse)
+    @Query(
+        filter: #Predicate<Transaction> { transaction in
+            !transaction.isHidden
+        },
+        sort: \Transaction.date,
+        order: .reverse
+    )
     private var transactions: [Transaction]
     
     @ObservedObject private var viewModel: HomeViewModel
@@ -84,6 +90,10 @@ struct HomeView: View {
                     Section {
                         TransactionsListView(transactions: transactions) { transaction in
                             viewModel.chooseTransactionToEdit(transaction)
+                        } deleteAction: { transaction in
+                            viewModel.deleteTransactionAction(transaction)
+                        } hideAction: { transaction in
+                            viewModel.hideTransactionAction(transaction)
                         }
                     } header: {
                         // Section header
@@ -204,5 +214,19 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeBuilder.build()
+    let schema = Schema([
+        Transaction.self,
+        Category.self,
+        Account.self,
+        Currency.self
+    ])
+    
+    let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: schema, configurations: [config])
+
+    let context = container.mainContext
+    
+    HomeBuilder.build(
+        context: context
+    )
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct TransactionsListView: View {
     let transactions: [Transaction]
     let onTap: (Transaction) -> Void
+    let deleteAction: (Transaction) -> Void
+    let hideAction: (Transaction) -> Void
     
     var body: some View {
         if !transactions.isEmpty {
@@ -17,13 +19,13 @@ struct TransactionsListView: View {
                 TransactionRowView(transaction: transaction)
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button(role: .destructive) {
-                            // TODO: add delete action
+                            deleteAction(transaction)
                         } label: {
                             Image(systemName: "trash")
                         }
                         
                         Button {
-                            // TODO: add hide action
+                            hideAction(transaction)
                         } label: {
                             Image(systemName: "eye.slash")
                         }

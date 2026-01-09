@@ -10,12 +10,15 @@ import SwiftData
 
 struct AppEntryView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         ZStack {
             if hasSeenOnboarding {
-                HomeBuilder.build()
-                    .transition(.move(edge: .trailing))
+                HomeBuilder.build(
+                    context: modelContext
+                )
+                .transition(.move(edge: .trailing))
             } else {
                 OnboardingView()
                     .transition(.move(edge: .leading))

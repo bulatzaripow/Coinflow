@@ -11,4 +11,5 @@ protocol TransactionManageServiceProtocol {
     func fetch(id: UUID) -> Transaction?
     func save(_ transaction: Transaction)
     func create(_ transaction: Transaction)
+    func delete(_ transaction: Transaction)
 }
