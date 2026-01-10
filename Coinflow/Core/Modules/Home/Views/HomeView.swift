@@ -40,7 +40,7 @@ struct HomeView: View {
     // MARK: - UI
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.path) {
             ZStack(alignment: .bottom) {
                 Color(.appBackground)
                     .ignoresSafeArea()
@@ -62,7 +62,7 @@ struct HomeView: View {
                                 Spacer()
                                 
                                 Button {
-                                    viewModel.showSettings = true
+                                    viewModel.path.append(MainRoutes.settings)
                                 } label: {
                                     Image("menu-dots-vertical")
                                         .resizable()
@@ -164,6 +164,12 @@ struct HomeView: View {
                     y: 10
                 )
             }
+            .navigationDestination(for: MainRoutes.self) { route in
+                switch route {
+                case .settings:
+                    SettingsViewBuilder.build()
+                }
+            }
             .onAppear {
                 if viewModel.selectedAccount == nil {
                     viewModel.selectedAccount = accounts.first
@@ -173,9 +179,6 @@ struct HomeView: View {
                 if viewModel.selectedAccount == nil {
                     viewModel.selectedAccount = newAccounts.first
                 }
-            }
-            .navigationDestination(isPresented: $viewModel.showSettings) {
-                EmptyView()
             }
             .sheet(isPresented: $viewModel.showAddAccountSheet) {
                 AccountManageViewBuilder.build(
