@@ -9,16 +9,13 @@ import SwiftData
 
 struct SelectCurrencyViewBuilder {
     static func build(
-        modelContext: ModelContext,
-        selectCurrency: @escaping (Currency) -> Void
+        context: ModelContext,
+        selectedCurrency: String = "USD",
+        selectCurrencyAction: @escaping (Currency) -> Void
     ) -> SelectCurrencyView {
-        let currencyService = CurrencyManageService(
-            context: modelContext
-        )
-        
         let vm = SelectCurrencyViewModel(
-            currencyService: currencyService,
-            selectCurrency: selectCurrency
+            selectedCurrency: selectedCurrency,
+            selectCurrencyAction: selectCurrencyAction
         )
         
         return SelectCurrencyView(viewModel: vm)

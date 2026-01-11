@@ -10,9 +10,12 @@ import SwiftData
 
 @main
 struct CoinflowApp: App {
+    @State private var userPreferences = UserPreferences()
+    
     var body: some Scene {
         WindowGroup {
             AppEntryView()
+                .environment(userPreferences)
         }
         .modelContainer(sharedModelContainer)
     }

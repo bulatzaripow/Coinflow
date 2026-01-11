@@ -31,4 +31,10 @@ class SettingsViewModel: ObservableObject {
     }
     
     let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+    
+    // MARK: - Methods
+    
+    func setDefaultCurrencyCode(_ code: String, userPreferences: UserPreferences) {
+        userPreferences.setDefaultCurrencyCode(code)
+    }
 }

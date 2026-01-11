@@ -51,4 +51,5 @@ struct AppEntryView: View {
     
     return AppEntryView()
         .modelContainer(container)
+        .environment(UserPreferences())
 }

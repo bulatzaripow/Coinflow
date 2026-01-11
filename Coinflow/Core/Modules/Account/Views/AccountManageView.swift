@@ -12,6 +12,7 @@ struct AccountManageView: View {
     // MARK: Props
     
     @Environment(\.modelContext) var modelContext
+    @Environment(UserPreferences.self) var userPreferences
     @Environment(\.dismiss) var dismiss
     
     @ObservedObject var viewModel: AccountManageViewModel
@@ -102,7 +103,8 @@ struct AccountManageView: View {
                 switch route {
                 case .currency:
                     SelectCurrencyViewBuilder.build(
-                        modelContext: modelContext
+                        context: modelContext,
+                        selectedCurrency: userPreferences.defaultCurrencyCode,
                     ) { currency in
                         viewModel.selectedCurrency = currency
                         viewModel.path.removeLast()

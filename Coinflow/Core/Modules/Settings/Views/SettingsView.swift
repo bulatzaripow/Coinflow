@@ -13,6 +13,7 @@ struct SettingsView: View {
     
     @ObservedObject private var viewModel: SettingsViewModel
     @Environment(\.modelContext) var modelContext
+    @Environment(UserPreferences.self) var userPreferences
     
     // MARK: - Init
     
@@ -49,18 +50,28 @@ struct SettingsView: View {
                 }
                 
                 NavigationLink {
-                    SelectCurrencyViewBuilder.build(modelContext: modelContext) { currency in
-                        // TODO: add select default currency method
+                    SelectCurrencyViewBuilder.build(
+                        context: modelContext,
+                        selectedCurrency: userPreferences.defaultCurrencyCode
+                    ) { currency in
+                        viewModel.setDefaultCurrencyCode(currency.code, userPreferences: userPreferences)
                     }
                 } label: {
-                    Label {
-                        Text("Default currency")
-                    } icon: {
-                        Image("coins")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(Color.primary)
+                    HStack {
+                        Label {
+                            Text("Default currency")
+                        } icon: {
+                            Image("coins")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(Color.primary)
+                        }
+                        
+                        Spacer()
+                        
+                        Text(userPreferences.defaultCurrencyCode)
+                            .foregroundColor(.secondary)
                     }
                 }
             }

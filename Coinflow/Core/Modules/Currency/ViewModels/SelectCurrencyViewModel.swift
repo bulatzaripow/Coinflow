@@ -12,29 +12,26 @@ class SelectCurrencyViewModel: ObservableObject {
     
     // MARK: - Props
     
-    @Published var selectedCurrency: Currency?
+    @Published var selectedCurrency: String = ""
     @Published var searchText: String = ""
-    
-    private let currencyService: CurrencyManageService
-    var selectCurrency: (Currency) -> Void
+
+    var selectCurrencyAction: (Currency) -> Void
     
     // MARK: - Init
     
     init(
-        currencyService: CurrencyManageService,
-        selectCurrency: @escaping (Currency) -> Void
+        selectedCurrency: String,
+        selectCurrencyAction: @escaping (Currency) -> Void
     ) {
-        self.currencyService = currencyService
-        self.selectCurrency = selectCurrency
-        
-        self.selectedCurrency = currencyService.defaultCurrency()
+        self.selectedCurrency = selectedCurrency
+        self.selectCurrencyAction = selectCurrencyAction
     }
     
     // MARK: - Methods
     
     func searchCurrencies(_ currencies: [Currency]) -> [Currency] {
-        if searchText.isEmpty {
-            return currencies.sorted { ($0.id == selectedCurrency?.id) && ($1.id != selectedCurrency?.id) }
+        guard !searchText.isEmpty else {
+            return currencies
         }
         
         let filtered = currencies.filter { currency in
@@ -42,10 +39,15 @@ class SelectCurrencyViewModel: ObservableObject {
             currency.name.lowercased().contains(searchText.lowercased())
         }
         
-        return filtered.sorted { ($0.id == selectedCurrency?.id) && ($1.id != selectedCurrency?.id) }
+        return filtered
     }
     
     func isSelected(_ currency: Currency) -> Bool {
-        selectedCurrency?.code == currency.code
+        selectedCurrency == currency.code
+    }
+    
+    func selectCurrency(_ currency: Currency) {
+        self.selectedCurrency = currency.code
+        selectCurrencyAction(currency)
     }
 }
