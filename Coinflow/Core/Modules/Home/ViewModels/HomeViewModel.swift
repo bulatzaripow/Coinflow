@@ -13,6 +13,8 @@ class HomeViewModel: ObservableObject {
     
     // MARK: - Props
     
+    @Published var path = NavigationPath()
+    
     @Published var showSettings: Bool = false
     @Published var showAddAccountSheet: Bool = false
     @Published var showAddTransactionSheet: Bool = false
