@@ -9,6 +9,7 @@ import Foundation
 
 protocol TransactionManageServiceProtocol {
     func fetch(id: UUID) -> Transaction?
+    func fetch(startDate: Date, endDate: Date) -> [Transaction]
     func save(_ transaction: Transaction)
     func create(_ transaction: Transaction)
     func delete(_ transaction: Transaction)

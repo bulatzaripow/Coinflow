@@ -115,7 +115,7 @@ struct HomeView: View {
                 // Bottom actions
                 HStack(spacing: 18) {
                     Button(action: {
-                        // TODO: open accounts / wallet
+                        viewModel.path.append(MainRoutes.overview)
                     }) {
                         Image("chart-simple")
                             .resizable()
@@ -166,6 +166,11 @@ struct HomeView: View {
             }
             .navigationDestination(for: MainRoutes.self) { route in
                 switch route {
+                case .overview:
+                    OverviewViewBuilder.build(
+                        context: modelContext,
+                        selectedAccount: viewModel.selectedAccount
+                    )
                 case .settings:
                     SettingsViewBuilder.build()
                 }
