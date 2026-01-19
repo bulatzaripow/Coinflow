@@ -9,4 +9,5 @@ import Foundation
 
 enum MainRoutes {
     case settings
+    case overview
 }

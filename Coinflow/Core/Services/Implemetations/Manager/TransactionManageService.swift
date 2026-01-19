@@ -55,4 +55,17 @@ final class TransactionManageService: TransactionManageServiceProtocol {
             print("Error deleting transaction: \(transaction)")
         }
     }
+    
+    func fetch(startDate: Date, endDate: Date) -> [Transaction] {
+        let predicate = #Predicate<Transaction> { tx in
+            tx.date >= startDate && tx.date <= endDate
+        }
+        
+        let descriptor = FetchDescriptor<Transaction>(
+            predicate: predicate,
+            sortBy: [SortDescriptor(\.date, order: .reverse)]
+        )
+        
+        return (try? context.fetch(descriptor)) ?? []
+    }
 }
