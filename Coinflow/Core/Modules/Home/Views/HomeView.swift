@@ -77,7 +77,7 @@ struct HomeView: View {
                             // Accounts
                             AccountCarouselView(accounts: accounts, selectedAccount: $viewModel.selectedAccount) {
                                 viewModel.showAddAccountSheet = true
-                            } onSelectAccount: { account in
+                            } onTapAccount: { account in
                                 viewModel.accountToEdit = account
                             }
                         }
