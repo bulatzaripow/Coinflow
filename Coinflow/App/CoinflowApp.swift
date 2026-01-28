@@ -12,6 +12,10 @@ import SwiftData
 struct CoinflowApp: App {
     @State private var userPreferences = UserPreferences()
     
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+    }
+    
     var body: some Scene {
         WindowGroup {
             AppEntryView()
