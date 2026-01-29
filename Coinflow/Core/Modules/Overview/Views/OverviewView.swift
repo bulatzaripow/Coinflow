@@ -76,7 +76,7 @@ struct OverviewView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 CustomMenuView() {
-                    Image("calendar-lines")
+                    Image("calendar-clock")
                         .resizable()
                         .renderingMode(.template)
                         .scaledToFit()
