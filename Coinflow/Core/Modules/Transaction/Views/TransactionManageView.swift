@@ -15,10 +15,16 @@ struct TransactionManageView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var viewModel: TransactionManageViewModel
     
+    let onUpdate: () -> Void
+    
     // MARK: Init
     
-    init(viewModel: TransactionManageViewModel) {
+    init(
+        viewModel: TransactionManageViewModel,
+        onUpdate: @escaping () -> Void
+    ) {
         self.viewModel = viewModel
+        self.onUpdate = onUpdate
     }
     
     // MARK: UI
@@ -112,6 +118,7 @@ struct TransactionManageView: View {
                 
                 Button(action: {
                     viewModel.saveTransaction()
+                    onUpdate()
                     dismiss()
                 }) {
                     Text("Save")

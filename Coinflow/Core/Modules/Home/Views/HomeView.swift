@@ -20,15 +20,6 @@ struct HomeView: View {
     ])
     private var accounts: [Account]
     
-    @Query(
-        filter: #Predicate<Transaction> { transaction in
-            !transaction.isHidden
-        },
-        sort: \Transaction.date,
-        order: .reverse
-    )
-    private var transactions: [Transaction]
-    
     @ObservedObject private var viewModel: HomeViewModel
     
     // MARK: - Init
@@ -88,7 +79,7 @@ struct HomeView: View {
                     
                     // Transactions
                     Section {
-                        TransactionsListView(transactions: transactions) { transaction in
+                        TransactionsListView(transactions: viewModel.transactions) { transaction in
                             viewModel.chooseTransactionToEdit(transaction)
                         } deleteAction: { transaction in
                             viewModel.deleteTransactionAction(transaction)
@@ -96,10 +87,32 @@ struct HomeView: View {
                             viewModel.hideTransactionAction(transaction)
                         }
                     } header: {
-                        // Section header
-                        Text("Recent activity")
-                            .padding(.horizontal, 20)
-                            .padding(.bottom, 10)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Recent activity")
+                                    .foregroundColor(.primary)
+                                Text(viewModel.dateRangeText)
+                                    .font(.caption)
+                            }
+                            
+                            Spacer()
+                            
+                            PopoverMenuButton() {
+                                Image("calendar-clock")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .scaledToFit()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(.primary)
+                            } content: {
+                                DateFilterView(
+                                    startDate: $viewModel.startDate,
+                                    endDate: $viewModel.endDate
+                                )
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 10)
                     }
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
@@ -203,6 +216,7 @@ struct HomeView: View {
                     TransactionManageViewBuilder.build(
                         activeAccount: account,
                         context: modelContext,
+                        onUpdate: {viewModel.reloadTransactions()}
                     )
                     .presentationDragIndicator(.visible)
                 }
@@ -213,6 +227,7 @@ struct HomeView: View {
                         viewModel.transactionToEdit,
                         activeAccount: account,
                         context: modelContext,
+                        onUpdate: {viewModel.reloadTransactions()}
                     )
                     .presentationDragIndicator(.visible)
                 }

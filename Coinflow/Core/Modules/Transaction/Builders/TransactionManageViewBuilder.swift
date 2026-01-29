@@ -11,7 +11,8 @@ struct TransactionManageViewBuilder {
     static func build(
         _ transaction: Transaction? = nil,
         activeAccount: Account,
-        context: ModelContext
+        context: ModelContext,
+        onUpdate: @escaping () -> Void
     ) -> TransactionManageView {
         let transactionService = TransactionManageService(context: context)
         let accountService = AccountManageService(context: context)
@@ -25,7 +26,10 @@ struct TransactionManageViewBuilder {
             activeAccount: activeAccount
         )
         
-        let view = TransactionManageView(viewModel: vm)
+        let view = TransactionManageView(
+            viewModel: vm,
+            onUpdate: onUpdate
+        )
         
         return view
     }
