@@ -75,13 +75,12 @@ struct OverviewView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                CustomMenuView() {
+                PopoverMenuButton() {
                     Image("calendar-clock")
                         .resizable()
                         .renderingMode(.template)
                         .scaledToFit()
-                        .frame(width: 25, height: 25)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 22, height: 22)
                 } content: {
                     DateFilterView(
                         startDate: $viewModel.startDate,

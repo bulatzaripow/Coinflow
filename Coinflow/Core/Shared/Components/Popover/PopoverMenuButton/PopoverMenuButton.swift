@@ -1,13 +1,13 @@
 //
-//  CustomMenuView.swift
+//  PopoverMenuButton.swift
 //  Coinflow
 //
-//  Created by Bulat Zaripov on 19.01.2026.
+//  Created by Bulat Zaripov on 29.01.2026.
 //
 
 import SwiftUI
 
-struct CustomMenuView<Label: View, Content: View>: View {
+struct PopoverMenuButton<Label: View, Content: View>: View {
     var isHapticsEnabled: Bool = true
     @ViewBuilder var label: Label
     @ViewBuilder var content: Content

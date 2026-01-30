@@ -15,12 +15,23 @@ class HomeViewModel: ObservableObject {
     
     @Published var path = NavigationPath()
     
+    var transactions: [Transaction] = []
     @Published var showSettings: Bool = false
     @Published var showAddAccountSheet: Bool = false
     @Published var showAddTransactionSheet: Bool = false
     @Published var accountToEdit: Account?
     @Published var selectedAccount: Account?
     @Published var transactionToEdit: Transaction?
+    @Published var startDate = Date.startOfCurrentMonth {
+        didSet { reloadTransactions() }
+    }
+    @Published var endDate = Date.endOfCurrentMonth {
+        didSet { reloadTransactions() }
+    }
+    
+    var dateRangeText: String {
+        Date.formatDateRange(startDate: startDate, endDate: endDate)
+    }
     
     private var transactionService: TransactionManageServiceProtocol
     
@@ -28,6 +39,8 @@ class HomeViewModel: ObservableObject {
     
     init(transactionService: TransactionManageServiceProtocol) {
         self.transactionService = transactionService
+        
+        self.transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
     }
     
     // MARK: - Methods
@@ -47,5 +60,9 @@ class HomeViewModel: ObservableObject {
     func hideTransactionAction(_ transaction: Transaction) {
         transaction.isHidden.toggle()
         transactionService.save(transaction)
+    }
+    
+    func reloadTransactions() {
+        transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
     }
 }
