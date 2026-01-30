@@ -235,21 +235,3 @@ struct HomeView: View {
         }
     }
 }
-
-#Preview {
-    let schema = Schema([
-        Transaction.self,
-        Category.self,
-        Account.self,
-        Currency.self
-    ])
-    
-    let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: schema, configurations: [config])
-
-    let context = container.mainContext
-    
-    HomeBuilder.build(
-        context: context
-    )
-}

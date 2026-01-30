@@ -92,10 +92,3 @@ struct AttributionView: View {
         }
     }
 }
-
-// Preview
-#Preview {
-    NavigationView {
-        AttributionView()
-    }
-}
