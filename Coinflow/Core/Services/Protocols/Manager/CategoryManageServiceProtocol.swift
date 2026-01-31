@@ -8,5 +8,15 @@
 import Foundation
 
 protocol CategoryManageServiceProtocol {
-    func fetchCategories() -> [Category]
+    func fetchAll(_ order: SortOrder) -> [Category]
+    func fetchAllByType(type: CategoryType) -> [Category]
+    func save()
+    func save(_ category: Category)
+    func delete(_ category: Category)
+}
+
+extension CategoryManageServiceProtocol {
+    func fetchAll() -> [Category] {
+        self.fetchAll(.forward)
+    }
 }

@@ -31,6 +31,7 @@ class TransactionManageViewModel: ObservableObject {
     @Published var selectedToAccount: Account? = nil
     @Published var selectedCategory: Category? = nil
     @Published var transferToAccount: Account? = nil
+    @Published var showAddCategorySheet: Bool = false
     
     @Published var isButtonEnabled: Bool = false
     
@@ -67,7 +68,7 @@ class TransactionManageViewModel: ObservableObject {
         self.activeAccount = activeAccount
         
         self.accounts = accountService.fetchAccounts()
-        self.categories = categoryService.fetchCategories()
+        self.categories = categoryService.fetchAll()
         self.selectedToAccount = accounts.first
         
         if let transaction = self.transaction {
@@ -129,5 +130,8 @@ class TransactionManageViewModel: ObservableObject {
             transactionService.create(transaction)
         }
     }
-
+    
+    func onAddCategoryTapped() {
+        showAddCategorySheet.toggle()
+    }
 }

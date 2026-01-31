@@ -13,6 +13,8 @@ struct TransactionManageView: View {
     // MARK: Props
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
+    
     @ObservedObject private var viewModel: TransactionManageViewModel
     
     let onUpdate: () -> Void
@@ -56,10 +58,11 @@ struct TransactionManageView: View {
                             selectedItem: viewModel.selectedAccount,
                             title: viewModel.type == .transfer ? "From account" : "Account",
                             icon: { Image($0.icon) },
-                            text: { $0.name }
-                        ) { account in
-                            viewModel.selectedAccount = account
-                        }
+                            text: { $0.name },
+                            onSelect: { account in
+                                viewModel.selectedAccount = account
+                            }
+                        )
                         .padding(.top, 16)
                         
                         if viewModel.type == .transfer {
@@ -80,10 +83,14 @@ struct TransactionManageView: View {
                                 selectedItem: viewModel.selectedCategory,
                                 title: "Category",
                                 icon: { Image($0.icon) },
-                                text: { $0.name }
-                            ) { category in
-                                viewModel.selectedCategory = category
-                            }
+                                text: { $0.name },
+                                onSelect: { category in
+                                    viewModel.selectedCategory = category
+                                },
+                                onAddTapped: {
+                                    viewModel.onAddCategoryTapped()
+                                }
+                            )
                             .padding(.top, 10)
                             .padding(.bottom, 16)
                         }
@@ -104,7 +111,7 @@ struct TransactionManageView: View {
                                     .padding(.leading, 8)
                                     .foregroundColor(.gray)
                             }
-
+                            
                             TextEditor(text: $viewModel.note)
                         }
                     }
@@ -122,20 +129,27 @@ struct TransactionManageView: View {
                     dismiss()
                 }) {
                     Text("Save")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, maxHeight: 45)
-                    .background(viewModel.canModify ? .appPrimary : .secondary.opacity(0.4))
-                    .clipShape(Capsule())
-                    .shadow(
-                        color: Color.black.opacity(0.08),
-                        radius: 20,
-                        x: 0,
-                        y: 10
-                    )
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 45)
+                        .background(viewModel.canModify ? .appPrimary : .secondary.opacity(0.4))
+                        .clipShape(Capsule())
+                        .shadow(
+                            color: Color.black.opacity(0.08),
+                            radius: 20,
+                            x: 0,
+                            y: 10
+                        )
                 }
                 .disabled(!viewModel.canModify)
                 .padding(.horizontal, 20)
+            }
+            .sheet(isPresented: $viewModel.showAddCategorySheet) {
+                CategoryManageViewBuilder.build(
+                    context: modelContext,
+                    onUpdate: {}
+                )
+                .presentationDragIndicator(.visible)
             }
         }
     }

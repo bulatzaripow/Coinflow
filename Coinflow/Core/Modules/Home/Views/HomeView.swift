@@ -13,6 +13,7 @@ struct HomeView: View {
     // MARK: - Props
     
     @Environment(\.modelContext) var modelContext
+    @Environment(UserPreferences.self) var userPreferences
     
     @Query(sort: [
         SortDescriptor(\Account.isDefault, order: .reverse),
@@ -53,7 +54,7 @@ struct HomeView: View {
                                 Spacer()
                                 
                                 Button {
-                                    viewModel.path.append(MainRoutes.settings)
+                                    viewModel.onNavigate(MainRoutes.settings)
                                 } label: {
                                     Image("menu-dots-vertical")
                                         .resizable()
@@ -185,7 +186,18 @@ struct HomeView: View {
                         selectedAccount: viewModel.selectedAccount
                     )
                 case .settings:
-                    SettingsViewBuilder.build()
+                    SettingsViewBuilder.build() { route in
+                        viewModel.onNavigate(route)
+                    }
+                case .categories:
+                    CategoryListViewBuilder.build(context: modelContext)
+                case .currencies:
+                    SelectCurrencyViewBuilder.build(
+                        context: modelContext,
+                        selectedCurrency: userPreferences.defaultCurrencyCode
+                    ) { currency in
+                        viewModel.setDefaultCurrencyCode(currency.code, userPreferences: userPreferences)
+                    }
                 }
             }
             .onAppear {
@@ -216,7 +228,7 @@ struct HomeView: View {
                     TransactionManageViewBuilder.build(
                         activeAccount: account,
                         context: modelContext,
-                        onUpdate: {viewModel.reloadTransactions()}
+                        onUpdate: {viewModel.reloadTransactions()},
                     )
                     .presentationDragIndicator(.visible)
                 }
@@ -227,7 +239,7 @@ struct HomeView: View {
                         viewModel.transactionToEdit,
                         activeAccount: account,
                         context: modelContext,
-                        onUpdate: {viewModel.reloadTransactions()}
+                        onUpdate: {viewModel.reloadTransactions()},
                     )
                     .presentationDragIndicator(.visible)
                 }
