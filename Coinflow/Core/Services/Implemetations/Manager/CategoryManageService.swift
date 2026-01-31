@@ -47,6 +47,14 @@ final class CategoryManageService: CategoryManageServiceProtocol {
         return items ?? []
     }
     
+    func save() {
+        do {
+            try context.save()
+        } catch {
+            print("Save context error:", error)
+        }
+    }
+    
     func save(_ category: Category) {
         context.insert(category)
         

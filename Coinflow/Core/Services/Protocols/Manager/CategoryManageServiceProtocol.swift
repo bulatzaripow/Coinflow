@@ -10,6 +10,7 @@ import Foundation
 protocol CategoryManageServiceProtocol {
     func fetchAll(_ order: SortOrder) -> [Category]
     func fetchAllByType(type: CategoryType) -> [Category]
+    func save()
     func save(_ category: Category)
     func delete(_ category: Category)
 }
