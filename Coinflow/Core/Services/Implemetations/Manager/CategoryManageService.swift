@@ -22,13 +22,48 @@ final class CategoryManageService: CategoryManageServiceProtocol {
     
     // MARK: - Methods
     
-    func fetchCategories() -> [Category] {
+    func fetchAll(_ order: SortOrder) -> [Category] {
         let descriptor = FetchDescriptor<Category>(
+            sortBy: [
+                SortDescriptor(\Category.sortOrder, order: order)
+            ]
+        )
+        let items = try? context.fetch(descriptor)
+        return items ?? []
+    }
+    
+    func fetchAllByType(type: CategoryType) -> [Category] {
+        let predicate = #Predicate<Category> { category in
+            category.typeRaw == type.rawValue
+        }
+        
+        let descriptor = FetchDescriptor<Category>(
+            predicate: predicate,
             sortBy: [
                 SortDescriptor(\Category.sortOrder, order: .forward)
             ]
         )
-        let accounts = try? context.fetch(descriptor)
-        return accounts ?? []
+        let items = try? context.fetch(descriptor)
+        return items ?? []
+    }
+    
+    func save(_ category: Category) {
+        context.insert(category)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Save category error:", error)
+        }
+    }
+    
+    func delete(_ category: Category) {
+        context.delete(category)
+        
+        do {
+            try context.save()
+        } catch {
+            print("Delete category error:", error)
+        }
     }
 }

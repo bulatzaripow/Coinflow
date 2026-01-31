@@ -58,7 +58,7 @@ final class OverviewViewModel: ObservableObject {
         self.accountService = accountService
         self.categoryService = categoryService
         self.transactionService = transactionService
-        self.categories = categoryService.fetchCategories()
+        self.categories = categoryService.fetchAll()
         self.transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
     }
     

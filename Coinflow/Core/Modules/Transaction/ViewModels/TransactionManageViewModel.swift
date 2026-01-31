@@ -67,7 +67,7 @@ class TransactionManageViewModel: ObservableObject {
         self.activeAccount = activeAccount
         
         self.accounts = accountService.fetchAccounts()
-        self.categories = categoryService.fetchCategories()
+        self.categories = categoryService.fetchAll()
         self.selectedToAccount = accounts.first
         
         if let transaction = self.transaction {
