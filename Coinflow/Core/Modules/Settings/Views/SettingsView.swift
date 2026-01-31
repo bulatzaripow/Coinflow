@@ -49,13 +49,8 @@ struct SettingsView: View {
                     .foregroundStyle(Color.primary)
                 }
                 
-                NavigationLink {
-                    SelectCurrencyViewBuilder.build(
-                        context: modelContext,
-                        selectedCurrency: userPreferences.defaultCurrencyCode
-                    ) { currency in
-                        viewModel.setDefaultCurrencyCode(currency.code, userPreferences: userPreferences)
-                    }
+                Button {
+                    viewModel.goToCurrencies()
                 } label: {
                     HStack {
                         Label {
@@ -65,7 +60,6 @@ struct SettingsView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
-                                .foregroundStyle(Color.primary)
                         }
                         
                         Spacer()
@@ -73,6 +67,23 @@ struct SettingsView: View {
                         Text(userPreferences.defaultCurrencyCode)
                             .foregroundColor(.secondary)
                     }
+                    .foregroundStyle(Color.primary)
+                }
+                
+                Button {
+                    viewModel.goToCategories()
+                } label: {
+                    HStack {
+                        Label {
+                            Text("Categories")
+                        } icon: {
+                            Image("apps")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 25, height: 25)
+                        }
+                    }
+                    .foregroundStyle(Color.primary)
                 }
             }
             

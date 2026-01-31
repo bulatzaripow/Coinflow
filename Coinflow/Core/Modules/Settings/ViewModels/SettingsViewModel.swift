@@ -15,6 +15,7 @@ class SettingsViewModel: ObservableObject {
     
     @Published var showPrivacyPolicy = false
     @Published var showTermsOfService = false
+    var onNavigate: ((MainRoutes) -> Void)?
     
     let privacyPolicyURL = URL(string: "https://google.com")
     let termsURL = URL(string: "https://google.com")
@@ -32,9 +33,19 @@ class SettingsViewModel: ObservableObject {
     
     let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
     
+    // MARK: - Init
+    
+    init(onNavigate: ((MainRoutes) -> Void)? = nil) {
+        self.onNavigate = onNavigate
+    }
+    
     // MARK: - Methods
     
-    func setDefaultCurrencyCode(_ code: String, userPreferences: UserPreferences) {
-        userPreferences.setDefaultCurrencyCode(code)
+    func goToCategories() {
+        self.onNavigate?(.categories)
+    }
+    
+    func goToCurrencies() {
+        self.onNavigate?(.currencies)
     }
 }

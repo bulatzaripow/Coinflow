@@ -5,11 +5,13 @@
 //  Created by Bulat Zaripov on 09.01.2026.
 //
 
-import Foundation
+import SwiftUI
 
 struct SettingsViewBuilder {
-    static func build() -> SettingsView {
-        let vm = SettingsViewModel()
+    static func build(
+        onNavigate: @escaping (MainRoutes) -> Void
+    ) -> SettingsView {
+        let vm = SettingsViewModel(onNavigate: onNavigate)
         
         return SettingsView(
             viewModel: vm

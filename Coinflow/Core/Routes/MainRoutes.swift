@@ -10,4 +10,6 @@ import Foundation
 enum MainRoutes {
     case settings
     case overview
+    case categories
+    case currencies
 }

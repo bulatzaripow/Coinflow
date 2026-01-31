@@ -65,4 +65,12 @@ class HomeViewModel: ObservableObject {
     func reloadTransactions() {
         transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
     }
+    
+    func onNavigate(_ route: MainRoutes) {
+        self.path.append(route)
+    }
+    
+    func setDefaultCurrencyCode(_ code: String, userPreferences: UserPreferences) {
+        userPreferences.setDefaultCurrencyCode(code)
+    }
 }
