@@ -18,15 +18,53 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
     let icon: (Item) -> Image
     let text: (Item) -> String
     let onSelect: (Item?) -> Void
+    let onAddTapped: (() -> Void)?
+    
+    // MARK: Init
+    
+    init(
+        items: [Item],
+        selectedItem: Item?,
+        title: String,
+        icon: @escaping (Item) -> Image,
+        text: @escaping (Item) -> String,
+        onSelect: @escaping (Item?) -> Void,
+        onAddTapped: (() -> Void)? = nil
+    ) {
+        self.items = items
+        self.selectedItem = selectedItem
+        self.title = title
+        self.icon = icon
+        self.text = text
+        self.onSelect = onSelect
+        self.onAddTapped = onAddTapped
+    }
 
     // MARK: - UI
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-
-            Text(title)
-                .font(.headline)
-                .padding(.horizontal, 16)
+            
+            HStack {
+                Text(title)
+                    .font(.headline)
+                
+                Spacer()
+                
+                if onAddTapped != nil {
+                    Button {
+                        self.onAddTapped?()
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.subheadline)
+                            .opacity(0.8)
+                            .foregroundStyle(Color.secondary)
+                            .padding(5)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal, 16)
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
