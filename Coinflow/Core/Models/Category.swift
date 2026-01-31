@@ -12,7 +12,11 @@ import SwiftData
 final class Category {
     var id: UUID = UUID()
     var name: String = ""
-    var type: CategoryType
+    var typeRaw: String
+    var type: CategoryType {
+        get { CategoryType(rawValue: typeRaw) ?? .expense }
+        set { typeRaw = newValue.rawValue }
+    }
     var icon: String = ""
     var color: String = ""
     var sortOrder: Int = 0
@@ -29,7 +33,7 @@ final class Category {
         createdAt: Date
     ) {
         self.name = name
-        self.type = type
+        self.typeRaw = type.rawValue
         self.icon = icon
         self.color = color
         self.sortOrder = sortOrder
