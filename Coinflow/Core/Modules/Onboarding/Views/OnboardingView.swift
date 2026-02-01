@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    
+    @Environment(UserPreferences.self) var userPreferences
         
     var body: some View {
         ZStack {
@@ -38,7 +39,7 @@ struct OnboardingView: View {
                 }
                 
                 Button(action: {
-                    hasSeenOnboarding = true
+                    userPreferences.setHasSeenOnboarding(true)
                 }) {
                     Text("Continue")
                         .font(.headline)
