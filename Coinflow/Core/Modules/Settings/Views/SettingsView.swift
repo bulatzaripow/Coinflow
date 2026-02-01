@@ -131,18 +131,7 @@ struct SettingsView: View {
                 }
             } footer: {
                 VStack {
-                    HStack(alignment: .center) {
-                        Text("Made with")
-                        Image("heart-tat")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 15, height: 15)
-                        Text("in Tatarstan")
-                    }
-                    .font(.caption)
-                    
-                    HStack(alignment: .center) {
-                        Text("Version \(viewModel.version)")
+                    HStack {
                         Button {
                             if let url = URL(string: "https://github.com/bulatzaripow/Coinflow") {
                                 UIApplication.shared.open(url)
@@ -155,7 +144,13 @@ struct SettingsView: View {
                         }
                         .buttonStyle(.plain)
                     }
-                    .font(.caption)
+                    VStack(spacing: 4) {
+                        Text("Created by Bulat Zaripov")
+                        
+                        Text("Version \(viewModel.version)")
+                    }
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
                 }
                 .padding(10)
                 .frame(maxWidth: .infinity)
