@@ -8,21 +8,9 @@
 import Foundation
 import SwiftData
 
-final class CurrencyManageService: CurrencyManageServiceProtocol {
+final class CurrencyManageService: BaseManageService<Currency>, CurrencyManageServiceProtocol {
     
-    // MARK: - Props
-    
-    private let context: ModelContext
-    
-    // MARK: - Init
-    
-    init(context: ModelContext) {
-        self.context = context
-    }
-    
-    // MARK: - Methods
-    
-    func findCurrency(by code: String) -> Currency? {
+    func fetchByCode(by code: String) -> Currency? {
         let predicate = #Predicate<Currency> { currency in
             currency.code == code
         }
@@ -44,7 +32,7 @@ final class CurrencyManageService: CurrencyManageServiceProtocol {
         let userLocale = Locale.current
         let currencyCode = userLocale.currency?.identifier ?? "USD"
         
-        return findCurrency(by: currencyCode) ?? createDefaultCurrency()
+        return fetchByCode(by: currencyCode) ?? createDefaultCurrency()
     }
     
     private func createDefaultCurrency() -> Currency {
@@ -59,4 +47,5 @@ final class CurrencyManageService: CurrencyManageServiceProtocol {
         
         return defaultCurrency
     }
+    
 }

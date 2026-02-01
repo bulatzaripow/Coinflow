@@ -9,8 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Category {
-    var id: UUID = UUID()
+final class Category: Identifiable {
     var name: String = ""
     var typeRaw: String
     var type: CategoryType {

@@ -67,10 +67,15 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
                             
                             // Accounts
-                            AccountCarouselView(accounts: accounts, selectedAccount: $viewModel.selectedAccount) {
+                            AccountCarouselView(
+                                accounts: accounts,
+                                selectedAccount: $viewModel.selectedAccount
+                            ) {
                                 viewModel.showAddAccountSheet = true
                             } onTapAccount: { account in
                                 viewModel.accountToEdit = account
+                            } onSelectAccount: { account in
+                                viewModel.setSelectedAccount(account)
                             }
                         }
                     }
@@ -80,7 +85,9 @@ struct HomeView: View {
                     
                     // Transactions
                     Section {
-                        TransactionsListView(transactions: viewModel.transactions) { transaction in
+                        TransactionsListView(
+                            transactions: viewModel.transactions
+                        ) { transaction in
                             viewModel.chooseTransactionToEdit(transaction)
                         } deleteAction: { transaction in
                             viewModel.deleteTransactionAction(transaction)
@@ -202,24 +209,30 @@ struct HomeView: View {
             }
             .onAppear {
                 if viewModel.selectedAccount == nil {
-                    viewModel.selectedAccount = accounts.first
+                    viewModel.setSelectedAccount(accounts.first)
                 }
             }
             .onChange(of: accounts) { _, newAccounts in
                 if viewModel.selectedAccount == nil {
-                    viewModel.selectedAccount = newAccounts.first
+                    viewModel.setSelectedAccount(newAccounts.first)
                 }
             }
             .sheet(isPresented: $viewModel.showAddAccountSheet) {
                 AccountManageViewBuilder.build(
-                    modelContext: modelContext
+                    modelContext: modelContext,
+                    onAccountAdded: { account in
+                        viewModel.setSelectedAccount(account)
+                    }
                 )
                 .presentationDragIndicator(.visible)
             }
             .sheet(item: $viewModel.accountToEdit) { account in
                 AccountManageViewBuilder.build(
                     account,
-                    modelContext: modelContext
+                    modelContext: modelContext,
+                    onAccountAdded: { account in
+                        viewModel.setSelectedAccount(account)
+                    }
                 )
                 .presentationDragIndicator(.visible)
             }

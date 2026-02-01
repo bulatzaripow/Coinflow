@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import SwiftData
 
 protocol TransactionManageServiceProtocol {
-    func fetch(id: UUID) -> Transaction?
-    func fetch(startDate: Date, endDate: Date) -> [Transaction]
-    func save(_ transaction: Transaction)
-    func create(_ transaction: Transaction)
-    func delete(_ transaction: Transaction)
+    func fetchAll() -> [Transaction]
+    func fetchById(_ id: PersistentIdentifier) -> Transaction?
+    func save(_ item: Transaction)
+    func delete(_ item: Transaction)
+    func saveContext() throws
+    
+    func fetchByAccountAndDateRange(account: Account, startDate: Date, endDate: Date) -> [Transaction]
 }

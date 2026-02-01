@@ -10,7 +10,6 @@ import SwiftData
 
 @Model
 final class Transaction: Identifiable {
-    var id = UUID()
     var note: String? = nil
     var amount: Double = 0
     var date: Date
@@ -18,7 +17,9 @@ final class Transaction: Identifiable {
     var createdAt: Date = Date()
     var type: TransactionType
     
-    var account: Account? = nil
+    @Relationship(deleteRule: .cascade)
+    var account: Account
+    
     var toAccount: Account? = nil
     var category: Category? = nil
     
@@ -30,7 +31,7 @@ final class Transaction: Identifiable {
         isHidden: Bool = false,
         createdAt: Date = Date(),
         category: Category? = nil,
-        account: Account? = nil,
+        account: Account,
         toAccount: Account? = nil,
     ) {
         self.note = note
@@ -53,11 +54,6 @@ enum TransactionType: String, CaseIterable, Codable {
 
 extension Transaction {
     func formattedData() -> String {
-        let currency = self.account?.currency ?? Currency(
-            code: "USD",
-            symbol: "$",
-            name: "US Dollar",
-        )
-        return CurrencyFormatter.format(amount, currency: currency)
+        return CurrencyFormatter.format(amount, currency: self.account.currency)
     }
 }

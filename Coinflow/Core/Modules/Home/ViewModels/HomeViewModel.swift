@@ -15,7 +15,8 @@ class HomeViewModel: ObservableObject {
     
     @Published var path = NavigationPath()
     
-    var transactions: [Transaction] = []
+    @Published var accounts: [Account] = []
+    @Published var transactions: [Transaction] = []
     @Published var showSettings: Bool = false
     @Published var showAddAccountSheet: Bool = false
     @Published var showAddTransactionSheet: Bool = false
@@ -33,14 +34,21 @@ class HomeViewModel: ObservableObject {
         Date.formatDateRange(startDate: startDate, endDate: endDate)
     }
     
+    private var accountService: AccountManageServiceProtocol
     private var transactionService: TransactionManageServiceProtocol
     
     // MARK: - Init
     
-    init(transactionService: TransactionManageServiceProtocol) {
+    init(
+        accountService: AccountManageServiceProtocol,
+        transactionService: TransactionManageServiceProtocol,
+    ) {
+        self.accountService = accountService
         self.transactionService = transactionService
         
-        self.transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
+        self.accounts = accountService.fetchAll()
+        
+        reloadTransactions()
     }
     
     // MARK: - Methods
@@ -63,7 +71,9 @@ class HomeViewModel: ObservableObject {
     }
     
     func reloadTransactions() {
-        transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
+        if let account = selectedAccount {
+            self.transactions = transactionService.fetchByAccountAndDateRange(account: account, startDate: startDate, endDate: endDate)
+        }
     }
     
     func onNavigate(_ route: MainRoutes) {
@@ -72,5 +82,12 @@ class HomeViewModel: ObservableObject {
     
     func setDefaultCurrencyCode(_ code: String, userPreferences: UserPreferences) {
         userPreferences.setDefaultCurrencyCode(code)
+    }
+    
+    func setSelectedAccount(_ selected: Account?) {
+        self.selectedAccount = selected
+        if let account = selected {
+            transactions = transactionService.fetchByAccountAndDateRange(account: account, startDate: startDate, endDate: endDate)
+        }
     }
 }

@@ -59,19 +59,22 @@ final class OverviewViewModel: ObservableObject {
         self.categoryService = categoryService
         self.transactionService = transactionService
         self.categories = categoryService.fetchAll()
-        self.transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
+        
+        reloadTransactions()
     }
     
     // MARK: - Methods
     
     func reloadTransactions() {
-        transactions = transactionService.fetch(startDate: startDate, endDate: endDate)
+        if let account = self.selectedAccount {
+            self.transactions = transactionService.fetchByAccountAndDateRange(account: account, startDate: startDate, endDate: endDate)
+        }
     }
     
     func getTransactions(for type: CategoryType) -> [Transaction] {
         transactions.filter { transaction in
             transaction.category?.type == type &&
-            transaction.account?.id == selectedAccount?.id
+            transaction.account.id == selectedAccount?.id
         }
     }
     
@@ -79,7 +82,7 @@ final class OverviewViewModel: ObservableObject {
         transactions
             .filter { transaction in
                 transaction.category?.type == type &&
-                transaction.account?.id == selectedAccount?.id
+                transaction.account.id == selectedAccount?.id
             }
             .reduce(Double.zero) { $0 + abs($1.amount) }
     }
@@ -87,7 +90,7 @@ final class OverviewViewModel: ObservableObject {
     private func hasTransactions(for category: Category) -> Bool {
         transactions.contains { transaction in
             transaction.category?.id == category.id &&
-            transaction.account?.id == selectedAccount?.id
+            transaction.account.id == selectedAccount?.id
         }
     }
 }

@@ -8,84 +8,28 @@
 import Foundation
 import SwiftData
 
-final class AccountManageService: AccountManageServiceProtocol {
+final class AccountManageService: BaseManageService<Account>, AccountManageServiceProtocol {
     
-    // MARK: - Props
-    
-    private let context: ModelContext
-    
-    // MARK: - Init
-    
-    init(context: ModelContext) {
-        self.context = context
+    override func fetchAll() -> [Account] {
+        let descriptor = FetchDescriptor<Account>(
+            sortBy: [
+                SortDescriptor(\.sortIndex, order: .forward)
+            ]
+        )
+        let items = try? context.fetch(descriptor)
+        return items ?? []
     }
     
-    // MARK: - Methods
-    
-    func accountsCount() -> Int {
+    func nextSortIndex() -> Int {
         let descriptor = FetchDescriptor<Account>()
         
         do {
             let accounts = try context.fetch(descriptor)
-            return accounts.count
+            return accounts.map(\.sortIndex).max() ?? 0 + 1
         } catch {
             print("Error fetching accounts count: \(error)")
             return 0
         }
     }
     
-    func fetchAccount(id: UUID) -> Account? {
-        let predicate = #Predicate<Account> { $0.id == id }
-        let descriptor = FetchDescriptor<Account>(predicate: predicate)
-        return try? context.fetch(descriptor).first
-    }
-    
-    func fetchAccounts() -> [Account] {
-        let descriptor = FetchDescriptor<Account>()
-        let accounts = try? context.fetch(descriptor)
-        return accounts ?? []
-    }
-    
-    func saveAccount(_ account: Account) {
-        context.insert(account)
-        
-        if account.isDefault == 1 {
-            do {
-                try unsetDefaultForOtherAccounts(except: account)
-            } catch {
-                print("Error unsetting default for other accounts except \(account.id): \(error)")
-            }
-        }
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error saving account: \(error)")
-        }
-    }
-    
-    private func unsetDefaultForOtherAccounts(except excludedAccount: Account) throws {
-        let predicate = #Predicate<Account> { account in
-            account.isDefault == 1
-        }
-        
-        let descriptor = FetchDescriptor<Account>(predicate: predicate)
-        
-        do {
-            let defaultAccounts = try context.fetch(descriptor)
-            
-            let otherDefaultAccounts = defaultAccounts.filter { $0.id != excludedAccount.id }
-            
-            for account in otherDefaultAccounts {
-                account.isDefault = 0
-            }
-            
-            if !otherDefaultAccounts.isEmpty {
-                try context.save()
-            }
-        } catch {
-            print("Error unsetting default accounts: \(error)")
-            throw error
-        }
-    }
 }

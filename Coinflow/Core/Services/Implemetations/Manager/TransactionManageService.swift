@@ -8,57 +8,14 @@
 import Foundation
 import SwiftData
 
-final class TransactionManageService: TransactionManageServiceProtocol {
-
-    // MARK: - Props
+final class TransactionManageService: BaseManageService<Transaction>, TransactionManageServiceProtocol {
     
-    private let context: ModelContext
-    
-    // MARK: - Init
-    
-    init(context: ModelContext) {
-        self.context = context
-    }
-    
-    // MARK: - Methods
-    
-    func fetch(id: UUID) -> Transaction? {
-        let predicate = #Predicate<Transaction> { $0.id == id }
-        let descriptor = FetchDescriptor<Transaction>(predicate: predicate)
-        return try? context.fetch(descriptor).first
-    }
-    
-    func save(_ transaction: Transaction) {
-        do {
-            try context.save()
-        } catch {
-            print("Error saving transaction: \(transaction)")
-        }
-    }
-    
-    func create(_ transaction: Transaction) {
-        context.insert(transaction)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error creating transaction: \(transaction)")
-        }
-    }
-    
-    func delete(_ transaction: Transaction) {
-        context.delete(transaction)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error deleting transaction: \(transaction)")
-        }
-    }
-    
-    func fetch(startDate: Date, endDate: Date) -> [Transaction] {
+    func fetchByAccountAndDateRange(account: Account, startDate: Date, endDate: Date) -> [Transaction] {
+        let persistentAccountId = account.persistentModelID
         let predicate = #Predicate<Transaction> { tx in
-            tx.date >= startDate && tx.date <= endDate
+            tx.date >= startDate &&
+            tx.date <= endDate &&
+            tx.account.persistentModelID == persistentAccountId
         }
         
         let descriptor = FetchDescriptor<Transaction>(

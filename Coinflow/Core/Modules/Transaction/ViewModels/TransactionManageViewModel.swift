@@ -67,7 +67,7 @@ class TransactionManageViewModel: ObservableObject {
         self.categoryService = categoryService
         self.activeAccount = activeAccount
         
-        self.accounts = accountService.fetchAccounts()
+        self.accounts = accountService.fetchAll()
         self.categories = categoryService.fetchAll()
         self.selectedToAccount = accounts.first
         
@@ -108,7 +108,6 @@ class TransactionManageViewModel: ObservableObject {
             transaction.date = date
             transaction.date = date
             transaction.category = selectedCategory
-            transaction.account = selectedAccount
             
             if type == .transfer {
                 transaction.toAccount = selectedToAccount
@@ -116,18 +115,20 @@ class TransactionManageViewModel: ObservableObject {
             
             transactionService.save(transaction)
         } else {
-            let transaction = Transaction(
-                note: note,
-                amount: Double(amount) ?? 0,
-                date: date,
-                type: type,
-                isHidden: false,
-                createdAt: Date(),
-                category: selectedCategory,
-                account: selectedAccount,
-            )
-            
-            transactionService.create(transaction)
+            if let account = self.selectedAccount {
+                let transaction = Transaction(
+                    note: note,
+                    amount: Double(amount) ?? 0,
+                    date: date,
+                    type: type,
+                    isHidden: false,
+                    createdAt: Date(),
+                    category: selectedCategory,
+                    account: account,
+                )
+                
+                transactionService.save(transaction)
+            }
         }
     }
     

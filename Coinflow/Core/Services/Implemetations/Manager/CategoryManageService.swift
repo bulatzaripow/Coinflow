@@ -8,21 +8,19 @@
 import SwiftData
 import Foundation
 
-final class CategoryManageService: CategoryManageServiceProtocol {
+final class CategoryManageService: BaseManageService<Category>, CategoryManageServiceProtocol {
     
-    // MARK: - Props
-    
-    private let context: ModelContext
-    
-    // MARK: - Init
-    
-    init(context: ModelContext) {
-        self.context = context
+    override func fetchAll() -> [Category] {
+        let descriptor = FetchDescriptor<Category>(
+            sortBy: [
+                SortDescriptor(\.sortOrder, order: .forward)
+            ]
+        )
+        let items = try? context.fetch(descriptor)
+        return items ?? []
     }
     
-    // MARK: - Methods
-    
-    func fetchAll(_ order: SortOrder) -> [Category] {
+    func fetchAllInOrder(_ order: SortOrder) -> [Category] {
         let descriptor = FetchDescriptor<Category>(
             sortBy: [
                 SortDescriptor(\Category.sortOrder, order: order)
@@ -47,31 +45,4 @@ final class CategoryManageService: CategoryManageServiceProtocol {
         return items ?? []
     }
     
-    func save() {
-        do {
-            try context.save()
-        } catch {
-            print("Save context error:", error)
-        }
-    }
-    
-    func save(_ category: Category) {
-        context.insert(category)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Save category error:", error)
-        }
-    }
-    
-    func delete(_ category: Category) {
-        context.delete(category)
-        
-        do {
-            try context.save()
-        } catch {
-            print("Delete category error:", error)
-        }
-    }
 }

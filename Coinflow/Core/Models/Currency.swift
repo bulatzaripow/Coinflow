@@ -9,8 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Currency {
-    var id: UUID = UUID()
+final class Currency: Identifiable {
     var code: String = ""
     var symbol: String = ""
     var name: String = ""

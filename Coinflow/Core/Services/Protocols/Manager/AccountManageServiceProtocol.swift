@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import SwiftData
 
 protocol AccountManageServiceProtocol {
-    func accountsCount() -> Int
-    func fetchAccounts() -> [Account]
-    func fetchAccount(id: UUID) -> Account?
-    func saveAccount(_ account: Account)
+    func fetchAll() -> [Account]
+    func fetchById(_ id: PersistentIdentifier) -> Account?
+    func save(_ item: Account)
+    func delete(_ item: Account)
+    func saveContext() throws
+    func nextSortIndex() -> Int
 }

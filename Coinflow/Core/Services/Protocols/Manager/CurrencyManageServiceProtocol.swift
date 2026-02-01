@@ -6,8 +6,15 @@
 //
 
 import Foundation
+import SwiftData
 
 protocol CurrencyManageServiceProtocol {
+    func fetchAll() -> [Currency]
+    func fetchById(_ id: PersistentIdentifier) -> Currency?
+    func save(_ item: Currency)
+    func delete(_ item: Currency)
+    func saveContext() throws
+    
     func defaultCurrency() -> Currency
-    func findCurrency(by code: String) -> Currency?
+    func fetchByCode(by code: String) -> Currency?
 }

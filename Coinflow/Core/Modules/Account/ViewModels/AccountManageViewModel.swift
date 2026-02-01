@@ -16,8 +16,9 @@ class AccountManageViewModel: ObservableObject {
     @Published var account: Account?
     private let currencyService: CurrencyManageServiceProtocol
     private let accountService: AccountManageServiceProtocol
+    private let onAccountAdded: (Account) -> Void
     
-    private let accountId: UUID?
+    private let accountId: PersistentIdentifier?
     
     @Published var name: String = ""
     @Published var balance: Double = 0
@@ -44,11 +45,13 @@ class AccountManageViewModel: ObservableObject {
         account: Account? = nil,
         currencyService: CurrencyManageService,
         accountService: AccountManageServiceProtocol,
+        onAccountAdded: @escaping (Account) -> Void,
     ) {
         self.accountId = account?.id
         self.account = account
         self.currencyService = currencyService
         self.accountService = accountService
+        self.onAccountAdded = onAccountAdded
         
         self.selectedCurrency = currencyService.defaultCurrency()
         
@@ -70,7 +73,7 @@ class AccountManageViewModel: ObservableObject {
     func saveAccount(_ modelContext: ModelContext) {
         if let accountId = accountId {
             do {
-                if let existingAccount = accountService.fetchAccount(id: accountId) {
+                if let existingAccount = accountService.fetchById(accountId) {
                     existingAccount.name = name
                     existingAccount.balance = balance
                     existingAccount.currency = selectedCurrency
@@ -78,7 +81,7 @@ class AccountManageViewModel: ObservableObject {
                     existingAccount.backgroundColor = backgroundColor
                     existingAccount.backgroundPattern = backgroundPattern
                     
-                    try modelContext.save()
+                    try accountService.saveContext()
                 }
             } catch {
                 print("Error updating account: \(error)")
@@ -89,13 +92,15 @@ class AccountManageViewModel: ObservableObject {
                 balance: balance,
                 currency: selectedCurrency,
                 icon: icon,
-                sortIndex: accountService.accountsCount(),
+                sortIndex: accountService.nextSortIndex(),
                 isDefault: isDefault ? 1 : 0,
                 backgroundPattern: backgroundPattern,
                 backgroundColor: backgroundColor,
             )
+
+            accountService.save(newAccount)
             
-            accountService.saveAccount(newAccount)
+            onAccountAdded(newAccount)
         }
     }
     

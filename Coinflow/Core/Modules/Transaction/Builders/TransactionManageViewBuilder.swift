@@ -23,7 +23,7 @@ struct TransactionManageViewBuilder {
             transactionService: transactionService,
             accountService: accountService,
             categoryService: categoryService,
-            activeAccount: activeAccount
+            activeAccount: activeAccount,
         )
         
         let view = TransactionManageView(

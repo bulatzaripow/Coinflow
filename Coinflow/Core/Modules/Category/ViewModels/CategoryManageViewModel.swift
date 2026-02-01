@@ -69,14 +69,19 @@ final class CategoryManageViewModel: ObservableObject {
             category.name = name
             category.icon = icon
             
-            categoryService.save()
+            do {
+                try categoryService.saveContext()
+            } catch {
+                print("Can't save category: \(error.localizedDescription)")
+            }
+            
         } else {
             categoryService.save(newCategory)
         }
     }
     
     private func getNextSortOrder() -> Int {
-        let categories = categoryService.fetchAll(.reverse)
+        let categories = categoryService.fetchAllInOrder(.reverse)
         return (categories.first?.sortOrder ?? 0) + 1
     }
 }

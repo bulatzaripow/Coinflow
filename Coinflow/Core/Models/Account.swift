@@ -9,8 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Account: Identifiable {
-    var id = UUID()
+final class Account: Identifiable, Equatable {
     var name: String
     var balance: Double = 0
     var isDefault: Int = 0

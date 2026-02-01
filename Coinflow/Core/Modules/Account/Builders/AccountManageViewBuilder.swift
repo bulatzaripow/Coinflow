@@ -10,7 +10,8 @@ import SwiftData
 struct AccountManageViewBuilder {
     static func build(
         _ account: Account? = nil,
-        modelContext: ModelContext
+        modelContext: ModelContext,
+        onAccountAdded: @escaping (Account) -> Void
     ) -> AccountManageView {
         let currencyService = CurrencyManageService(context: modelContext)
         let accountService = AccountManageService(context: modelContext)
@@ -19,6 +20,7 @@ struct AccountManageViewBuilder {
             account: account,
             currencyService: currencyService,
             accountService: accountService,
+            onAccountAdded: onAccountAdded
         )
         
         return AccountManageView(viewModel: vm)
