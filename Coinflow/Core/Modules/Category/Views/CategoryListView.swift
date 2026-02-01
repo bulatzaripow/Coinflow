@@ -30,6 +30,9 @@ struct CategoryListView: View {
             List {
                 ForEach(viewModel.categories) { category in
                     CategoryRow(category: category)
+                        .onTapGesture {
+                            viewModel.onTapAction(category)
+                        }
                 }
                 .onDelete(perform: viewModel.delete)
                 .onMove(perform: viewModel.move)
@@ -97,6 +100,16 @@ struct CategoryListView: View {
                 onUpdate: {}
             )
             .presentationDragIndicator(.visible)
+        }
+        .sheet(item: $viewModel.categoryToEdit) { account in
+            if let category = viewModel.categoryToEdit {
+                CategoryManageViewBuilder.build(
+                    category,
+                    context: modelContext,
+                    onUpdate: {}
+                )
+                .presentationDragIndicator(.visible)
+            }
         }
     }
 }

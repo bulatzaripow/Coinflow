@@ -16,6 +16,7 @@ final class CategoryManageViewModel: ObservableObject {
     
     private let categoryService: CategoryManageServiceProtocol
     
+    @Published var category: Category?
     @Published var name: String = ""
     @Published var type: CategoryType = .expense
     @Published var selectedIcon: String?
@@ -32,8 +33,18 @@ final class CategoryManageViewModel: ObservableObject {
     
     // MARK: - Init
     
-    init(categoryService: CategoryManageServiceProtocol) {
+    init(
+        category: Category? = nil,
+        categoryService: CategoryManageServiceProtocol
+    ) {
+        self.category = category
         self.categoryService = categoryService
+        
+        if let category = self.category {
+            self.name = category.name
+            self.type = category.type
+            self.selectedIcon = category.icon
+        }
     }
     
     // MARK: - Methods
@@ -44,7 +55,7 @@ final class CategoryManageViewModel: ObservableObject {
             canSave
         else { return }
         
-        let category = Category(
+        let newCategory = Category(
             name: name,
             type: type,
             icon: icon,
@@ -54,7 +65,14 @@ final class CategoryManageViewModel: ObservableObject {
             createdAt: Date()
         )
         
-        categoryService.save(category)
+        if let category = self.category {
+            category.name = name
+            category.icon = icon
+            
+            categoryService.save()
+        } else {
+            categoryService.save(newCategory)
+        }
     }
     
     private func getNextSortOrder() -> Int {

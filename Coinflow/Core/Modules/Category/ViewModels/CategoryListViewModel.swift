@@ -17,6 +17,7 @@ final class CategoryListViewModel: ObservableObject {
     @Published var editMode = EditMode.inactive
     @Published var showAddCategorySheet: Bool = false
     @Published var categories: [Category] = []
+    @Published var categoryToEdit: Category? = nil
     
     private let categoryService: CategoryManageServiceProtocol
     
@@ -62,6 +63,10 @@ final class CategoryListViewModel: ObservableObject {
     
     func addNewCategory() {
         showAddCategorySheet.toggle()
+    }
+    
+    func onTapAction(_ category: Category) {
+        self.categoryToEdit = category
     }
 }
 
