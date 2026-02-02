@@ -65,7 +65,8 @@ struct HomeView: View {
                                 }
                             }
                             .padding(.top, 10)
-                            .padding(.horizontal, 20)
+                            .padding(.leading, 20)
+                            .padding(.trailing, 10)
                             
                             // Accounts
                             AccountCarouselView(
