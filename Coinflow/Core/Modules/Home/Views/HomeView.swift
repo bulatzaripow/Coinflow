@@ -63,6 +63,7 @@ struct HomeView: View {
                                         .padding(6)
                                         .frame(width: 35, height: 35)
                                 }
+                                .buttonStyle(.plain)
                             }
                             .padding(.top, 10)
                             .padding(.leading, 20)
