@@ -37,14 +37,28 @@ struct AccountManageView: View {
                 .listRowInsets(EdgeInsets())
                 
                 Section {
-                    HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+
                         TextField("Name", text: $viewModel.name)
+
+                        if let error = viewModel.nameError {
+                            FieldErrorView(message: error.localizedDescription)
+                        }
                     }
+                    .animation(.easeInOut, value: viewModel.nameError)
+
                     
-                    HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+
                         TextField("Balance", value: $viewModel.balance, format: .number)
                             .keyboardType(.decimalPad)
+
+                        if let error = viewModel.balanceError {
+                            FieldErrorView(message: error.localizedDescription)
+                        }
                     }
+                    .animation(.easeInOut, value: viewModel.balanceError)
+
                     
                     HStack {
                         Toggle("Default account", isOn: $viewModel.isDefault)
@@ -153,5 +167,18 @@ struct AccountManageView: View {
             }
         }
         .navigationViewStyle(.stack)
+    }
+}
+
+struct FieldErrorView: View {
+
+    let message: String
+
+    var body: some View {
+        Text(message)
+            .font(.caption)
+            .foregroundColor(.red)
+            .padding(.top, 2)
+            .transition(.opacity.combined(with: .move(edge: .top)))
     }
 }

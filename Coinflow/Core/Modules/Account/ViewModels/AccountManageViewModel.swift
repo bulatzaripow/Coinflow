@@ -29,6 +29,10 @@ class AccountManageViewModel: ObservableObject {
     @Published var backgroundColor: String?
     @Published var backgroundPattern: String?
     
+    private var cancellables = Set<AnyCancellable>()
+    @Published var nameError: AccountValidationError?
+    @Published var balanceError: AccountValidationError?
+    
     @Published var selectedColor: AppColors?
     @Published var selectedPattern: String?
     
@@ -36,6 +40,8 @@ class AccountManageViewModel: ObservableObject {
     @Published var path = NavigationPath()
     
     var canSave: Bool {
+        nameError == nil &&
+        balanceError == nil &&
         !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
@@ -66,9 +72,32 @@ class AccountManageViewModel: ObservableObject {
             selectedColor = AppColors(rawValue: account.backgroundColor ?? "")
             selectedPattern = account.backgroundPattern
         }
+        
+        setupValidation()
     }
     
     // MARK: - Methods
+    
+    private func setupValidation() {
+
+        // Name validation
+        $name
+            .dropFirst()
+            .debounce(for: .milliseconds(200), scheduler: RunLoop.main)
+            .sink { [weak self] value in
+                self?.validateName(value)
+            }
+            .store(in: &cancellables)
+
+        // Balance validation
+        $balance
+            .dropFirst()
+            .debounce(for: .milliseconds(200), scheduler: RunLoop.main)
+            .sink { [weak self] value in
+                self?.validateBalance(value)
+            }
+            .store(in: &cancellables)
+    }
     
     func saveAccount(_ modelContext: ModelContext) {
         if let accountId = accountId {
@@ -111,4 +140,33 @@ class AccountManageViewModel: ObservableObject {
     func selectPattern(_ pattern: String?) {
         backgroundPattern = pattern
     }
+    
+    private func validateName(_ value: String) {
+
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if trimmed.isEmpty {
+            nameError = .emptyName
+            return
+        }
+
+        if let first = trimmed.first, first.isNumber {
+            nameError = .nameStartsWithDigit
+            return
+        }
+
+        nameError = nil
+    }
+
+
+    private func validateBalance(_ value: Double) {
+
+        if !value.isFinite {
+            balanceError = .invalidBalance
+            return
+        }
+
+        balanceError = nil
+    }
+
 }
