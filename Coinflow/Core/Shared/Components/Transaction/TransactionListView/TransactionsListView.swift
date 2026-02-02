@@ -56,6 +56,7 @@ struct TransactionsListView: View {
                         .font(.subheadline)
                         .foregroundColor(.gray.opacity(0.7))
                         .multilineTextAlignment(.center)
+                        .frame(width: 300)
                 }
                 
                 Spacer()

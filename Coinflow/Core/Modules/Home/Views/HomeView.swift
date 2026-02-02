@@ -47,7 +47,7 @@ struct HomeView: View {
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                     
-                                    Text("\(GreetingHelper.greeting())")
+                                    Text(GreetingHelper.greeting())
                                         .fontWeight(.bold)
                                         .fontWeight(.bold)
                                 }

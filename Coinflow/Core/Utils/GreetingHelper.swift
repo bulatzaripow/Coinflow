@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct GreetingHelper {
     
-    static func greeting(for date: Date = Date()) -> String {
+    static func greeting(for date: Date = Date()) -> LocalizedStringKey {
         
         let hour = Calendar.current.component(.hour, from: date)
         

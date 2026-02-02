@@ -98,7 +98,7 @@ extension CategoryManageViewModel {
     var icons: [IconGroup] {
         [
             IconGroup(
-                name: "Food & Drink",
+                name: "foodAndDrink".localized,
                 icons: [
                     "utensils",
                     "room-service",
@@ -121,7 +121,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Transport",
+                name: "transport".localized,
                 icons: [
                     "car-alt",
                     "taxi",
@@ -141,7 +141,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Entertainment",
+                name: "entertainment".localized,
                 icons: [
                     "popcorn",
                     "theater-masks",
@@ -159,7 +159,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Sport",
+                name: "sport".localized,
                 icons: [
                     "basketball",
                     "volleyball",
@@ -182,7 +182,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Home",
+                name: "home".localized,
                 icons: [
                     "house-chimney-window",
                     "rent",
@@ -201,7 +201,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Family",
+                name: "family".localized,
                 icons: [
                     "family",
                     "smiling-baby",
@@ -214,7 +214,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Health",
+                name: "health".localized,
                 icons: [
                     "doctor",
                     "stethoscope",
@@ -228,7 +228,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Shopping",
+                name: "shopping".localized,
                 icons: [
                     "shopping-cart",
                     "shopping-basket",
@@ -241,7 +241,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Travel",
+                name: "travel".localized,
                 icons: [
                     "globe",
                     "plane-departure",
@@ -253,7 +253,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Education",
+                name: "education".localized,
                 icons: [
                     "graduation-cap",
                     "book-alt",
@@ -268,7 +268,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Finance",
+                name: "finance".localized,
                 icons: [
                     "briefcase",
                     "coins",
@@ -287,7 +287,7 @@ extension CategoryManageViewModel {
                 ],
             ),
             IconGroup(
-                name: "Other",
+                name: "other".localized,
                 icons: [
                     "interrogation",
                     "bookmark",

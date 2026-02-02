@@ -73,20 +73,20 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
     private func getDefaultCurrencies() -> [(code: String, symbol: String, name: String)] {
         return [
             // Worldwide
-            ("USD", "$", "US Dollar"),
-            ("EUR", "€", "Euro"),
-            ("GBP", "£", "British Pound"),
-            ("JPY", "¥", "Japanese Yen"),
-            ("CNY", "¥", "Chinese Yuan"),
+            ("USD", "$", "US Dollar".localized),
+            ("EUR", "€", "Euro".localized),
+            ("GBP", "£", "British Pound".localized),
+            ("JPY", "¥", "Japanese Yen".localized),
+            ("CNY", "¥", "Chinese Yuan".localized),
             ("CHF", "CHF", "Swiss Franc"),
             ("CAD", "C$", "Canadian Dollar"),
             ("AUD", "A$", "Australian Dollar"),
             ("NZD", "NZ$", "New Zealand Dollar"),
             
             // Europe
-            ("RUB", "₽", "Russian Ruble"),
-            ("UAH", "₴", "Ukrainian Hryvnia"),
-            ("BYN", "Br", "Belarusian Ruble"),
+            ("RUB", "₽", "Russian Ruble".localized),
+            ("UAH", "₴", "Ukrainian Hryvnia".localized),
+            ("BYN", "Br", "Belarusian Ruble".localized),
             ("PLN", "zł", "Polish Złoty"),
             ("CZK", "Kč", "Czech Koruna"),
             ("SEK", "kr", "Swedish Krona"),
@@ -99,19 +99,19 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("RSD", "дин", "Serbian Dinar"),
             
             // Azia
-            ("INR", "₹", "Indian Rupee"),
+            ("INR", "₹", "Indian Rupee".localized),
             ("KRW", "₩", "South Korean Won"),
             ("SGD", "S$", "Singapore Dollar"),
             ("HKD", "HK$", "Hong Kong Dollar"),
             ("TWD", "NT$", "New Taiwan Dollar"),
             ("MYR", "RM", "Malaysian Ringgit"),
-            ("THB", "฿", "Thai Baht"),
+            ("THB", "฿", "Thai Baht".localized),
             ("IDR", "Rp", "Indonesian Rupiah"),
             ("PHP", "₱", "Philippine Peso"),
-            ("VND", "₫", "Vietnamese Đồng"),
+            ("VND", "₫", "Vietnamese Đồng".localized),
             
             // Middle East
-            ("AED", "د.إ", "UAE Dirham"),
+            ("AED", "د.إ", "UAE Dirham".localized),
             ("SAR", "﷼", "Saudi Riyal"),
             ("QAR", "﷼", "Qatari Riyal"),
             ("KWD", "د.ك", "Kuwaiti Dinar"),
@@ -119,7 +119,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("OMR", "﷼", "Omani Rial"),
             ("JOD", "د.ا", "Jordanian Dinar"),
             ("ILS", "₪", "Israeli Shekel"),
-            ("TRY", "₺", "Turkish Lira"),
+            ("TRY", "₺", "Turkish Lira".localized),
             ("IRR", "﷼", "Iranian Rial"),
             
             // Africa
@@ -143,13 +143,13 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("CRC", "₡", "Costa Rican Colón"),
             
             // Other
-            ("KZT", "₸", "Kazakhstani Tenge"),
-            ("UZS", "soʻm", "Uzbekistani Som"),
-            ("AZN", "₼", "Azerbaijani Manat"),
-            ("GEL", "₾", "Georgian Lari"),
-            ("AMD", "֏", "Armenian Dram"),
-            ("KGS", "с", "Kyrgyzstani Som"),
-            ("TJS", "ЅМ", "Tajikistani Somoni"),
+            ("KZT", "₸", "Kazakhstani Tenge".localized),
+            ("UZS", "soʻm", "Uzbekistani Som".localized),
+            ("AZN", "₼", "Azerbaijani Manat".localized),
+            ("GEL", "₾", "Georgian Lari".localized),
+            ("AMD", "֏", "Armenian Dram".localized),
+            ("KGS", "с", "Kyrgyzstani Som".localized),
+            ("TJS", "ЅМ", "Tajikistani Somoni".localized),
             ("TMT", "m", "Turkmenistan Manat"),
             ("MDL", "L", "Moldovan Leu"),
             ("BAM", "KM", "Bosnia-Herzegovina Convertible Mark"),

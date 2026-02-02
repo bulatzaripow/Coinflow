@@ -48,7 +48,7 @@ final class AccountInitializerService: AccountInitializerProtocol {
         
         // Default Account
         let mainAccount = Account(
-            name: "Default",
+            name: "Main".localized,
             balance: 0,
             currency: defaultCurrency,
             icon: "cash",

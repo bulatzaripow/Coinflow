@@ -24,7 +24,7 @@ struct DateFilterView: View {
                 Image("wednesday")
                     .resizable()
                     .frame(width: 18, height: 18)
-                Text("week".localized)
+                Text("week")
                 .foregroundStyle(.primary)
                 Spacer()
             }
@@ -38,7 +38,7 @@ struct DateFilterView: View {
                 Image("october-calendar")
                     .resizable()
                     .frame(width: 18, height: 18)
-                Text("month".localized)
+                Text("month")
                 .foregroundStyle(.primary)
                 Spacer()
             }
@@ -52,7 +52,7 @@ struct DateFilterView: View {
                 Image("calendar-swap")
                     .resizable()
                     .frame(width: 18, height: 18)
-                Text("year".localized)
+                Text("year")
                 .foregroundStyle(.primary)
                 Spacer()
             }
@@ -68,7 +68,7 @@ struct DateFilterView: View {
                 Image("calendar-arrow-down")
                     .resizable()
                     .frame(width: 18, height: 18)
-                DatePicker("start".localized, selection: $startDate, displayedComponents: [.date])
+                DatePicker("startDate", selection: $startDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
             }
             
@@ -76,7 +76,7 @@ struct DateFilterView: View {
                 Image("calendar-arrow-up")
                     .resizable()
                     .frame(width: 18, height: 18)
-                DatePicker("end".localized, selection: $endDate, displayedComponents: [.date])
+                DatePicker("endDate", selection: $endDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
             }
         }

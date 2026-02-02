@@ -56,7 +56,9 @@ struct TransactionManageView: View {
                         HorizontalItemPicker(
                             items: viewModel.accounts,
                             selectedItem: viewModel.selectedAccount,
-                            title: viewModel.type == .transfer ? "From account" : "Account",
+                            title: viewModel.type == .transfer ?
+                                "fromAccount".localized :
+                                "account".localized,
                             icon: { Image($0.icon) },
                             text: { $0.name },
                             onSelect: { account in
@@ -69,7 +71,7 @@ struct TransactionManageView: View {
                             HorizontalItemPicker(
                                 items: viewModel.accounts,
                                 selectedItem: viewModel.selectedToAccount,
-                                title: "To account",
+                                title: "toAccount".localized,
                                 icon: { Image($0.icon) },
                                 text: { $0.name }
                             ) { account in
@@ -81,7 +83,7 @@ struct TransactionManageView: View {
                             HorizontalItemPicker(
                                 items: viewModel.filteredCategories,
                                 selectedItem: viewModel.selectedCategory,
-                                title: "Category",
+                                title: "category".localized,
                                 icon: { Image($0.icon) },
                                 text: { $0.name },
                                 onSelect: { category in
@@ -108,8 +110,8 @@ struct TransactionManageView: View {
                         ZStack(alignment: .leading) {
                             if viewModel.note.isEmpty {
                                 Text("Note")
-                                    .padding(.leading, 8)
                                     .foregroundColor(.gray)
+                                    .padding(.leading, 6)
                             }
                             
                             TextEditor(text: $viewModel.note)
