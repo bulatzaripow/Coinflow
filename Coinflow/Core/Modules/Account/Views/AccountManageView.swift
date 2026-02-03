@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AccountManageView: View {
     
@@ -23,23 +24,14 @@ struct AccountManageView: View {
         NavigationStack(path: $viewModel.path) {
             Form {
                 Section {
-                    AccountCardView(account: Account(
-                        name: viewModel.name,
-                        balance: viewModel.balance,
-                        currency: viewModel.selectedCurrency,
-                        icon: viewModel.icon,
-                        sortIndex: viewModel.sortIndex,
-                        isDefault: viewModel.isDefault ? 1 : 0,
-                        backgroundPattern: viewModel.backgroundPattern,
-                        backgroundColor: viewModel.backgroundColor
-                    ))
+                    AccountCardView(account: viewModel.account)
                 }
                 .listRowInsets(EdgeInsets())
                 
                 Section {
                     VStack(alignment: .leading, spacing: 4) {
 
-                        TextField("Name", text: $viewModel.name)
+                        TextField("Name", text: $viewModel.account.name)
 
                         if let error = viewModel.nameError {
                             FieldErrorView(message: error.localizedDescription)
@@ -50,7 +42,7 @@ struct AccountManageView: View {
                     
                     VStack(alignment: .leading, spacing: 4) {
 
-                        TextField("Balance", value: $viewModel.balance, format: .number)
+                        TextField("Balance", value: $viewModel.account.balance, format: .number)
                             .keyboardType(.decimalPad)
 
                         if let error = viewModel.balanceError {
@@ -61,25 +53,35 @@ struct AccountManageView: View {
 
                     
                     HStack {
-                        Toggle("Default account", isOn: $viewModel.isDefault)
+                        Toggle(
+                            "Default account",
+                            isOn: Binding(
+                                get: {
+                                    viewModel.account.isDefault == 1
+                                },
+                                set: { newValue in
+                                    viewModel.account.isDefault = newValue ? 1 : 0
+                                }
+                            )
+                        )
                     }
                     
                     Button {
                         viewModel.path.append(AccountRoutes.currency)
                     } label: {
                         HStack {
-                            Image(viewModel.selectedCurrency.code)
+                            Image(viewModel.account.currency.code)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 24, height: 24)
                                 .foregroundStyle(.primary)
                             
-                            Text(viewModel.selectedCurrency.name)
+                            Text(viewModel.account.currency.name)
                                 .foregroundStyle(.primary)
                             
                             Spacer()
                             
-                            Text(viewModel.selectedCurrency.code)
+                            Text(viewModel.account.currency.code)
                                 .foregroundStyle(.tertiary)
                             
                             Image("angle-small-right")
@@ -95,7 +97,14 @@ struct AccountManageView: View {
                 
                 Section("Design") {
                     ColorPicker(
-                        selectedColor: $viewModel.selectedColor,
+                        selectedColor: Binding(
+                            get: {
+                                AppColors(rawValue: viewModel.account.backgroundColor ?? "autumn") ?? AppColors.autumn
+                            },
+                            set: { newValue in
+                                viewModel.account.backgroundColor = newValue?.rawValue
+                            }
+                        ),
                         action: { color in
                             viewModel.selectColor(color)
                         }
@@ -103,7 +112,7 @@ struct AccountManageView: View {
                     .padding(.vertical, 12)
                     
                     PatternPicker(
-                        selectedPattern: $viewModel.selectedPattern,
+                        selectedPattern: $viewModel.account.backgroundPattern,
                         action: { pattern in
                             viewModel.selectPattern(pattern)
                         }
@@ -120,7 +129,7 @@ struct AccountManageView: View {
                         context: modelContext,
                         selectedCurrency: userPreferences.defaultCurrencyCode,
                     ) { currency in
-                        viewModel.selectedCurrency = currency
+                        viewModel.selectCurrency(currency)
                         viewModel.path.removeLast()
                     }
                 }
@@ -142,7 +151,7 @@ struct AccountManageView: View {
                 
                 ToolbarItem(placement: .principal) {
                     Text(
-                        viewModel.account != nil ?
+                        viewModel.account.modelContext != nil ?
                         "Edit account" :
                         "Add Account"
                     )
@@ -152,7 +161,7 @@ struct AccountManageView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        viewModel.saveAccount(modelContext)
+                        viewModel.saveAccount()
                         dismiss()
                     } label: {
                         Image("check")
