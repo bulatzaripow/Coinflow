@@ -35,7 +35,9 @@ class BaseManageService<Item: PersistentModel> {
     }
     
     func save(_ item: Item) {
-        context.insert(item)
+        if item.modelContext == nil {
+            context.insert(item)
+        }
         
         do {
             try saveContext()
