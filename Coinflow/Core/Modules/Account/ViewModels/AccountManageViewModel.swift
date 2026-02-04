@@ -31,9 +31,16 @@ class AccountManageViewModel: ObservableObject {
     @Published var showSelectCurrencySheet: Bool = false
     @Published var path = NavigationPath()
     
+    @Published var showDeleteAlert = false
+    
     var canSave: Bool {
         nameError == nil &&
         balanceError == nil
+    }
+    
+    var canDelete: Bool {
+        account.modelContext != nil &&
+        accountService.fetchAll().count > 1
     }
     
     // MARK: - Init
@@ -93,6 +100,26 @@ class AccountManageViewModel: ObservableObject {
     func saveAccount() {
         accountService.save(account)
         onAccountAdded(account)
+    }
+    
+    func deleteAccount() {
+        let accounts = accountService.fetchAll()
+
+        guard accounts.count > 1 else { return }
+
+        if account.isDefault == 1 {
+            let newDefault = accounts
+                .filter { $0.id != account.id }
+                .sorted { $0.sortIndex < $1.sortIndex }
+                .first
+            
+            if newDefault != nil {
+                newDefault?.isDefault = 1
+                accountService.save(newDefault!)
+            }
+        }
+
+        accountService.delete(account)
     }
     
     func selectColor(_ color: AppColors?) {

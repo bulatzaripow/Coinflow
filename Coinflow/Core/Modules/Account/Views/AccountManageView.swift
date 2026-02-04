@@ -120,6 +120,20 @@ struct AccountManageView: View {
                     .padding(.vertical, 12)
                 }
                 .listRowInsets(EdgeInsets())
+                
+                // Delete
+                Section {
+                    Button(role: .destructive) {
+                        viewModel.showDeleteAlert = true
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("Delete account")
+                            Spacer()
+                        }
+                    }
+                    .disabled(!viewModel.canDelete)
+                }
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: AccountRoutes.self) { route in
@@ -173,6 +187,21 @@ struct AccountManageView: View {
                     }
                     .disabled(!viewModel.canSave)
                 }
+            }
+            .alert(
+                "Delete account?",
+                isPresented: $viewModel.showDeleteAlert
+            ) {
+                
+                Button("Cancel", role: .cancel) {}
+                
+                Button("Delete", role: .destructive) {
+                    viewModel.deleteAccount()
+                    dismiss()
+                }
+                
+            } message: {
+                Text("All transactions will be deleted. Are you sure?")
             }
         }
         .navigationViewStyle(.stack)
