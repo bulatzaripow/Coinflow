@@ -17,9 +17,7 @@ final class Transaction: Identifiable {
     var createdAt: Date = Date()
     var type: TransactionType
     
-    @Relationship(deleteRule: .cascade)
     var account: Account
-    
     var toAccount: Account? = nil
     var category: Category? = nil
     
