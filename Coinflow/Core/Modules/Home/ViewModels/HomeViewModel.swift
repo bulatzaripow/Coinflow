@@ -66,11 +66,6 @@ class HomeViewModel: ObservableObject {
         reloadTransactions()
     }
     
-    func hideTransactionAction(_ transaction: Transaction) {
-        transaction.isHidden.toggle()
-        transactionService.save(transaction)
-    }
-    
     func reloadTransactions() {
         if let account = selectedAccount {
             self.transactions = transactionService.fetchByAccountAndDateRange(account: account, startDate: startDate, endDate: endDate)

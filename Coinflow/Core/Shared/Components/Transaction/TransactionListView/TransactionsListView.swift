@@ -11,7 +11,6 @@ struct TransactionsListView: View {
     let transactions: [Transaction]
     let onTap: (Transaction) -> Void
     let deleteAction: (Transaction) -> Void
-    let hideAction: (Transaction) -> Void
     
     var body: some View {
         if !transactions.isEmpty {
@@ -22,12 +21,6 @@ struct TransactionsListView: View {
                             deleteAction(transaction)
                         } label: {
                             Image(systemName: "trash")
-                        }
-                        
-                        Button {
-                            hideAction(transaction)
-                        } label: {
-                            Image(systemName: "eye.slash")
                         }
                     }
                     .onTapGesture {

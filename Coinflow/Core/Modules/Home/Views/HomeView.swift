@@ -94,8 +94,6 @@ struct HomeView: View {
                             viewModel.chooseTransactionToEdit(transaction)
                         } deleteAction: { transaction in
                             viewModel.deleteTransactionAction(transaction)
-                        } hideAction: { transaction in
-                            viewModel.hideTransactionAction(transaction)
                         }
                     } header: {
                         HStack {
