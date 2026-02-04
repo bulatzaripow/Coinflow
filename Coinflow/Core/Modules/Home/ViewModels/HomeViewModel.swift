@@ -63,6 +63,7 @@ class HomeViewModel: ObservableObject {
     
     func deleteTransactionAction(_ transaction: Transaction) {
         transactionService.delete(transaction)
+        reloadTransactions()
     }
     
     func hideTransactionAction(_ transaction: Transaction) {

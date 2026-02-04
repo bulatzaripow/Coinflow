@@ -16,4 +16,15 @@ protocol TransactionManageServiceProtocol {
     func saveContext() throws
     
     func fetchByAccountAndDateRange(account: Account, startDate: Date, endDate: Date) -> [Transaction]
+    
+    func save(
+        _ transaction: Transaction,
+        amount: Double,
+        note: String,
+        type: TransactionType,
+        date: Date,
+        category: Category?,
+        account: Account,
+        toAccount: Account?,
+    )
 }

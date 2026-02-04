@@ -12,7 +12,7 @@ import SwiftData
 final class Transaction: Identifiable {
     var note: String? = nil
     var amount: Double = 0
-    var date: Date
+    var date: Date = Date()
     var isHidden: Bool = false
     var createdAt: Date = Date()
     var type: TransactionType
@@ -20,6 +20,14 @@ final class Transaction: Identifiable {
     var account: Account
     var toAccount: Account? = nil
     var category: Category? = nil
+    
+    init(
+        account: Account,
+        type: TransactionType
+    ) {
+        self.account = account
+        self.type = type
+    }
     
     init(
         note: String? = nil,

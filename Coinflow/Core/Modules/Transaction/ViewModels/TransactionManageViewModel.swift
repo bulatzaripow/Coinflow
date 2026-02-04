@@ -101,38 +101,34 @@ class TransactionManageViewModel: ObservableObject {
     }
     
     func saveTransaction() {
-        if let transaction = self.transaction {
-            transaction.note = note
-            transaction.amount = Double(amount) ?? 0
-            transaction.type = type
-            transaction.date = date
-            transaction.date = date
-            transaction.category = selectedCategory
-            
-            if type == .transfer {
-                transaction.toAccount = selectedToAccount
-            }
-            
-            transactionService.save(transaction)
-        } else {
-            if let account = self.selectedAccount {
-                let transaction = Transaction(
-                    note: note,
-                    amount: Double(amount) ?? 0,
-                    date: date,
-                    type: type,
-                    isHidden: false,
-                    createdAt: Date(),
-                    category: selectedCategory,
-                    account: account,
-                )
-                
-                transactionService.save(transaction)
-            }
+        guard let account = self.selectedAccount else {
+            return
         }
+        let transaction = self.getTransaction(account)
+        transactionService.save(
+            transaction,
+            amount: Double(amount) ?? 0,
+            note: note,
+            type: type,
+            date: date,
+            category: selectedCategory,
+            account: account,
+            toAccount: selectedToAccount
+        )
     }
     
     func onAddCategoryTapped() {
         showAddCategorySheet.toggle()
     }
+    
+    private func getTransaction(_ account: Account) -> Transaction {
+        if let transaction = self.transaction {
+            return transaction
+        }
+        return Transaction(
+            account: account,
+            type: type
+        )
+    }
+
 }
