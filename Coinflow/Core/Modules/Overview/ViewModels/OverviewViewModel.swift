@@ -74,7 +74,7 @@ final class OverviewViewModel: ObservableObject {
     func getTransactions(for type: CategoryType) -> [Transaction] {
         transactions.filter { transaction in
             transaction.category?.type == type &&
-            transaction.account.id == selectedAccount?.id
+            transaction.account?.id == selectedAccount?.id
         }
     }
     
@@ -82,7 +82,7 @@ final class OverviewViewModel: ObservableObject {
         transactions
             .filter { transaction in
                 transaction.category?.type == type &&
-                transaction.account.id == selectedAccount?.id
+                transaction.account?.id == selectedAccount?.id
             }
             .reduce(Double.zero) { $0 + abs($1.amount) }
     }
@@ -90,7 +90,7 @@ final class OverviewViewModel: ObservableObject {
     private func hasTransactions(for category: Category) -> Bool {
         transactions.contains { transaction in
             transaction.category?.id == category.id &&
-            transaction.account.id == selectedAccount?.id
+            transaction.account?.id == selectedAccount?.id
         }
     }
 }

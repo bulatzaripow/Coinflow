@@ -101,10 +101,9 @@ class TransactionManageViewModel: ObservableObject {
     }
     
     func saveTransaction() {
-        guard let account = self.selectedAccount else {
-            return
-        }
-        let transaction = self.getTransaction(account)
+        guard let account = self.selectedAccount else { return }
+        let transaction = self.getTransaction()
+        
         transactionService.save(
             transaction,
             amount: Double(amount) ?? 0,
@@ -121,14 +120,11 @@ class TransactionManageViewModel: ObservableObject {
         showAddCategorySheet.toggle()
     }
     
-    private func getTransaction(_ account: Account) -> Transaction {
+    private func getTransaction() -> Transaction {
         if let transaction = self.transaction {
             return transaction
         }
-        return Transaction(
-            account: account,
-            type: type
-        )
+        return Transaction(type: type)
     }
 
 }

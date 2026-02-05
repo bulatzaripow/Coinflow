@@ -29,7 +29,7 @@ class BaseManageService<Item: PersistentModel> {
     }
     
     func fetchById(_ id: PersistentIdentifier) -> Item? {
-        let predicate = #Predicate<Item> { $0.id == id }
+        let predicate = #Predicate<Item> { $0.persistentModelID == id }
         let descriptor = FetchDescriptor<Item>(predicate: predicate)
         return try? context.fetch(descriptor).first
     }

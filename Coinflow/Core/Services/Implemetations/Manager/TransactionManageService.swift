@@ -15,7 +15,7 @@ final class TransactionManageService: BaseManageService<Transaction>, Transactio
         let predicate = #Predicate<Transaction> { tx in
             tx.date >= startDate &&
             tx.date <= endDate &&
-            tx.account.persistentModelID == persistentAccountId
+            tx.account?.persistentModelID == persistentAccountId
         }
         
         let descriptor = FetchDescriptor<Transaction>(
@@ -53,6 +53,10 @@ final class TransactionManageService: BaseManageService<Transaction>, Transactio
             revertChanges(for: transaction)
         }
         
+        if isNewTransaction {
+            context.insert(transaction)
+        }
+        
         transaction.amount = amount
         transaction.type = type
         transaction.note = note
@@ -64,12 +68,8 @@ final class TransactionManageService: BaseManageService<Transaction>, Transactio
         if let toAccount {
             transaction.toAccount = toAccount
         }
-        
-        if isNewTransaction {
-            context.insert(transaction)
-        }
     
-        let account = transaction.account
+        guard let account = transaction.account else { return }
         let toAccount = transaction.toAccount
         let amount = abs(transaction.amount)
         
@@ -93,7 +93,7 @@ final class TransactionManageService: BaseManageService<Transaction>, Transactio
     }
     
     private func revertChanges(for transaction: Transaction) {
-        let account = transaction.account
+        guard let account = transaction.account else { return }
         let toAccount = transaction.toAccount
         let amount = abs(transaction.amount)
         

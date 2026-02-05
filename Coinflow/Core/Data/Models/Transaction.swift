@@ -18,27 +18,19 @@ extension SchemaV1 {
         var createdAt: Date = Date()
         var type: TransactionType
         
-        var account: Account
+        var account: Account? = nil
         var toAccount: Account? = nil
         var category: Category? = nil
         
         init(
-            account: Account,
-            type: TransactionType
-        ) {
-            self.account = account
-            self.type = type
-        }
-        
-        init(
             note: String? = nil,
-            amount: Double,
-            date: Date,
+            amount: Double = 0,
+            date: Date = Date(),
             type: TransactionType = .expense,
             isHidden: Bool = false,
             createdAt: Date = Date(),
             category: Category? = nil,
-            account: Account,
+            account: Account? = nil,
             toAccount: Account? = nil,
         ) {
             self.note = note
@@ -62,6 +54,7 @@ enum TransactionType: String, CaseIterable, Codable {
 
 extension Transaction {
     func formattedData() -> String {
-        return CurrencyFormatter.format(amount, currency: self.account.currency)
+        guard let account else { return "" }
+        return CurrencyFormatter.format(amount, currency: account.currency)
     }
 }
