@@ -25,12 +25,7 @@ struct CoinflowApp: App {
     }
     
     var sharedModelContainer: ModelContainer {
-        let schema = Schema([
-            Transaction.self,
-            Category.self,
-            Account.self,
-            Currency.self
-        ])
+        let schema = Schema(versionedSchema: SchemaLatestVersion.self)
         
         do {
             let localConfig = ModelConfiguration(
@@ -38,7 +33,11 @@ struct CoinflowApp: App {
                 isStoredInMemoryOnly: false
             )
             
-            let container = try ModelContainer(for: schema, configurations: [localConfig])
+            let container = try ModelContainer(
+                for: schema,
+                migrationPlan: UpgradeMigrationPlan.self,
+                configurations: [localConfig]
+            )
             print("ModelContainer created successfully")
             
             createDefaultDataIfNeeded(context: container.mainContext)
