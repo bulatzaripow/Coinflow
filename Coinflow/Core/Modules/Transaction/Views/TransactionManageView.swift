@@ -145,6 +145,7 @@ struct TransactionManageView: View {
                 }
                 .disabled(!viewModel.canModify)
                 .padding(.horizontal, 20)
+                .padding(.bottom, 10)
             }
             .sheet(isPresented: $viewModel.showAddCategorySheet) {
                 CategoryManageViewBuilder.build(

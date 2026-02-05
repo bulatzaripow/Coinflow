@@ -178,7 +178,7 @@ struct HomeView: View {
                     }
                 }
                 .padding(.horizontal, 20)
-                .padding(.vertical, 5)
+                .padding(.vertical, 10)
                 .shadow(
                     color: Color.black.opacity(0.08),
                     radius: 20,

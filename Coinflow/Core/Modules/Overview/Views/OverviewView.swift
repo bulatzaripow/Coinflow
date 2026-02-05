@@ -81,6 +81,7 @@ struct OverviewView: View {
                         .renderingMode(.template)
                         .scaledToFit()
                         .frame(width: 22, height: 22)
+                        .foregroundColor(.primary)
                 } content: {
                     DateFilterView(
                         startDate: $viewModel.startDate,
