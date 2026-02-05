@@ -55,7 +55,7 @@ class AccountManageViewModel: ObservableObject {
         self.currencyService = currencyService
         self.accountService = accountService
         self.onAccountAdded = onAccountAdded
-        
+
         if let account {
             self.account = account
         } else {
@@ -67,6 +67,7 @@ class AccountManageViewModel: ObservableObject {
                 sortIndex: accountService.nextSortIndex(),
                 isDefault: 0
             )
+            self.nameError = .emptyName
         }
         
         setupValidation()

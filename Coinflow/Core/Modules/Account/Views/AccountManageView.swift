@@ -16,7 +16,7 @@ struct AccountManageView: View {
     @Environment(UserPreferences.self) var userPreferences
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject var viewModel: AccountManageViewModel
+    @StateObject var viewModel: AccountManageViewModel
     
     // MARK: UI
     
@@ -32,10 +32,15 @@ struct AccountManageView: View {
                     VStack(alignment: .leading, spacing: 4) {
 
                         TextField("Name", text: $viewModel.account.name)
-
-                        if let error = viewModel.nameError {
-                            FieldErrorView(message: error.localizedDescription)
-                        }
+                            .autocorrectionDisabled()
+                            .onSubmit {
+                                UIApplication.shared.sendAction(
+                                    #selector(UIResponder.resignFirstResponder),
+                                    to: nil,
+                                    from: nil,
+                                    for: nil
+                                )
+                            }
                     }
                     .animation(.easeInOut, value: viewModel.nameError)
 
