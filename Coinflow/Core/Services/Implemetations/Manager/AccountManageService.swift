@@ -10,6 +10,16 @@ import SwiftData
 
 final class AccountManageService: BaseManageService<Account>, AccountManageServiceProtocol {
     
+    override func save(_ item: Account) {
+        // Set other items not default
+        if item.isDefault == 1 {
+            let accounts = fetchAll()
+            accounts.filter { $0.id != item.id && $0.isDefault == 1 }.forEach { $0.isDefault = 0 }
+        }
+        
+        super.save(item)
+    }
+    
     override func fetchAll() -> [Account] {
         let descriptor = FetchDescriptor<Account>(
             sortBy: [
