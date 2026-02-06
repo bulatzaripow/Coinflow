@@ -11,7 +11,7 @@ struct CategoryListView: View {
     
     @Environment(\.modelContext) var modelContext
     
-    @ObservedObject var viewModel: CategoryListViewModel
+    @StateObject var viewModel: CategoryListViewModel
     
     @State private var editMode: EditMode = .inactive
     
