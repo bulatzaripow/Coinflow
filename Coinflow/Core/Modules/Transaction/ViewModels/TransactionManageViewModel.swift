@@ -67,9 +67,13 @@ class TransactionManageViewModel: ObservableObject {
         self.categoryService = categoryService
         self.activeAccount = activeAccount
         
+        // Fetch
         self.accounts = accountService.fetchAll()
         self.categories = categoryService.fetchAll()
         self.selectedToAccount = accounts.first
+        
+        // Sort
+        self.accounts = self.sortAccounts(accounts: accounts)
         
         if let transaction = self.transaction {
             type = transaction.type
@@ -125,6 +129,19 @@ class TransactionManageViewModel: ObservableObject {
             return transaction
         }
         return Transaction(type: type)
+    }
+    
+    private func sortAccounts(accounts: [Account]) -> [Account] {
+        return accounts.sorted { account1, account2 in
+            if account1.id == activeAccount.id {
+                return true  // activeAccount всегда первый
+            }
+            if account2.id == activeAccount.id {
+                return false // activeAccount всегда первый
+            }
+            // Остальные сортируем по sortIndex
+            return account1.sortIndex < account2.sortIndex
+        }
     }
 
 }
