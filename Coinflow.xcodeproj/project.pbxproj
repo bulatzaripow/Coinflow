@@ -11,10 +11,21 @@
 		FE08CD282EF31108002CFC28 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FE08CD272EF31108002CFC28 /* .gitignore */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FE76EEF42F36949C001A4ED7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE08CD0D2EF31040002CFC28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE08CD142EF31040002CFC28;
+			remoteInfo = Coinflow;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		FE08CD152EF31040002CFC28 /* Coinflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE08CD252EF310EA002CFC28 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FE08CD272EF31108002CFC28 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinflowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,10 +34,22 @@
 			path = Coinflow;
 			sourceTree = "<group>";
 		};
+		FE76EEF12F36949C001A4ED7 /* CoinflowTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoinflowTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FE08CD122EF31040002CFC28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE76EEED2F36949C001A4ED7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,8 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				FE08CD172EF31040002CFC28 /* Coinflow */,
-				FE08CD252EF310EA002CFC28 /* README.md */,
+				FE76EEF12F36949C001A4ED7 /* CoinflowTests */,
 				FE08CD272EF31108002CFC28 /* .gitignore */,
+				FE08CD252EF310EA002CFC28 /* README.md */,
 				FE08CD162EF31040002CFC28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				FE08CD152EF31040002CFC28 /* Coinflow.app */,
+				FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +104,29 @@
 			productReference = FE08CD152EF31040002CFC28 /* Coinflow.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FE76EEEF2F36949C001A4ED7 /* CoinflowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE76EEF62F36949C001A4ED7 /* Build configuration list for PBXNativeTarget "CoinflowTests" */;
+			buildPhases = (
+				FE76EEEC2F36949C001A4ED7 /* Sources */,
+				FE76EEED2F36949C001A4ED7 /* Frameworks */,
+				FE76EEEE2F36949C001A4ED7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE76EEF52F36949C001A4ED7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FE76EEF12F36949C001A4ED7 /* CoinflowTests */,
+			);
+			name = CoinflowTests;
+			packageProductDependencies = (
+			);
+			productName = CoinflowTests;
+			productReference = FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -86,11 +134,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2610;
+				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					FE08CD142EF31040002CFC28 = {
 						CreatedOnToolsVersion = 26.1.1;
+					};
+					FE76EEEF2F36949C001A4ED7 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = FE08CD142EF31040002CFC28;
 					};
 				};
 			};
@@ -110,6 +162,7 @@
 			projectRoot = "";
 			targets = (
 				FE08CD142EF31040002CFC28 /* Coinflow */,
+				FE76EEEF2F36949C001A4ED7 /* CoinflowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -124,6 +177,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE76EEEE2F36949C001A4ED7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -134,7 +194,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE76EEEC2F36949C001A4ED7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE76EEF52F36949C001A4ED7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE08CD142EF31040002CFC28 /* Coinflow */;
+			targetProxy = FE76EEF42F36949C001A4ED7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FE08CD1E2EF31042002CFC28 /* Debug */ = {
@@ -332,6 +407,48 @@
 			};
 			name = Release;
 		};
+		FE76EEF72F36949C001A4ED7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bulatzaripov.CoinflowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinflow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Coinflow";
+			};
+			name = Debug;
+		};
+		FE76EEF82F36949C001A4ED7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bulatzaripov.CoinflowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinflow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Coinflow";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -349,6 +466,15 @@
 			buildConfigurations = (
 				FE08CD212EF31042002CFC28 /* Debug */,
 				FE08CD222EF31042002CFC28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE76EEF62F36949C001A4ED7 /* Build configuration list for PBXNativeTarget "CoinflowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE76EEF72F36949C001A4ED7 /* Debug */,
+				FE76EEF82F36949C001A4ED7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
