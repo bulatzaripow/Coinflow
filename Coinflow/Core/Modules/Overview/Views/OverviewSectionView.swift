@@ -41,7 +41,7 @@ struct OverviewSectionView: View {
                 columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4),
                 spacing: 16
             ) {
-                ForEach(viewModel.categories, id: \.self) { category in
+                ForEach(viewModel.sortedCategories, id: \.self) { category in
                     VStack {
                         ZStack {
                             Circle()
