@@ -14,6 +14,8 @@ struct CoinflowApp: App {
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        
+        setupDefaultCurrencyIfNeeded(userPreferences: userPreferences)
     }
     
     var body: some Scene {
@@ -76,4 +78,15 @@ private func createDefaultDataIfNeeded(context: ModelContext) {
     } catch {
         print("Error saving default data: \(error)")
     }
+}
+
+private func setupDefaultCurrencyIfNeeded(userPreferences: UserPreferences) {
+    let hasSetCurrency =
+        UserDefaults.standard.string(forKey: "defaultCurrencyCode") != nil
+
+    guard !hasSetCurrency else { return }
+
+    let localeCurrency = Locale.current.currency?.identifier ?? "USD"
+
+    userPreferences.setDefaultCurrencyCode(localeCurrency)
 }
