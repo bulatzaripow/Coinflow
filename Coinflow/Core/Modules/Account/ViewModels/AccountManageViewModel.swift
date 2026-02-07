@@ -15,6 +15,7 @@ class AccountManageViewModel: ObservableObject {
 
     private let currencyService: CurrencyManageServiceProtocol
     private let accountService: AccountManageServiceProtocol
+    private let userPreferences: UserPreferences
     private let onAccountAdded: (Account) -> Void
     
     private let accountId: PersistentIdentifier?
@@ -49,12 +50,16 @@ class AccountManageViewModel: ObservableObject {
         account: Account? = nil,
         currencyService: CurrencyManageService,
         accountService: AccountManageServiceProtocol,
+        userPreferences: UserPreferences,
         onAccountAdded: @escaping (Account) -> Void,
     ) {
         self.accountId = account?.id
         self.currencyService = currencyService
         self.accountService = accountService
+        self.userPreferences = userPreferences
         self.onAccountAdded = onAccountAdded
+        
+        let defaultCurrency = currencyService.fetchByCode(by: userPreferences.defaultCurrencyCode)
 
         if let account {
             self.account = account
@@ -62,7 +67,7 @@ class AccountManageViewModel: ObservableObject {
             self.account = Account(
                 name: "",
                 balance: 0,
-                currency: currencyService.defaultCurrency(),
+                currency: defaultCurrency ?? currencyService.defaultCurrency(),
                 icon: "cash",
                 sortIndex: accountService.nextSortIndex(),
                 isDefault: 0

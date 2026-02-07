@@ -221,6 +221,7 @@ struct HomeView: View {
             .sheet(isPresented: $viewModel.showAddAccountSheet) {
                 AccountManageViewBuilder.build(
                     modelContext: modelContext,
+                    userPreferences: userPreferences,
                     onAccountAdded: { account in
                         viewModel.setSelectedAccount(account)
                     }
@@ -231,6 +232,7 @@ struct HomeView: View {
                 AccountManageViewBuilder.build(
                     account,
                     modelContext: modelContext,
+                    userPreferences: userPreferences,
                     onAccountAdded: { account in
                         viewModel.setSelectedAccount(account)
                     }

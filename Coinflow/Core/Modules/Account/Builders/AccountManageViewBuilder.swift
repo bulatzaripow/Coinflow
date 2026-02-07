@@ -11,6 +11,7 @@ struct AccountManageViewBuilder {
     static func build(
         _ account: Account? = nil,
         modelContext: ModelContext,
+        userPreferences: UserPreferences,
         onAccountAdded: @escaping (Account) -> Void
     ) -> AccountManageView {
         let currencyService = CurrencyManageService(context: modelContext)
@@ -20,6 +21,7 @@ struct AccountManageViewBuilder {
             account: account,
             currencyService: currencyService,
             accountService: accountService,
+            userPreferences: userPreferences,
             onAccountAdded: onAccountAdded
         )
         
