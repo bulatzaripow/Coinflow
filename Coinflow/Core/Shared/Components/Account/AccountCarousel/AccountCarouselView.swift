@@ -46,7 +46,7 @@ struct AccountCarouselView: View {
                         ForEach(Array(allCards.enumerated()), id: \.offset) { index, cardType in
                             switch cardType {
                             case .account(let account):
-                                AccountCardView(account: account)
+                                AccountCardView(account: AccountDraft.from(account: account))
                                     .onTapGesture {
                                         selectedAccount = account
                                         onTapAccount(account)

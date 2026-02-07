@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountCardView: View {
-    let account: Account
+    let account: AccountDraft
     
     var body: some View {
         ZStack {

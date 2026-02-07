@@ -24,14 +24,14 @@ struct AccountManageView: View {
         NavigationStack(path: $viewModel.path) {
             Form {
                 Section {
-                    AccountCardView(account: viewModel.account)
+                    AccountCardView(account: viewModel.accountDraft)
                 }
                 .listRowInsets(EdgeInsets())
                 
                 Section {
                     VStack(alignment: .leading, spacing: 4) {
 
-                        TextField("Name", text: $viewModel.account.name)
+                        TextField("Name", text: $viewModel.accountDraft.name)
                             .autocorrectionDisabled()
                             .onSubmit {
                                 UIApplication.shared.sendAction(
@@ -47,7 +47,7 @@ struct AccountManageView: View {
                     
                     VStack(alignment: .leading, spacing: 4) {
 
-                        TextField("Balance", value: $viewModel.account.balance, format: .number)
+                        TextField("Balance", value: $viewModel.accountDraft.balance, format: .number)
                             .keyboardType(.decimalPad)
 
                         if let error = viewModel.balanceError {
@@ -60,14 +60,7 @@ struct AccountManageView: View {
                     HStack {
                         Toggle(
                             "Default account",
-                            isOn: Binding(
-                                get: {
-                                    viewModel.account.isDefault == 1
-                                },
-                                set: { newValue in
-                                    viewModel.account.isDefault = newValue ? 1 : 0
-                                }
-                            )
+                            isOn: $viewModel.accountDraft.isDefault
                         )
                     }
                     
@@ -75,18 +68,18 @@ struct AccountManageView: View {
                         viewModel.path.append(AccountRoutes.currency)
                     } label: {
                         HStack {
-                            Image(viewModel.account.currency.code)
+                            Image(viewModel.accountDraft.currency.code)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 24, height: 24)
                                 .foregroundStyle(.primary)
                             
-                            Text(viewModel.account.currency.name)
+                            Text(viewModel.accountDraft.currency.name)
                                 .foregroundStyle(.primary)
                             
                             Spacer()
                             
-                            Text(viewModel.account.currency.code)
+                            Text(viewModel.accountDraft.currency.code)
                                 .foregroundStyle(.tertiary)
                             
                             Image("angle-small-right")
@@ -104,10 +97,10 @@ struct AccountManageView: View {
                     ColorPicker(
                         selectedColor: Binding(
                             get: {
-                                AppColors(rawValue: viewModel.account.backgroundColor ?? "autumn") ?? AppColors.autumn
+                                AppColors(rawValue: viewModel.accountDraft.backgroundColor ?? "autumn") ?? AppColors.autumn
                             },
                             set: { newValue in
-                                viewModel.account.backgroundColor = newValue?.rawValue
+                                viewModel.accountDraft.backgroundColor = newValue?.rawValue
                             }
                         ),
                         action: { color in
@@ -117,7 +110,7 @@ struct AccountManageView: View {
                     .padding(.vertical, 12)
                     
                     PatternPicker(
-                        selectedPattern: $viewModel.account.backgroundPattern,
+                        selectedPattern: $viewModel.accountDraft.backgroundPattern,
                         action: { pattern in
                             viewModel.selectPattern(pattern)
                         }
@@ -146,7 +139,7 @@ struct AccountManageView: View {
                 case .currency:
                     SelectCurrencyViewBuilder.build(
                         context: modelContext,
-                        selectedCurrency: userPreferences.defaultCurrencyCode,
+                        selectedCurrency: viewModel.accountDraft.currency.code,
                     ) { currency in
                         viewModel.selectCurrency(currency)
                         viewModel.path.removeLast()
@@ -170,7 +163,7 @@ struct AccountManageView: View {
                 
                 ToolbarItem(placement: .principal) {
                     Text(
-                        viewModel.account.modelContext != nil ?
+                        viewModel.account?.modelContext != nil ?
                         "Edit account" :
                         "Add Account"
                     )

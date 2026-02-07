@@ -18,9 +18,8 @@ class AccountManageViewModel: ObservableObject {
     private let userPreferences: UserPreferences
     private let onAccountAdded: (Account) -> Void
     
-    private let accountId: PersistentIdentifier?
-    
-    @Published var account: Account
+    private(set) var account: Account?
+    @Published var accountDraft: AccountDraft
     
     private var cancellables = Set<AnyCancellable>()
     @Published var nameError: AccountValidationError?
@@ -40,7 +39,7 @@ class AccountManageViewModel: ObservableObject {
     }
     
     var canDelete: Bool {
-        account.modelContext != nil &&
+        account?.modelContext != nil &&
         accountService.fetchAll().count > 1
     }
     
@@ -53,24 +52,19 @@ class AccountManageViewModel: ObservableObject {
         userPreferences: UserPreferences,
         onAccountAdded: @escaping (Account) -> Void,
     ) {
-        self.accountId = account?.id
+        self.account = account
         self.currencyService = currencyService
         self.accountService = accountService
         self.userPreferences = userPreferences
         self.onAccountAdded = onAccountAdded
         
         let defaultCurrency = currencyService.fetchByCode(by: userPreferences.defaultCurrencyCode)
-
+        
         if let account {
-            self.account = account
+            self.accountDraft = AccountDraft.from(account: account)
         } else {
-            self.account = Account(
-                name: "",
-                balance: 0,
-                currency: defaultCurrency ?? currencyService.defaultCurrency(),
-                icon: "cash",
-                sortIndex: accountService.nextSortIndex(),
-                isDefault: 0
+            self.accountDraft = AccountDraft(
+                currency: defaultCurrency ?? currencyService.defaultCurrency()
             )
             self.nameError = .emptyName
         }
@@ -83,7 +77,7 @@ class AccountManageViewModel: ObservableObject {
     private func setupValidation() {
 
         // Name validation
-        $account
+        $accountDraft
             .map { $0.name }
             .dropFirst()
             .debounce(for: .milliseconds(200), scheduler: RunLoop.main)
@@ -93,7 +87,7 @@ class AccountManageViewModel: ObservableObject {
             .store(in: &cancellables)
 
         // Balance validation
-        $account
+        $accountDraft
             .map { $0.balance }
             .dropFirst()
             .debounce(for: .milliseconds(200), scheduler: RunLoop.main)
@@ -104,6 +98,11 @@ class AccountManageViewModel: ObservableObject {
     }
     
     func saveAccount() {
+        let account = draftToAccount(
+            draft: accountDraft,
+            sortIndex: accountService.nextSortIndex(),
+            account: account,
+        )
         accountService.save(account)
         onAccountAdded(account)
     }
@@ -112,10 +111,11 @@ class AccountManageViewModel: ObservableObject {
         let accounts = accountService.fetchAll()
 
         guard accounts.count > 1 else { return }
+        guard let account = self.account else { return }
 
-        if account.isDefault == 1 {
+        if accountDraft.isDefault {
             let newDefault = accounts
-                .filter { $0.id != account.id }
+                .filter { $0.id != account.persistentModelID }
                 .sorted { $0.sortIndex < $1.sortIndex }
                 .first
             
@@ -129,15 +129,15 @@ class AccountManageViewModel: ObservableObject {
     }
     
     func selectColor(_ color: AppColors?) {
-        account.backgroundColor = color != nil ? color?.rawValue : nil
+        accountDraft.backgroundColor = color != nil ? color?.rawValue : nil
     }
     
     func selectPattern(_ pattern: String?) {
-        account.backgroundPattern = pattern
+        accountDraft.backgroundPattern = pattern
     }
     
     func selectCurrency(_ currency: Currency) {
-        account.currency = currency
+        accountDraft.currency = currency
     }
     
     private func validateName(_ value: String) {
@@ -166,6 +166,30 @@ class AccountManageViewModel: ObservableObject {
         }
 
         balanceError = nil
+    }
+    
+    private func draftToAccount(draft: AccountDraft, sortIndex: Int, account: Account?) -> Account {
+        if let account = account {
+            account.name = draft.name
+            account.balance = draft.balance
+            account.currency = draft.currency
+            account.sortIndex = sortIndex
+            account.isDefault = draft.isDefault ? 1 : 0
+            account.backgroundColor = draft.backgroundColor
+            account.backgroundPattern = draft.backgroundPattern
+            return account
+        } else {
+            return Account(
+                name: draft.name,
+                balance: draft.balance,
+                currency: draft.currency,
+                icon: "cash",
+                sortIndex: sortIndex,
+                isDefault: draft.isDefault ? 1 : 0,
+                backgroundPattern: draft.backgroundPattern,
+                backgroundColor: draft.backgroundColor,
+            )
+        }
     }
 
 }
