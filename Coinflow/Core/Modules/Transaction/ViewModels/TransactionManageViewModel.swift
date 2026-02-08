@@ -52,6 +52,13 @@ class TransactionManageViewModel: ObservableObject {
         return categories.filter { $0.type.rawValue == type.rawValue }
     }
     
+    var filteredToAccounts: [Account] {
+        return accounts.filter {
+            $0.currency.code == selectedAccount?.currency.code &&
+            $0.id != selectedAccount?.id
+        }
+    }
+    
     // MARK: - Init
     
     init(
@@ -134,12 +141,11 @@ class TransactionManageViewModel: ObservableObject {
     private func sortAccounts(accounts: [Account]) -> [Account] {
         return accounts.sorted { account1, account2 in
             if account1.id == activeAccount.id {
-                return true  // activeAccount всегда первый
+                return true
             }
             if account2.id == activeAccount.id {
-                return false // activeAccount всегда первый
+                return false
             }
-            // Остальные сортируем по sortIndex
             return account1.sortIndex < account2.sortIndex
         }
     }

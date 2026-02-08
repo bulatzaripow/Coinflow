@@ -69,7 +69,7 @@ struct TransactionManageView: View {
                         
                         if viewModel.type == .transfer {
                             HorizontalItemPicker(
-                                items: viewModel.accounts,
+                                items: viewModel.filteredToAccounts,
                                 selectedItem: viewModel.selectedToAccount,
                                 title: "toAccount".localized,
                                 icon: { Image($0.icon) },

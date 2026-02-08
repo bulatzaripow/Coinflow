@@ -44,7 +44,6 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            
             HStack {
                 Text(title)
                     .font(.headline)
@@ -65,57 +64,84 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
                 }
             }
             .padding(.horizontal, 16)
+            
+            ZStack {
+                itemsScroll
+                    .opacity(items.isEmpty ? 0 : 1)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 8) {
-
-                    ForEach(items) { item in
-                        let isSelected = selectedItem?.id == item.id
-
-                        Button {
-                            withAnimation(.easeInOut(duration: 0.15)) {
-                                onSelect(isSelected ? nil : item)
-                            }
-                        } label: {
-                            VStack(spacing: 6) {
-
-                                ZStack {
-                                    Circle()
-                                        .stroke(
-                                            isSelected ? Color.appPrimary : .clear,
-                                            lineWidth: 2
-                                        )
-                                        .frame(width: 48, height: 48)
-
-                                    Circle()
-                                        .fill(Color(.systemGray6))
-                                        .frame(width: 44, height: 44)
-
-                                    icon(item)
-                                        .resizable()
-                                        .renderingMode(.template)
-                                        .scaledToFit()
-                                        .frame(width: 25, height: 25)
-                                        .foregroundColor(
-                                            isSelected ? .appPrimary : .primary
-                                        )
-                                }
-
-                                Text(text(item))
-                                    .font(.caption)
-                                    .lineLimit(2)
-                                    .multilineTextAlignment(.center)
-                                    .frame(width: 60, height: 32, alignment: .top)
-                                    .foregroundColor(.primary)
-                            }
-                            .frame(width: 60)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 2)
+                emptyState
+                    .opacity(items.isEmpty ? 1 : 0)
             }
+            .frame(minHeight: 86)
+            .animation(.smooth, value: items.count)
+        }
+        .animation(.smooth, value: items.count)
+    }
+    
+    private var emptyState: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "tray")
+                .font(.system(size: 28))
+                .foregroundColor(.secondary)
+                .opacity(0.6)
+
+            Text("No items yet")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    private var itemsScroll: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+
+                ForEach(items) { item in
+                    let isSelected = selectedItem?.id == item.id
+
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.15)) {
+                            onSelect(isSelected ? nil : item)
+                        }
+                    } label: {
+                        VStack(spacing: 6) {
+
+                            ZStack {
+                                Circle()
+                                    .stroke(
+                                        isSelected ? Color.appPrimary : .clear,
+                                        lineWidth: 2
+                                    )
+                                    .frame(width: 48, height: 48)
+
+                                Circle()
+                                    .fill(Color(.systemGray6))
+                                    .frame(width: 44, height: 44)
+
+                                icon(item)
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .scaledToFit()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(
+                                        isSelected ? .appPrimary : .primary
+                                    )
+                            }
+
+                            Text(text(item))
+                                .font(.caption)
+                                .lineLimit(2)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 60, height: 32, alignment: .top)
+                                .foregroundColor(.primary)
+                        }
+                        .frame(width: 60)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 2)
         }
     }
 }
