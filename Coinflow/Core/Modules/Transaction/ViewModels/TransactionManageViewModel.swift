@@ -77,7 +77,6 @@ class TransactionManageViewModel: ObservableObject {
         // Fetch
         self.accounts = accountService.fetchAll()
         self.categories = categoryService.fetchAll()
-        self.selectedToAccount = accounts.first
         
         // Sort
         self.accounts = self.sortAccounts(accounts: accounts)

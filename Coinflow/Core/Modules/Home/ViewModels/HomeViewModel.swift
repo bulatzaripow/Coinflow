@@ -68,7 +68,11 @@ class HomeViewModel: ObservableObject {
     
     func reloadTransactions() {
         if let account = selectedAccount {
-            self.transactions = transactionService.fetchByAccountAndDateRange(account: account, startDate: startDate, endDate: endDate)
+            self.transactions = transactionService.fetchByAccountAndDateRange(
+                account: account,
+                startDate: startDate,
+                endDate: endDate
+            )
         }
     }
     
@@ -83,7 +87,11 @@ class HomeViewModel: ObservableObject {
     func setSelectedAccount(_ selected: Account?) {
         self.selectedAccount = selected
         if let account = selected {
-            transactions = transactionService.fetchByAccountAndDateRange(account: account, startDate: startDate, endDate: endDate)
+            transactions = transactionService.fetchByAccountAndDateRange(
+                account: account,
+                startDate: startDate,
+                endDate: endDate
+            )
         }
     }
 }

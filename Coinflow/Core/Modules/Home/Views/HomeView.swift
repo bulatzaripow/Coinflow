@@ -89,6 +89,7 @@ struct HomeView: View {
                     // Transactions
                     Section {
                         TransactionsListView(
+                            selectedAccount: viewModel.selectedAccount,
                             transactions: viewModel.transactions
                         ) { transaction in
                             viewModel.chooseTransactionToEdit(transaction)

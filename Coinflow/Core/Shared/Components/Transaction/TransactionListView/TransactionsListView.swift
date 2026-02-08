@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TransactionsListView: View {
+    let selectedAccount: Account?
     let transactions: [Transaction]
     let onTap: (Transaction) -> Void
     let deleteAction: (Transaction) -> Void
@@ -15,7 +16,9 @@ struct TransactionsListView: View {
     var body: some View {
         if !transactions.isEmpty {
             ForEach(transactions) { transaction in
-                TransactionRowView(transaction: transaction)
+                TransactionRowView(
+                    selectedAccount: selectedAccount,
+                    transaction: transaction)
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         Button(role: .destructive) {
                             deleteAction(transaction)

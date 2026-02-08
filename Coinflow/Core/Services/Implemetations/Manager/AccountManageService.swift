@@ -30,6 +30,12 @@ final class AccountManageService: BaseManageService<Account>, AccountManageServi
         return items ?? []
     }
     
+    func fetchById(_ id: UUID) -> Account? {
+        let predicate = #Predicate<Account> { $0.id == id }
+        let descriptor = FetchDescriptor<Account>(predicate: predicate)
+        return try? context.fetch(descriptor).first
+    }
+    
     func nextSortIndex() -> Int {
         let descriptor = FetchDescriptor<Account>()
         

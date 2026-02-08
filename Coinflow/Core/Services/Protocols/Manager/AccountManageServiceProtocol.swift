@@ -10,7 +10,7 @@ import SwiftData
 
 protocol AccountManageServiceProtocol {
     func fetchAll() -> [Account]
-    func fetchById(_ id: PersistentIdentifier) -> Account?
+    func fetchById(_ id: UUID) -> Account?
     func save(_ item: Account)
     func delete(_ item: Account)
     func saveContext() throws

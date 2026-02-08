@@ -11,6 +11,7 @@ import SwiftData
 extension SchemaV1 {
     @Model
     final class Account: Identifiable, Equatable {
+        @Attribute(.unique) var id: UUID = UUID()
         var name: String
         var balance: Double = 0
         var isDefault: Int = 0

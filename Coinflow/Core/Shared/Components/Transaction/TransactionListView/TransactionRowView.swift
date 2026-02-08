@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct TransactionRowView: View {
+    let selectedAccount: Account?
     let transaction: Transaction
     
     // MARK: - Private
     
     private var isIncome: Bool {
+        if transaction.type == .transfer {
+            return transaction.toAccount?.id == selectedAccount?.id
+        }
+        
         return transaction.type == .income
     }
     
@@ -73,11 +78,14 @@ struct TransactionRowView: View {
                     .lineLimit(1)
                     .truncationMode(.tail)
                 
-                if let note = transaction.note, !note.isEmpty {
-                    Text(note)
-                        .font(.caption)
-                        .lineLimit(2)
+                if  transaction.type == .transfer,
+                    let from = transaction.account,
+                    let to = transaction.toAccount {
+                    Text("\(from.name) > \(to.name)")
+                        .lineLimit(1)
                         .truncationMode(.tail)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
                 
                 Text(dateText)

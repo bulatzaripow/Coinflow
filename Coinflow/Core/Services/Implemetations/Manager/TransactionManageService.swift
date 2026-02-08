@@ -11,11 +11,14 @@ import SwiftData
 final class TransactionManageService: BaseManageService<Transaction>, TransactionManageServiceProtocol {
     
     func fetchByAccountAndDateRange(account: Account, startDate: Date, endDate: Date) -> [Transaction] {
-        let persistentAccountId = account.persistentModelID
+        let accountID = account.id
         let predicate = #Predicate<Transaction> { tx in
             tx.date >= startDate &&
             tx.date <= endDate &&
-            tx.account?.persistentModelID == persistentAccountId
+            (
+                tx.account?.id == accountID ||
+                tx.toAccount?.id == accountID
+            )
         }
         
         let descriptor = FetchDescriptor<Transaction>(

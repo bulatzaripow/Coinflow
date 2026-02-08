@@ -115,7 +115,7 @@ class AccountManageViewModel: ObservableObject {
 
         if accountDraft.isDefault {
             let newDefault = accounts
-                .filter { $0.id != account.persistentModelID }
+                .filter { $0.id != account.id }
                 .sorted { $0.sortIndex < $1.sortIndex }
                 .first
             
