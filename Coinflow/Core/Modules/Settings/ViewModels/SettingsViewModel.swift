@@ -17,8 +17,8 @@ class SettingsViewModel: ObservableObject {
     @Published var showTermsOfService = false
     var onNavigate: ((MainRoutes) -> Void)?
     
-    let privacyPolicyURL = URL(string: "https://google.com")
-    let termsURL = URL(string: "https://google.com")
+    let privacyPolicyURL = URL(string: getUrlFromInfo("PrivacyPolicyURL"))
+    let termsURL = URL(string: getUrlFromInfo("TermsOfServiceURL"))
     
     var currentLanguage: String {
         let locale = Locale.current
@@ -47,5 +47,13 @@ class SettingsViewModel: ObservableObject {
     
     func goToCurrencies() {
         self.onNavigate?(.currencies)
+    }
+}
+
+// MARK: - Extension
+
+private extension SettingsViewModel {
+    static func getUrlFromInfo(_ key: String) -> String {
+        Bundle.main.object(forInfoDictionaryKey: key) as? String ?? ""
     }
 }
