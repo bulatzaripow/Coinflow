@@ -9,24 +9,24 @@ import Foundation
 import Combine
 
 class OverviewSectionViewModel: ObservableObject {
-    
+
     // MARK: - Props
-    
+
     @Published var title: String
     @Published var totalAmount: Double
     @Published var categories: [Category]
     @Published var selectedAccount: Account?
     @Published var type: OverviewSectionViewType
     @Published var defaultCurrency: Currency
-    
+
     private var transactions: [Transaction] = []
-    
+
     var sortedCategories: [Category] {
         return categories.sorted { getTotalAmount(for: $0) > getTotalAmount(for: $1) }
     }
-    
+
     // MARK: - Init
-    
+
     init(
         title: String,
         totalAmount: Double,
@@ -49,7 +49,7 @@ class OverviewSectionViewModel: ObservableObject {
             createdAt: Date()
         )
     }
-    
+
     // MARK: - Methods
 
     func getTotalAmount(for category: Category) -> Double {

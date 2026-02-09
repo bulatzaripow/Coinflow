@@ -11,10 +11,10 @@ import SwiftData
 enum UpgradeMigrationPlan: SchemaMigrationPlan {
     static var schemas: [any VersionedSchema.Type] {
         [
-            SchemaV1.self,
+            SchemaV1.self
         ]
     }
-    
+
     static var stages: [MigrationStage] {
         []
     }
@@ -23,10 +23,10 @@ enum UpgradeMigrationPlan: SchemaMigrationPlan {
 enum DowngradeMigrationPlan: SchemaMigrationPlan {
     static var schemas: [any VersionedSchema.Type] {
         [
-            SchemaV1.self,
+            SchemaV1.self
         ]
     }
-    
+
     static var stages: [MigrationStage] {
         []
     }

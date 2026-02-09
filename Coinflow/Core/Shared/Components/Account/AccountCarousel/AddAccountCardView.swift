@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddAccountCardView: View {
     var action: () -> Void
-    
+
     var body: some View {
         Button {
             action()
@@ -17,7 +17,7 @@ struct AddAccountCardView: View {
             VStack {
                 Image(systemName: "plus")
                     .frame(width: 30, height: 30)
-                
+
                 Text("Add account")
                     .font(.headline)
             }
@@ -34,4 +34,3 @@ struct AddAccountCardView: View {
         }
     }
 }
-

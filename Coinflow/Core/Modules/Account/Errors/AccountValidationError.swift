@@ -8,7 +8,7 @@
 import Foundation
 
 enum AccountValidationError: LocalizedError {
-    
+
     case emptyName
     case nameStartsWithDigit
     case invalidBalance
@@ -24,4 +24,3 @@ enum AccountValidationError: LocalizedError {
         }
     }
 }
-

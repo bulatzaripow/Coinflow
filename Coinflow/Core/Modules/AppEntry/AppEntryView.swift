@@ -11,7 +11,7 @@ import SwiftData
 struct AppEntryView: View {
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     @Environment(\.modelContext) var modelContext
-    
+
     var body: some View {
         ZStack {
             if hasSeenOnboarding {
@@ -29,27 +29,42 @@ struct AppEntryView: View {
 }
 
 #Preview {
-    let schema = Schema([
-        Transaction.self,
-        Category.self,
-        Account.self,
-        Currency.self
-    ])
-    
-    let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: schema, configurations: [config])
+    do {
+        let schema = Schema([
+            Transaction.self,
+            Category.self,
+            Account.self,
+            Currency.self
+        ])
 
-    let context = container.mainContext
-    
-    let currencyService = CurrencyInitializerService(context: context)
-    let categoryService = CategoryInitializerService(context: context)
-    let accountService = AccountInitializerService(context: context, currencyService: currencyService)
-    
-    currencyService.setupDefaultCurrenciesIfNeeded()
-    categoryService.setupDefaultCategoriesIfNeeded()
-    accountService.setupDefaultAccountIfNeeded()
-    
-    return AppEntryView()
-        .modelContainer(container)
-        .environment(UserPreferences())
+        let config = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: true
+        )
+
+        let container = try ModelContainer(
+            for: schema,
+            configurations: [config]
+        )
+
+        let context = container.mainContext
+
+        let currencyService = CurrencyInitializerService(context: context)
+        let categoryService = CategoryInitializerService(context: context)
+        let accountService = AccountInitializerService(
+            context: context,
+            currencyService: currencyService
+        )
+
+        currencyService.setupDefaultCurrenciesIfNeeded()
+        categoryService.setupDefaultCategoriesIfNeeded()
+        accountService.setupDefaultAccountIfNeeded()
+
+        return AppEntryView()
+            .modelContainer(container)
+            .environment(UserPreferences())
+
+    } catch {
+        return Text("Failed to load preview")
+    }
 }

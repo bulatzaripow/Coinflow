@@ -9,43 +9,43 @@ import SwiftUI
 import SwiftData
 
 struct CategoryManageView: View {
-    
+
     // MARK: - Props
-    
+
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: CategoryManageViewModel
-    
+
     let onUpdate: () -> Void
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                
+
                 Form {
                     Section {
                         TextField("Category name", text: $viewModel.name)
                             .font(.system(size: 22))
-                        
+
                         Picker("", selection: $viewModel.type) {
                             Text("Expense").tag(CategoryType.expense)
                             Text("Income").tag(CategoryType.income)
                         }
                         .pickerStyle(.segmented)
                     }
-                    
+
                     // Icon Picker
                     Section("Icon") {
                         ForEach(viewModel.icons, id: \.name) { group in
                             VStack(alignment: .leading) {
                                 Text(group.name)
                                     .font(.headline)
-                                
+
                                 LazyVGrid(columns: viewModel.gridColumns, spacing: 16) {
-                                    
+
                                     ForEach(group.icons, id: \.self) { icon in
-                                        
+
                                         IconItemView(
                                             icon: icon,
                                             isSelected: icon == viewModel.selectedIcon
@@ -60,7 +60,7 @@ struct CategoryManageView: View {
                     }
                     .listRowSpacing(0)
                     .listRowSeparator(.hidden)
-                    
+
                     // Spacer
                     Section {
                         Color.clear
@@ -68,7 +68,7 @@ struct CategoryManageView: View {
                             .listRowBackground(Color.clear)
                     }
                 }
-                
+
                 // Save button
                 Button {
                     viewModel.saveCategory()

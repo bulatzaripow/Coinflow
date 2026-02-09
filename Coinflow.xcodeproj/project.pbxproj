@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FE08CD262EF310EA002CFC28 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FE08CD252EF310EA002CFC28 /* README.md */; };
 		FE08CD282EF31108002CFC28 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FE08CD272EF31108002CFC28 /* .gitignore */; };
+		FEFCC14A2F3A7609009F26DD /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FEFCC1492F3A7609009F26DD /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +27,7 @@
 		FE08CD252EF310EA002CFC28 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FE08CD272EF31108002CFC28 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinflowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEFCC1492F3A7609009F26DD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -78,6 +80,7 @@
 				FE08CD172EF31040002CFC28 /* Coinflow */,
 				FE76EEF12F36949C001A4ED7 /* CoinflowTests */,
 				FE08CD272EF31108002CFC28 /* .gitignore */,
+				FEFCC1492F3A7609009F26DD /* .swiftlint.yml */,
 				FE08CD252EF310EA002CFC28 /* README.md */,
 				FE08CD162EF31040002CFC28 /* Products */,
 			);
@@ -106,6 +109,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FEFCC1482F3A64DE009F26DD /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FE08CD172EF31040002CFC28 /* Coinflow */,
@@ -169,6 +173,9 @@
 			);
 			mainGroup = FE08CD0C2EF31040002CFC28;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FEFCC1462F3A64B4009F26DD /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FE08CD162EF31040002CFC28 /* Products */;
 			projectDirPath = "";
@@ -185,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEFCC14A2F3A7609009F26DD /* .swiftlint.yml in Resources */,
 				FE08CD262EF310EA002CFC28 /* README.md in Resources */,
 				FE08CD282EF31108002CFC28 /* .gitignore in Resources */,
 			);
@@ -221,6 +229,10 @@
 			isa = PBXTargetDependency;
 			target = FE08CD142EF31040002CFC28 /* Coinflow */;
 			targetProxy = FE76EEF42F36949C001A4ED7 /* PBXContainerItemProxy */;
+		};
+		FEFCC1482F3A64DE009F26DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = FEFCC1472F3A64DE009F26DD /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -499,6 +511,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FEFCC1462F3A64B4009F26DD /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.63.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FEFCC1472F3A64DE009F26DD /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEFCC1462F3A64B4009F26DD /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE08CD0D2EF31040002CFC28 /* Project object */;
 }

@@ -11,17 +11,17 @@ import SwiftData
 extension SchemaV1 {
     @Model
     final class Transaction: Identifiable {
-        var note: String? = nil
+        var note: String?
         var amount: Double = 0
         var date: Date = Date()
         var isHidden: Bool = false
         var createdAt: Date = Date()
         var type: TransactionType
-        
-        var account: Account? = nil
-        var toAccount: Account? = nil
-        var category: Category? = nil
-        
+
+        var account: Account?
+        var toAccount: Account?
+        var category: Category?
+
         init(
             note: String? = nil,
             amount: Double = 0,
@@ -47,9 +47,9 @@ extension SchemaV1 {
 }
 
 enum TransactionType: String, CaseIterable, Codable {
-    case income = "income"
-    case expense = "expense"
-    case transfer = "transfer"
+    case income
+    case expense
+    case transfer
 }
 
 extension Transaction {

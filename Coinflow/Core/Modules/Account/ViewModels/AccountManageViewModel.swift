@@ -10,41 +10,41 @@ import SwiftData
 import Combine
 
 class AccountManageViewModel: ObservableObject {
-    
+
     // MARK: - Props
 
     private let currencyService: CurrencyManageServiceProtocol
     private let accountService: AccountManageServiceProtocol
     private let userPreferences: UserPreferences
     private let onAccountAdded: (Account) -> Void
-    
+
     private(set) var account: Account?
     @Published var accountDraft: AccountDraft
-    
+
     private var cancellables = Set<AnyCancellable>()
     @Published var nameError: AccountValidationError?
     @Published var balanceError: AccountValidationError?
-    
+
     @Published var selectedColor: AppColors?
     @Published var selectedPattern: String?
-    
+
     @Published var showSelectCurrencySheet: Bool = false
     @Published var path = NavigationPath()
-    
+
     @Published var showDeleteAlert = false
-    
+
     var canSave: Bool {
         nameError == nil &&
         balanceError == nil
     }
-    
+
     var canDelete: Bool {
         account?.modelContext != nil &&
         accountService.fetchAll().count > 1
     }
-    
+
     // MARK: - Init
-    
+
     init(
         account: Account? = nil,
         currencyService: CurrencyManageService,
@@ -57,9 +57,9 @@ class AccountManageViewModel: ObservableObject {
         self.accountService = accountService
         self.userPreferences = userPreferences
         self.onAccountAdded = onAccountAdded
-        
+
         let defaultCurrency = currencyService.fetchByCode(by: userPreferences.defaultCurrencyCode)
-        
+
         if let account {
             self.accountDraft = AccountDraft.from(account: account)
         } else {
@@ -68,12 +68,12 @@ class AccountManageViewModel: ObservableObject {
             )
             self.nameError = .emptyName
         }
-        
+
         setupValidation()
     }
-    
+
     // MARK: - Methods
-    
+
     private func setupValidation() {
 
         // Name validation
@@ -96,7 +96,7 @@ class AccountManageViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
-    
+
     func saveAccount() {
         let account = draftToAccount(
             draft: accountDraft,
@@ -106,7 +106,7 @@ class AccountManageViewModel: ObservableObject {
         accountService.save(account)
         onAccountAdded(account)
     }
-    
+
     func deleteAccount() {
         let accounts = accountService.fetchAll()
 
@@ -118,7 +118,7 @@ class AccountManageViewModel: ObservableObject {
                 .filter { $0.id != account.id }
                 .sorted { $0.sortIndex < $1.sortIndex }
                 .first
-            
+
             if newDefault != nil {
                 newDefault?.isDefault = 1
                 accountService.save(newDefault!)
@@ -127,19 +127,19 @@ class AccountManageViewModel: ObservableObject {
 
         accountService.delete(account)
     }
-    
+
     func selectColor(_ color: AppColors?) {
         accountDraft.backgroundColor = color != nil ? color?.rawValue : nil
     }
-    
+
     func selectPattern(_ pattern: String?) {
         accountDraft.backgroundPattern = pattern
     }
-    
+
     func selectCurrency(_ currency: Currency) {
         accountDraft.currency = currency
     }
-    
+
     private func validateName(_ value: String) {
 
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -157,7 +157,6 @@ class AccountManageViewModel: ObservableObject {
         nameError = nil
     }
 
-
     private func validateBalance(_ value: Double) {
 
         if !value.isFinite {
@@ -167,7 +166,7 @@ class AccountManageViewModel: ObservableObject {
 
         balanceError = nil
     }
-    
+
     private func draftToAccount(draft: AccountDraft, sortIndex: Int, account: Account?) -> Account {
         if let account = account {
             account.name = draft.name

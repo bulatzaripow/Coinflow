@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+
     // MARK: - Props
-    
+
     @ObservedObject private var viewModel: SettingsViewModel
     @Environment(\.modelContext) var modelContext
     @Environment(UserPreferences.self) var userPreferences
-    
+
     // MARK: - Init
-    
+
     init(viewModel: SettingsViewModel) {
         self.viewModel = viewModel
     }
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         List {
             Section {
@@ -40,15 +40,15 @@ struct SettingsView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                         }
-                        
+
                         Spacer()
-                        
+
                         Text(viewModel.currentLanguage)
                             .foregroundColor(.secondary)
                     }
                     .foregroundStyle(Color.primary)
                 }
-                
+
                 Button {
                     viewModel.goToCurrencies()
                 } label: {
@@ -61,15 +61,15 @@ struct SettingsView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                         }
-                        
+
                         Spacer()
-                        
+
                         Text(userPreferences.defaultCurrencyCode)
                             .foregroundColor(.secondary)
                     }
                     .foregroundStyle(Color.primary)
                 }
-                
+
                 Button {
                     viewModel.goToCategories()
                 } label: {
@@ -86,7 +86,7 @@ struct SettingsView: View {
                     .foregroundStyle(Color.primary)
                 }
             }
-            
+
             Section {
                 NavigationLink {
                     AttributionView()
@@ -101,7 +101,7 @@ struct SettingsView: View {
                             .foregroundStyle(Color.primary)
                     }
                 }
-                
+
                 Button {
                     viewModel.showPrivacyPolicy = true
                 } label: {
@@ -115,7 +115,7 @@ struct SettingsView: View {
                     }
                     .foregroundStyle(Color.primary)
                 }
-                
+
                 Button {
                     viewModel.showTermsOfService = true
                 } label: {
@@ -146,7 +146,7 @@ struct SettingsView: View {
                     }
                     VStack(spacing: 4) {
                         Text("Created by Bulat Zaripov")
-                        
+
                         Text("Version \(viewModel.version)")
                     }
                     .font(.caption2)

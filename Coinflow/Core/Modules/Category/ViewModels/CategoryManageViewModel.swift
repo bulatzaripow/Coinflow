@@ -11,50 +11,50 @@ import SwiftUI
 import Combine
 
 final class CategoryManageViewModel: ObservableObject {
-    
+
     // MARK: - Props
-    
+
     private let categoryService: CategoryManageServiceProtocol
-    
+
     @Published var category: Category?
     @Published var name: String = ""
     @Published var type: CategoryType = .expense
     @Published var selectedIcon: String?
-    
+
     let gridColumns: [GridItem] = Array(
         repeating: .init(.flexible(), spacing: 12),
         count: 5
     )
-    
+
     var canSave: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty &&
         selectedIcon != nil
     }
-    
+
     // MARK: - Init
-    
+
     init(
         category: Category? = nil,
         categoryService: CategoryManageServiceProtocol
     ) {
         self.category = category
         self.categoryService = categoryService
-        
+
         if let category = self.category {
             self.name = category.name
             self.type = category.type
             self.selectedIcon = category.icon
         }
     }
-    
+
     // MARK: - Methods
-    
+
     func saveCategory() {
         guard
             let icon = selectedIcon,
             canSave
         else { return }
-        
+
         let newCategory = Category(
             name: name,
             type: type,
@@ -64,22 +64,22 @@ final class CategoryManageViewModel: ObservableObject {
             isDefault: false,
             createdAt: Date()
         )
-        
+
         if let category = self.category {
             category.name = name
             category.icon = icon
-            
+
             do {
                 try categoryService.saveContext()
             } catch {
                 print("Can't save category: \(error.localizedDescription)")
             }
-            
+
         } else {
             categoryService.save(newCategory)
         }
     }
-    
+
     private func getNextSortOrder() -> Int {
         let categories = categoryService.fetchAllInOrder(.reverse)
         return (categories.first?.sortOrder ?? 0) + 1
@@ -89,12 +89,12 @@ final class CategoryManageViewModel: ObservableObject {
 // Icons
 
 extension CategoryManageViewModel {
-    
+
     struct IconGroup {
         let name: String
         let icons: [String]
     }
-    
+
     var icons: [IconGroup] {
         [
             IconGroup(
@@ -117,7 +117,7 @@ extension CategoryManageViewModel {
                     "sandwich",
                     "bowl-rice",
                     "lunch-box",
-                    "fish",
+                    "fish"
                 ],
             ),
             IconGroup(
@@ -137,7 +137,7 @@ extension CategoryManageViewModel {
                     "plane-departure",
                     "scooter",
                     "snowplow",
-                    "tractor",
+                    "tractor"
                 ],
             ),
             IconGroup(
@@ -155,7 +155,7 @@ extension CategoryManageViewModel {
                     "piano-keyboard",
                     "film",
                     "kite",
-                    "puzzle",
+                    "puzzle"
                 ],
             ),
             IconGroup(
@@ -178,7 +178,7 @@ extension CategoryManageViewModel {
                     "uniform-martial-arts",
                     "windsurf",
                     "ping-pong",
-                    "mask-snorkel",
+                    "mask-snorkel"
                 ],
             ),
             IconGroup(
@@ -197,7 +197,7 @@ extension CategoryManageViewModel {
                     "dog",
                     "cat",
                     "sheep",
-                    "toilet-paper-blank",
+                    "toilet-paper-blank"
                 ],
             ),
             IconGroup(
@@ -210,7 +210,7 @@ extension CategoryManageViewModel {
                     "baby-carriage",
                     "balloon",
                     "party-horn",
-                    "cake-birthday",
+                    "cake-birthday"
                 ],
             ),
             IconGroup(
@@ -224,7 +224,7 @@ extension CategoryManageViewModel {
                     "heart-rate",
                     "tooth",
                     "syringe",
-                    "pills",
+                    "pills"
                 ],
             ),
             IconGroup(
@@ -237,7 +237,7 @@ extension CategoryManageViewModel {
                     "marketplace",
                     "gift",
                     "hand-present",
-                    "tshirt",
+                    "tshirt"
                 ],
             ),
             IconGroup(
@@ -249,7 +249,7 @@ extension CategoryManageViewModel {
                     "ticket-airline",
                     "airplane-journey",
                     "plane-globe",
-                    "map-point",
+                    "map-point"
                 ],
             ),
             IconGroup(
@@ -264,7 +264,7 @@ extension CategoryManageViewModel {
                     "pen-clip",
                     "pen-swirl",
                     "ruler-combined",
-                    "info",
+                    "info"
                 ],
             ),
             IconGroup(
@@ -282,8 +282,7 @@ extension CategoryManageViewModel {
                     "growth-chart-invest",
                     "payroll",
                     "refund-alt",
-                    "send-dollars",
-                    
+                    "send-dollars"
                 ],
             ),
             IconGroup(
@@ -306,9 +305,9 @@ extension CategoryManageViewModel {
                     "trash",
                     "user-lock",
                     "bolt",
-                    "clapper-open",
+                    "clapper-open"
                 ],
-            ),
+            )
         ]
     }
 

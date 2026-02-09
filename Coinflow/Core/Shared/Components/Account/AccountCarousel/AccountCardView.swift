@@ -9,34 +9,34 @@ import SwiftUI
 
 struct AccountCardView: View {
     let account: AccountDraft
-    
+
     var body: some View {
         ZStack {
             if let color = account.backgroundColor {
                 AppColors(rawValue: color)?.gradient
             }
-            
+
             if let pattern = account.backgroundPattern {
                 Image(pattern)
                     .resizable(resizingMode: .tile)
                     .renderingMode(.template)
                     .foregroundColor(.appPrimary.opacity(0.1))
             }
-            
+
             HStack {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Total Balance")
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    
+
                     VStack(alignment: .leading, spacing: 4) {
                         Text(account.name.isEmpty ? "Default" : account.name)
                             .font(.headline)
-                        
+
                         Text(String(CurrencyFormatter.format(account.balance, currency: account.currency)))
                             .font(.system(size: 28, weight: .bold))
                     }
-                    
+
                     Spacer()
                 }
             }

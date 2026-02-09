@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct AttributionView: View {
-    
+
     // MARK: - Props
-    
+
     @State private var showSafariForIconsLink = false
     @State private var showSafariForFlagsLink = false
-    
+
     private let linkIconsURL = URL(string: "https://www.flaticon.com/uicons/interface-icons")
     private let linkFlagsURL = URL(string: "https://www.flaticon.com/packs/countrys-flags")
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         List {
             Section {
@@ -35,9 +35,9 @@ struct AttributionView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                         }
-                        
+
                         Spacer()
-                        
+
                         Image("angle-small-right")
                             .resizable()
                             .frame(width: 20, height: 20)
@@ -45,7 +45,7 @@ struct AttributionView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                
+
                 Button {
                     showSafariForFlagsLink = true
                 } label: {
@@ -60,9 +60,9 @@ struct AttributionView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundStyle(Color.primary)
                         }
-                        
+
                         Spacer()
-                        
+
                         Image("angle-small-right")
                             .resizable()
                             .frame(width: 20, height: 20)

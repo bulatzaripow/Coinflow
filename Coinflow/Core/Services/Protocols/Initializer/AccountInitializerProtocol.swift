@@ -8,12 +8,12 @@
 import SwiftData
 
 protocol AccountInitializerProtocol {
-    
+
     // MARK: - Props
-    
+
     var context: ModelContext { get }
-    
+
     // MARK: - Methods
-    
+
     func setupDefaultAccountIfNeeded()
 }

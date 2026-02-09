@@ -9,17 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct AccountManageView: View {
-    
+
     // MARK: Props
-    
+
     @Environment(\.modelContext) var modelContext
     @Environment(UserPreferences.self) var userPreferences
     @Environment(\.dismiss) var dismiss
-    
+
     @StateObject var viewModel: AccountManageViewModel
-    
+
     // MARK: UI
-    
+
     var body: some View {
         NavigationStack(path: $viewModel.path) {
             Form {
@@ -27,7 +27,7 @@ struct AccountManageView: View {
                     AccountCardView(account: viewModel.accountDraft)
                 }
                 .listRowInsets(EdgeInsets())
-                
+
                 Section {
                     VStack(alignment: .leading, spacing: 4) {
 
@@ -44,7 +44,6 @@ struct AccountManageView: View {
                     }
                     .animation(.easeInOut, value: viewModel.nameError)
 
-                    
                     VStack(alignment: .leading, spacing: 4) {
 
                         TextField("Balance", value: $viewModel.accountDraft.balance, format: .number)
@@ -56,14 +55,13 @@ struct AccountManageView: View {
                     }
                     .animation(.easeInOut, value: viewModel.balanceError)
 
-                    
                     HStack {
                         Toggle(
                             "Default account",
                             isOn: $viewModel.accountDraft.isDefault
                         )
                     }
-                    
+
                     Button {
                         viewModel.path.append(AccountRoutes.currency)
                     } label: {
@@ -73,15 +71,15 @@ struct AccountManageView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 24, height: 24)
                                 .foregroundStyle(.primary)
-                            
+
                             Text(viewModel.accountDraft.currency.name)
                                 .foregroundStyle(.primary)
-                            
+
                             Spacer()
-                            
+
                             Text(viewModel.accountDraft.currency.code)
                                 .foregroundStyle(.tertiary)
-                            
+
                             Image("angle-small-right")
                                 .resizable()
                                 .renderingMode(.template)
@@ -92,12 +90,14 @@ struct AccountManageView: View {
                     }
                     .buttonStyle(.plain)
                 }
-                
+
                 Section("Design") {
                     ColorPicker(
                         selectedColor: Binding(
                             get: {
-                                AppColors(rawValue: viewModel.accountDraft.backgroundColor ?? "autumn") ?? AppColors.autumn
+                                AppColors(
+                                    rawValue: viewModel.accountDraft.backgroundColor ?? "autumn"
+                                ) ?? AppColors.autumn
                             },
                             set: { newValue in
                                 viewModel.accountDraft.backgroundColor = newValue?.rawValue
@@ -108,7 +108,7 @@ struct AccountManageView: View {
                         }
                     )
                     .padding(.vertical, 12)
-                    
+
                     PatternPicker(
                         selectedPattern: $viewModel.accountDraft.backgroundPattern,
                         action: { pattern in
@@ -118,7 +118,7 @@ struct AccountManageView: View {
                     .padding(.vertical, 12)
                 }
                 .listRowInsets(EdgeInsets())
-                
+
                 // Delete
                 Section {
                     Button(role: .destructive) {
@@ -157,10 +157,10 @@ struct AccountManageView: View {
                             .scaledToFit()
                             .frame(width: 18, height: 18)
                             .foregroundColor(.red)
-                            
+
                     }
                 }
-                
+
                 ToolbarItem(placement: .principal) {
                     Text(
                         viewModel.account?.modelContext != nil ?
@@ -170,7 +170,7 @@ struct AccountManageView: View {
                     .font(.headline)
                     .fontWeight(.semibold)
                 }
-                
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         viewModel.saveAccount()
@@ -190,14 +190,14 @@ struct AccountManageView: View {
                 "Delete account?",
                 isPresented: $viewModel.showDeleteAlert
             ) {
-                
+
                 Button("Cancel", role: .cancel) {}
-                
+
                 Button("Delete", role: .destructive) {
                     viewModel.deleteAccount()
                     dismiss()
                 }
-                
+
             } message: {
                 Text("All transactions will be deleted. Are you sure?")
             }

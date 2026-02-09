@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct IconItemView: View {
-    
+
     // MARK: Props
-    
+
     let icon: String
     let isSelected: Bool
-    
+
     // MARK: UI
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .fill(isSelected ? Color.appPrimary.opacity(0.2) : Color.gray.opacity(0.1))
                 .frame(height: 56)
-            
+
             Image(icon)
                 .resizable()
                 .scaledToFit()

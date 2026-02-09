@@ -10,35 +10,35 @@ import SwiftData
 import Combine
 
 class TransactionManageViewModel: ObservableObject {
-    
+
     // MARK: - Props
-    
+
     private var transactionService: TransactionManageServiceProtocol
     private var accountService: AccountManageServiceProtocol
     private var categoryService: CategoryManageServiceProtocol
-    
+
     var activeAccount: Account
     var accounts: [Account]
     var categories: [Category]
-    
-    @Published var transaction: Transaction? = nil
-    
+
+    @Published var transaction: Transaction?
+
     @Published var type: TransactionType = .expense
     @Published var note: String = ""
     @Published var amount: String = ""
     @Published var date: Date = Date()
-    @Published var selectedAccount: Account? = nil
-    @Published var selectedToAccount: Account? = nil
-    @Published var selectedCategory: Category? = nil
-    @Published var transferToAccount: Account? = nil
+    @Published var selectedAccount: Account?
+    @Published var selectedToAccount: Account?
+    @Published var selectedCategory: Category?
+    @Published var transferToAccount: Account?
     @Published var showAddCategorySheet: Bool = false
-    
+
     @Published var isButtonEnabled: Bool = false
-    
+
     var canModify: Bool {
         guard !amount.isEmpty,
-              let _ = Double(amount) else { return false }
-        
+              Double(amount) != nil else { return false }
+
         switch type {
         case .expense, .income:
             return selectedAccount != nil && selectedCategory != nil
@@ -47,20 +47,20 @@ class TransactionManageViewModel: ObservableObject {
             return selectedAccount.id != selectedToAccount.id
         }
     }
-    
+
     var filteredCategories: [Category] {
         return categories.filter { $0.type.rawValue == type.rawValue }
     }
-    
+
     var filteredToAccounts: [Account] {
         return accounts.filter {
             $0.currency.code == selectedAccount?.currency.code &&
             $0.id != selectedAccount?.id
         }
     }
-    
+
     // MARK: - Init
-    
+
     init(
         transaction: Transaction? = nil,
         transactionService: TransactionManageServiceProtocol,
@@ -73,20 +73,20 @@ class TransactionManageViewModel: ObservableObject {
         self.accountService = accountService
         self.categoryService = categoryService
         self.activeAccount = activeAccount
-        
+
         // Fetch
         self.accounts = accountService.fetchAll()
         self.categories = categoryService.fetchAll()
-        
+
         // Sort
         self.accounts = self.sortAccounts(accounts: accounts)
-        
+
         if let transaction = self.transaction {
             type = transaction.type
             note = transaction.note ?? ""
             amount = String(transaction.amount)
             date = transaction.date
-            
+
             selectedAccount = transaction.account
             selectedToAccount = transaction.toAccount ?? accounts.first
             selectedCategory = transaction.category
@@ -95,9 +95,9 @@ class TransactionManageViewModel: ObservableObject {
             self.selectedCategory = categories.first
         }
     }
-    
+
     // MARK: - Methods
-    
+
     func setDefaultsIfNeeded(
         categories: [Category]
     ) {
@@ -105,15 +105,15 @@ class TransactionManageViewModel: ObservableObject {
             selectedCategory = categories.first
         }
     }
-    
+
     func updateSelectedCategory() {
         selectedCategory = filteredCategories.first
     }
-    
+
     func saveTransaction() {
         guard let account = self.selectedAccount else { return }
         let transaction = self.getTransaction()
-        
+
         transactionService.save(
             transaction,
             amount: Double(amount) ?? 0,
@@ -125,18 +125,18 @@ class TransactionManageViewModel: ObservableObject {
             toAccount: selectedToAccount
         )
     }
-    
+
     func onAddCategoryTapped() {
         showAddCategorySheet.toggle()
     }
-    
+
     private func getTransaction() -> Transaction {
         if let transaction = self.transaction {
             return transaction
         }
         return Transaction(type: type)
     }
-    
+
     private func sortAccounts(accounts: [Account]) -> [Account] {
         return accounts.sorted { account1, account2 in
             if account1.id == activeAccount.id {

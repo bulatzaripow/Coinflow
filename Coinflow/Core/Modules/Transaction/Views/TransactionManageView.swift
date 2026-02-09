@@ -9,18 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct TransactionManageView: View {
-    
+
     // MARK: Props
-    
+
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
-    
+
     @ObservedObject private var viewModel: TransactionManageViewModel
-    
+
     let onUpdate: () -> Void
-    
+
     // MARK: Init
-    
+
     init(
         viewModel: TransactionManageViewModel,
         onUpdate: @escaping () -> Void
@@ -28,19 +28,22 @@ struct TransactionManageView: View {
         self.viewModel = viewModel
         self.onUpdate = onUpdate
     }
-    
+
     // MARK: UI
-    
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
                 Form {
                     Section {
-                        TextField(CurrencyFormatter.format(0, currency: viewModel.activeAccount.currency), text: $viewModel.amount)
+                        TextField(
+                            CurrencyFormatter.format(0, currency: viewModel.activeAccount.currency),
+                            text: $viewModel.amount
+                        )
                             .keyboardType(.decimalPad)
                             .font(.system(size: 44))
                             .multilineTextAlignment(.center)
-                        
+
                         Picker("", selection: $viewModel.type) {
                             Text("Expense").tag(TransactionType.expense)
                             Text("Income").tag(TransactionType.income)
@@ -51,7 +54,7 @@ struct TransactionManageView: View {
                             viewModel.updateSelectedCategory()
                         }
                     }
-                    
+
                     Section {
                         HorizontalItemPicker(
                             items: viewModel.accounts,
@@ -66,7 +69,7 @@ struct TransactionManageView: View {
                             }
                         )
                         .padding(.top, 16)
-                        
+
                         if viewModel.type == .transfer {
                             HorizontalItemPicker(
                                 items: viewModel.filteredToAccounts,
@@ -96,35 +99,35 @@ struct TransactionManageView: View {
                             .padding(.top, 10)
                             .padding(.bottom, 16)
                         }
-                        
+
                     }
                     .listRowInsets(EdgeInsets())
-                    
+
                     Section {
                         DatePicker(
                             "Date",
                             selection: $viewModel.date,
                             displayedComponents: [.date, .hourAndMinute]
                         )
-                        
+
                         ZStack(alignment: .leading) {
                             if viewModel.note.isEmpty {
                                 Text("Note")
                                     .foregroundColor(.gray)
                                     .padding(.leading, 6)
                             }
-                            
+
                             TextEditor(text: $viewModel.note)
                         }
                     }
-                    
+
                     Section {
                         Color.clear
                             .frame(height: 30)
                             .listRowBackground(Color.clear)
                     }
                 }
-                
+
                 Button(action: {
                     viewModel.saveTransaction()
                     onUpdate()

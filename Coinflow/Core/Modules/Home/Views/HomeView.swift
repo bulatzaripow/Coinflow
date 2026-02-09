@@ -9,34 +9,34 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    
+
     // MARK: - Props
-    
+
     @Environment(\.modelContext) var modelContext
     @Environment(UserPreferences.self) var userPreferences
-    
+
     @Query(sort: [
         SortDescriptor(\Account.isDefault, order: .reverse),
         SortDescriptor(\Account.sortIndex)
     ])
     private var accounts: [Account]
-    
+
     @ObservedObject private var viewModel: HomeViewModel
-    
+
     // MARK: - Init
-    
+
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
     }
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         NavigationStack(path: $viewModel.path) {
             ZStack(alignment: .bottom) {
                 Color(.appBackground)
                     .ignoresSafeArea()
-                
+
                 List {
                     Section {
                         VStack(spacing: 20) {
@@ -46,14 +46,14 @@ struct HomeView: View {
                                     Text(DateFormatterHelper.formatDayMonth(Date()))
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
-                                    
+
                                     Text(GreetingHelper.greeting())
                                         .fontWeight(.bold)
                                         .fontWeight(.bold)
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Button {
                                     viewModel.onNavigate(MainRoutes.settings)
                                 } label: {
@@ -68,7 +68,7 @@ struct HomeView: View {
                             .padding(.top, 10)
                             .padding(.leading, 20)
                             .padding(.trailing, 10)
-                            
+
                             // Accounts
                             AccountCarouselView(
                                 accounts: accounts,
@@ -85,7 +85,7 @@ struct HomeView: View {
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
-                    
+
                     // Transactions
                     Section {
                         TransactionsListView(
@@ -104,10 +104,10 @@ struct HomeView: View {
                                 Text(viewModel.dateRangeText)
                                     .font(.caption)
                             }
-                            
+
                             Spacer()
-                            
-                            PopoverMenuButton() {
+
+                            PopoverMenuButton {
                                 Image("calendar-clock")
                                     .resizable()
                                     .renderingMode(.template)
@@ -133,8 +133,7 @@ struct HomeView: View {
                 .listRowSpacing(10)
                 .listSectionSpacing(0)
                 .scrollContentBackground(.hidden)
-                
-                
+
                 // Bottom actions
                 HStack(spacing: 18) {
                     Button(action: {
@@ -155,14 +154,14 @@ struct HomeView: View {
                                 y: 6
                             )
                     }
-                    
+
                     Button(action: {
                         viewModel.showAddTransactionSheet = true
                     }) {
                         HStack(spacing: 5) {
                             Image(systemName: "plus")
                                 .font(.headline)
-                            
+
                             Text("Add")
                                 .font(.headline)
                         }
@@ -195,7 +194,7 @@ struct HomeView: View {
                         selectedAccount: viewModel.selectedAccount
                     )
                 case .settings:
-                    SettingsViewBuilder.build() { route in
+                    SettingsViewBuilder.build { route in
                         viewModel.onNavigate(route)
                     }
                 case .categories:

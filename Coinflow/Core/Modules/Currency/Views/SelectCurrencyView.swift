@@ -9,19 +9,19 @@ import SwiftUI
 import SwiftData
 
 struct SelectCurrencyView: View {
-    
+
     // MARK: - Props
-    
+
     @ObservedObject var viewModel: SelectCurrencyViewModel
-    
+
     @Query(sort: \Currency.sortIndex) var currencies: [Currency]
-    
+
     private var filteredCurrencies: [Currency] {
         return viewModel.searchCurrencies(currencies)
     }
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         VStack {
             List {
@@ -34,21 +34,21 @@ struct SelectCurrencyView: View {
                                 .resizable()
                                 .frame(width: 26, height: 26)
                                 .clipShape(Circle())
-                            
+
                             VStack(alignment: .leading) {
                                 HStack {
                                     Text(currency.code)
                                     Text(currency.symbol)
                                         .foregroundColor(.secondary)
                                 }
-                                
+
                                 Text(currency.name)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
-                            
+
                             Spacer()
-                            
+
                             if viewModel.isSelected(currency) {
                                 Image("check")
                                     .resizable()

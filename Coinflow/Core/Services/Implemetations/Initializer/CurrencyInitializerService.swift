@@ -9,28 +9,28 @@ import Foundation
 import SwiftData
 
 final class CurrencyInitializerService: CurrencyInitializerProtocol {
-    
+
     // MARK: - Props
-    
+
     let context: ModelContext
-    
+
     // MARK: - Init
-    
+
     init(context: ModelContext) {
         self.context = context
     }
-    
+
     // MARK: - Methods
-    
+
     func setupDefaultCurrenciesIfNeeded() {
         guard !checkIfCurrenciesExist() else {
             print("Currencies already exist in database")
             return
         }
-        
+
         _ = createDefaultCurrencies()
         print("Created all default currencies")
-        
+
         // Saving data
         do {
             try context.save()
@@ -38,21 +38,21 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             print("Error saving currencies: \(error)")
         }
     }
-    
+
     func detectUserCurrency() -> String {
         let userLocale = Locale.current
-        
+
         if let currencyCode = userLocale.currency?.identifier {
             return currencyCode
         }
-        
+
         return "USD"
     }
-    
+
     private func createDefaultCurrencies() -> [Currency] {
         let defaultCurrencies = getDefaultCurrencies()
         var currencies: [Currency] = []
-        
+
         var sortIndex = 0
         for currencyData in defaultCurrencies {
             let currency = Currency(
@@ -66,7 +66,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             currencies.append(currency)
             sortIndex += 1
         }
-        
+
         return currencies
     }
 
@@ -82,7 +82,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("CAD", "C$", "Canadian Dollar"),
             ("AUD", "A$", "Australian Dollar"),
             ("NZD", "NZ$", "New Zealand Dollar"),
-            
+
             // Europe
             ("RUB", "₽", "Russian Ruble".localized),
             ("UAH", "₴", "Ukrainian Hryvnia".localized),
@@ -97,7 +97,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("BGN", "лв", "Bulgarian Lev"),
             ("HRK", "kn", "Croatian Kuna"),
             ("RSD", "дин", "Serbian Dinar"),
-            
+
             // Azia
             ("INR", "₹", "Indian Rupee".localized),
             ("KRW", "₩", "South Korean Won"),
@@ -109,7 +109,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("IDR", "Rp", "Indonesian Rupiah"),
             ("PHP", "₱", "Philippine Peso"),
             ("VND", "₫", "Vietnamese Đồng".localized),
-            
+
             // Middle East
             ("AED", "د.إ", "UAE Dirham".localized),
             ("SAR", "﷼", "Saudi Riyal"),
@@ -121,7 +121,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("ILS", "₪", "Israeli Shekel"),
             ("TRY", "₺", "Turkish Lira".localized),
             ("IRR", "﷼", "Iranian Rial"),
-            
+
             // Africa
             ("ZAR", "R", "South African Rand"),
             ("EGP", "ج.م", "Egyptian Pound"),
@@ -129,7 +129,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("MAD", "د.م.", "Moroccan Dirham"),
             ("DZD", "د.ج", "Algerian Dinar"),
             ("TND", "د.ت", "Tunisian Dinar"),
-            
+
             // Latin America
             ("BRL", "R$", "Brazilian Real"),
             ("MXN", "$", "Mexican Peso"),
@@ -141,7 +141,7 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("PYG", "₲", "Paraguayan Guaraní"),
             ("BOB", "Bs", "Bolivian Boliviano"),
             ("CRC", "₡", "Costa Rican Colón"),
-            
+
             // Other
             ("KZT", "₸", "Kazakhstani Tenge".localized),
             ("UZS", "soʻm", "Uzbekistani Som".localized),
@@ -230,10 +230,10 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             ("ETB", "Br", "Ethiopian Birr")
         ]
     }
-    
+
     private func checkIfCurrenciesExist() -> Bool {
         let descriptor = FetchDescriptor<Currency>()
-        
+
         do {
             let count = try context.fetchCount(descriptor)
             return count > 0
@@ -242,5 +242,5 @@ final class CurrencyInitializerService: CurrencyInitializerProtocol {
             return false
         }
     }
-    
+
 }

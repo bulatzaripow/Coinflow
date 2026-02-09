@@ -22,7 +22,7 @@ extension SchemaV1 {
         var sortOrder: Int = 0
         var isDefault: Bool = false
         var createdAt: Date = Date()
-        
+
         init(
             name: String,
             type: CategoryType,
@@ -44,6 +44,6 @@ extension SchemaV1 {
 }
 
 enum CategoryType: String, CaseIterable, Codable {
-    case income = "income"
-    case expense = "expense"
+    case income
+    case expense
 }

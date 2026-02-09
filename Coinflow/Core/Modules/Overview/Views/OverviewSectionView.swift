@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct OverviewSectionView: View {
-    
+
     // MARK: - Props
-    
+
     @ObservedObject var viewModel: OverviewSectionViewModel
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -23,9 +23,9 @@ struct OverviewSectionView: View {
                     .fontWeight(.semibold)
                     .fontDesign(.rounded)
                     .foregroundStyle(.primary)
-                
+
                 Spacer()
-                
+
                 Text(CurrencyFormatter.format(
                     viewModel.totalAmount,
                     currency: viewModel.defaultCurrency
@@ -34,9 +34,9 @@ struct OverviewSectionView: View {
                 .foregroundColor(viewModel.type == .expense ? .appRed : .appGreen)
             }
             .padding(.vertical, 10)
-            
+
             Divider()
-            
+
             LazyVGrid(
                 columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4),
                 spacing: 16
@@ -47,13 +47,13 @@ struct OverviewSectionView: View {
                             Circle()
                                 .fill(Color.appBackground)
                                 .frame(width: 50, height: 50)
-                            
+
                             Image(category.icon)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
                         }
-                        
+
                         Text(CurrencyFormatter.format(
                             viewModel.getTotalAmount(for: category),
                             currency: viewModel.defaultCurrency
@@ -61,7 +61,7 @@ struct OverviewSectionView: View {
                         .lineLimit(1)
                         .truncationMode(.tail)
                         .font(.system(size: 12, weight: .semibold))
-                        
+
                         Text(category.name)
                             .font(.caption)
                             .lineLimit(1)

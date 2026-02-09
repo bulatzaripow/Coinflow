@@ -19,9 +19,9 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
     let text: (Item) -> String
     let onSelect: (Item?) -> Void
     let onAddTapped: (() -> Void)?
-    
+
     // MARK: Init
-    
+
     init(
         items: [Item],
         selectedItem: Item?,
@@ -47,9 +47,9 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
             HStack {
                 Text(title)
                     .font(.headline)
-                
+
                 Spacer()
-                
+
                 if onAddTapped != nil {
                     Button {
                         self.onAddTapped?()
@@ -64,7 +64,7 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
                 }
             }
             .padding(.horizontal, 16)
-            
+
             ZStack {
                 itemsScroll
                     .opacity(items.isEmpty ? 0 : 1)
@@ -77,7 +77,7 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
         }
         .animation(.smooth, value: items.count)
     }
-    
+
     private var emptyState: some View {
         VStack(spacing: 8) {
             Image(systemName: "tray")
@@ -91,7 +91,7 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
         }
         .frame(maxWidth: .infinity)
     }
-    
+
     private var itemsScroll: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
@@ -145,4 +145,3 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
         }
     }
 }
-

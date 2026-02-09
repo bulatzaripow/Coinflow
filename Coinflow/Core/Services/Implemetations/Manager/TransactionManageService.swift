@@ -9,37 +9,37 @@ import Foundation
 import SwiftData
 
 final class TransactionManageService: BaseManageService<Transaction>, TransactionManageServiceProtocol {
-    
+
     func fetchByAccountAndDateRange(account: Account, startDate: Date, endDate: Date) -> [Transaction] {
         let accountID = account.id
-        let predicate = #Predicate<Transaction> { tx in
-            tx.date >= startDate &&
-            tx.date <= endDate &&
+        let predicate = #Predicate<Transaction> { transaction in
+            transaction.date >= startDate &&
+            transaction.date <= endDate &&
             (
-                tx.account?.id == accountID ||
-                tx.toAccount?.id == accountID
+                transaction.account?.id == accountID ||
+                transaction.toAccount?.id == accountID
             )
         }
-        
+
         let descriptor = FetchDescriptor<Transaction>(
             predicate: predicate,
             sortBy: [SortDescriptor(\.date, order: .reverse)]
         )
-        
+
         return (try? context.fetch(descriptor)) ?? []
     }
-    
+
     override func delete(_ transaction: Transaction) {
         revertChanges(for: transaction)
         context.delete(transaction)
-        
+
         do {
             try context.save()
         } catch {
             print("Delete error:", error)
         }
     }
-    
+
     func save(
         _ transaction: Transaction,
         amount: Double,
@@ -51,15 +51,15 @@ final class TransactionManageService: BaseManageService<Transaction>, Transactio
         toAccount: Account? = nil,
     ) {
         let isNewTransaction = transaction.persistentModelID.storeIdentifier == nil
-        
+
         if !isNewTransaction {
             revertChanges(for: transaction)
         }
-        
+
         if isNewTransaction {
             context.insert(transaction)
         }
-        
+
         transaction.amount = amount
         transaction.type = type
         transaction.note = note
@@ -71,42 +71,42 @@ final class TransactionManageService: BaseManageService<Transaction>, Transactio
         if let toAccount {
             transaction.toAccount = toAccount
         }
-    
+
         guard let account = transaction.account else { return }
         let toAccount = transaction.toAccount
         let amount = abs(transaction.amount)
-        
+
         switch transaction.type {
         case .expense:
             account.balance -= amount
-            
+
         case .income:
             account.balance += amount
-            
+
         case .transfer:
             account.balance -= amount
             toAccount?.balance += amount
         }
-        
+
         do {
             try saveContext()
         } catch {
             print("Error saving item: \(error)")
         }
     }
-    
+
     private func revertChanges(for transaction: Transaction) {
         guard let account = transaction.account else { return }
         let toAccount = transaction.toAccount
         let amount = abs(transaction.amount)
-        
+
         switch transaction.type {
         case .expense:
             account.balance += amount
-            
+
         case .income:
             account.balance -= amount
-            
+
         case .transfer:
             account.balance += amount
             toAccount?.balance -= amount

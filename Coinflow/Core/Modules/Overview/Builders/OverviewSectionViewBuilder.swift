@@ -16,8 +16,8 @@ struct OverviewSectionViewBuilder {
         selectedAccount: Account? = nil,
         type: OverviewSectionViewType = .expense
     ) -> OverviewSectionView {
-        
-        let vm = OverviewSectionViewModel(
+
+        let viewModel = OverviewSectionViewModel(
             title: title,
             totalAmount: totalAmount,
             categories: categories,
@@ -25,8 +25,8 @@ struct OverviewSectionViewBuilder {
             selectedAccount: selectedAccount,
             type: type
         )
-        
-        return OverviewSectionView(viewModel: vm)
+
+        return OverviewSectionView(viewModel: viewModel)
     }
 }
 

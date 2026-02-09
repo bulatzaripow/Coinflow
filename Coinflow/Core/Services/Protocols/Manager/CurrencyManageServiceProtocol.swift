@@ -14,7 +14,7 @@ protocol CurrencyManageServiceProtocol {
     func save(_ item: Currency)
     func delete(_ item: Currency)
     func saveContext() throws
-    
+
     func defaultCurrency() -> Currency
     func fetchByCode(by code: String) -> Currency?
 }

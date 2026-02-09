@@ -17,7 +17,7 @@ extension SchemaV1 {
         var isBaseCurrency: Bool = false
         var sortIndex: Int = 0
         var createdAt: Date = Date()
-        
+
         init(
             code: String,
             symbol: String,

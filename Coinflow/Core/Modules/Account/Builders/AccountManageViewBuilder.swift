@@ -16,15 +16,15 @@ struct AccountManageViewBuilder {
     ) -> AccountManageView {
         let currencyService = CurrencyManageService(context: modelContext)
         let accountService = AccountManageService(context: modelContext)
-        
-        let vm = AccountManageViewModel(
+
+        let viewModel = AccountManageViewModel(
             account: account,
             currencyService: currencyService,
             accountService: accountService,
             userPreferences: userPreferences,
             onAccountAdded: onAccountAdded
         )
-        
-        return AccountManageView(viewModel: vm)
+
+        return AccountManageView(viewModel: viewModel)
     }
 }

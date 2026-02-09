@@ -9,7 +9,7 @@ import SwiftData
 import Foundation
 
 final class CategoryManageService: BaseManageService<Category>, CategoryManageServiceProtocol {
-    
+
     override func fetchAll() -> [Category] {
         let descriptor = FetchDescriptor<Category>(
             sortBy: [
@@ -19,7 +19,7 @@ final class CategoryManageService: BaseManageService<Category>, CategoryManageSe
         let items = try? context.fetch(descriptor)
         return items ?? []
     }
-    
+
     func fetchAllInOrder(_ order: SortOrder) -> [Category] {
         let descriptor = FetchDescriptor<Category>(
             sortBy: [
@@ -29,12 +29,12 @@ final class CategoryManageService: BaseManageService<Category>, CategoryManageSe
         let items = try? context.fetch(descriptor)
         return items ?? []
     }
-    
+
     func fetchAllByType(type: CategoryType) -> [Category] {
         let predicate = #Predicate<Category> { category in
             category.typeRaw == type.rawValue
         }
-        
+
         let descriptor = FetchDescriptor<Category>(
             predicate: predicate,
             sortBy: [
@@ -44,5 +44,5 @@ final class CategoryManageService: BaseManageService<Category>, CategoryManageSe
         let items = try? context.fetch(descriptor)
         return items ?? []
     }
-    
+
 }

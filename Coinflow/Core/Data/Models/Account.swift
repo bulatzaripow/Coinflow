@@ -17,22 +17,22 @@ extension SchemaV1 {
         var isDefault: Int = 0
         var sortIndex: Int = 0
         var icon: String = "cash"
-        var backgroundColor: String? = nil
-        var backgroundPattern: String? = nil
+        var backgroundColor: String?
+        var backgroundPattern: String?
         var createdAt: Date = Date()
-        
+
         @Relationship
         var currency: Currency
-        
+
         @Relationship(deleteRule: .cascade, inverse: \Transaction.account)
         var transactions: [Transaction]? = []
-        
+
         init(name: String, balance: Double, currency: Currency) {
             self.name = name
             self.balance = balance
             self.currency = currency
         }
-        
+
         convenience init(
             name: String,
             balance: Double,
@@ -44,7 +44,7 @@ extension SchemaV1 {
             self.icon = icon
             self.backgroundPattern = backgroundPattern
         }
-        
+
         convenience init(
             name: String,
             balance: Double,

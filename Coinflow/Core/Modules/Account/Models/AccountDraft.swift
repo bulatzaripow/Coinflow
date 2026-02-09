@@ -14,7 +14,7 @@ struct AccountDraft: Equatable {
     var currency: Currency
     var backgroundColor: String?
     var backgroundPattern: String?
-    
+
     static func from(account: Account) -> AccountDraft {
         AccountDraft(
             name: account.name,

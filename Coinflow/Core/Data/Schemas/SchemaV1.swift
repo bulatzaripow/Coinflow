@@ -14,9 +14,9 @@ enum SchemaV1: VersionedSchema {
             SchemaV1.Account.self,
             SchemaV1.Transaction.self,
             SchemaV1.Category.self,
-            SchemaV1.Currency.self,
+            SchemaV1.Currency.self
         ]
     }
-    
+
     static let versionIdentifier = Schema.Version(1, 0, 0)
 }

@@ -16,15 +16,15 @@ struct OverviewViewBuilder {
         let accountService = AccountManageService(context: context)
         let categoryService = CategoryManageService(context: context)
         let transactionService = TransactionManageService(context: context)
-        
-        let vm = OverviewViewModel(
+
+        let viewModel = OverviewViewModel(
             context: context,
             selectedAccount: selectedAccount,
             accountService: accountService,
             categoryService: categoryService,
             transactionService: transactionService
         )
-        
-        return OverviewView(viewModel: vm)
+
+        return OverviewView(viewModel: viewModel)
     }
 }

@@ -17,20 +17,20 @@ struct TransactionManageViewBuilder {
         let transactionService = TransactionManageService(context: context)
         let accountService = AccountManageService(context: context)
         let categoryService = CategoryManageService(context: context)
-        
-        let vm = TransactionManageViewModel(
+
+        let viewModel = TransactionManageViewModel(
             transaction: transaction,
             transactionService: transactionService,
             accountService: accountService,
             categoryService: categoryService,
             activeAccount: activeAccount,
         )
-        
+
         let view = TransactionManageView(
-            viewModel: vm,
+            viewModel: viewModel,
             onUpdate: onUpdate
         )
-        
+
         return view
     }
 }

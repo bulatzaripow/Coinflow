@@ -14,7 +14,7 @@ protocol CategoryManageServiceProtocol {
     func save(_ item: Category)
     func delete(_ item: Category)
     func saveContext() throws
-    
+
     func fetchAllInOrder(_ order: SortOrder) -> [Category]
     func fetchAllByType(type: CategoryType) -> [Category]
 }

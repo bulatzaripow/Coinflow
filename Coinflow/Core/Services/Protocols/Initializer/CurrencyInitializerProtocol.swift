@@ -8,13 +8,13 @@
 import SwiftData
 
 protocol CurrencyInitializerProtocol {
-    
+
     // MARK: - Props
-    
+
     var context: ModelContext { get }
-    
+
     // MARK: - Methods
-    
+
     func setupDefaultCurrenciesIfNeeded()
     func detectUserCurrency() -> String
 }

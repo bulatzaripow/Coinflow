@@ -13,11 +13,11 @@ struct SelectCurrencyViewBuilder {
         selectedCurrency: String = "USD",
         selectCurrencyAction: @escaping (Currency) -> Void
     ) -> SelectCurrencyView {
-        let vm = SelectCurrencyViewModel(
+        let viewModel = SelectCurrencyViewModel(
             selectedCurrency: selectedCurrency,
             selectCurrencyAction: selectCurrencyAction
         )
-        
-        return SelectCurrencyView(viewModel: vm)
+
+        return SelectCurrencyView(viewModel: viewModel)
     }
 }

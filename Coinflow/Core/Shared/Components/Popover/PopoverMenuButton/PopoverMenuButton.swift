@@ -11,17 +11,17 @@ struct PopoverMenuButton<Label: View, Content: View>: View {
     var isHapticsEnabled: Bool = true
     @ViewBuilder var label: Label
     @ViewBuilder var content: Content
-    
+
     @State private var haptics: Bool = false
     @State private var isExpanded: Bool = false
     @Namespace private var namespace
-    
+
     var body: some View {
         Button {
             if isHapticsEnabled {
                 haptics.toggle()
             }
-            
+
             isExpanded.toggle()
         } label: {
             label
@@ -37,7 +37,7 @@ struct PopoverMenuButton<Label: View, Content: View>: View {
     }
 }
 
-fileprivate struct PopOverHelper<Content: View>: View {
+private struct PopOverHelper<Content: View>: View {
     @ViewBuilder var content: Content
     @State private var isVisible: Bool = false
 

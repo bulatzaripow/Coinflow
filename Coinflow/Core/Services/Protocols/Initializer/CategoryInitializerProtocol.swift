@@ -8,12 +8,12 @@
 import SwiftData
 
 protocol CategoryInitializerProtocol {
-    
+
     // MARK: - Props
-    
+
     var context: ModelContext { get }
-    
+
     // MARK: - Methods
-    
+
     func setupDefaultCategoriesIfNeeded()
 }

@@ -14,14 +14,14 @@ struct CategoryManageViewBuilder {
         onUpdate: @escaping () -> Void
     ) -> CategoryManageView {
         let categoryService = CategoryManageService(context: context)
-        
-        let vm = CategoryManageViewModel(
+
+        let viewModel = CategoryManageViewModel(
             category: category,
             categoryService: categoryService
         )
-        
+
         return CategoryManageView(
-            viewModel: vm,
+            viewModel: viewModel,
             onUpdate: onUpdate
         )
     }

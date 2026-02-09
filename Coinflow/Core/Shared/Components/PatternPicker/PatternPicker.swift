@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 
 struct PatternPicker: View {
-    
+
     // MARK: Props
-    
+
     @Binding var selectedPattern: String?
     var action: (String?) -> Void
-    
+
     private let patterns: [String] = [
         "hexagons",
         "lips",
@@ -22,11 +22,11 @@ struct PatternPicker: View {
         "hideout",
         "falling-triangles",
         "charlie-brown",
-        "brick-wall",
+        "brick-wall"
     ]
-    
+
     // MARK: UI
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
@@ -44,14 +44,14 @@ struct PatternPicker: View {
                                 RoundedRectangle(cornerRadius: 8)
                                     .fill(Color(.systemGray6))
                             )
-                        
+
                         Image(systemName: "circle.slash")
                             .font(.system(size: 12))
                             .foregroundColor(selectedPattern == nil ? .blue : .gray)
                     }
                     .frame(width: 50, height: 50)
                 }
-                
+
                 ForEach(patterns, id: \.self) { pattern in
                     Button {
                         selectedPattern = pattern
@@ -67,7 +67,7 @@ struct PatternPicker: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .fill(Color(.systemBackground))
                                 )
-                            
+
                             Image(pattern)
                                 .resizable(resizingMode: .tile)
                                 .renderingMode(.template)

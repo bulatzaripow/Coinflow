@@ -9,15 +9,15 @@ import Foundation
 import SwiftUI
 
 struct DateFilterView: View {
-    
+
     // MARK: - Props
-    
+
     @Environment(\.dismiss) private var dismiss
     @Binding var startDate: Date
     @Binding var endDate: Date
-    
+
     // MARK: - UI
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             HStack(spacing: 8) {
@@ -33,7 +33,7 @@ struct DateFilterView: View {
                 setWeekPeriod()
                 dismiss()
             }
-            
+
             HStack(spacing: 8) {
                 Image("october-calendar")
                     .resizable()
@@ -47,7 +47,7 @@ struct DateFilterView: View {
                 setMonthPeriod()
                 dismiss()
             }
-            
+
             HStack(spacing: 8) {
                 Image("calendar-swap")
                     .resizable()
@@ -61,9 +61,9 @@ struct DateFilterView: View {
                 setYearPeriod()
                 dismiss()
             }
-            
+
             Divider()
-            
+
             HStack(spacing: 8) {
                 Image("calendar-arrow-down")
                     .resizable()
@@ -71,7 +71,7 @@ struct DateFilterView: View {
                 DatePicker("startDate", selection: $startDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
             }
-            
+
             HStack(spacing: 8) {
                 Image("calendar-arrow-up")
                     .resizable()
@@ -83,22 +83,21 @@ struct DateFilterView: View {
         .padding(15)
         .frame(width: 250, height: 250)
     }
-    
+
     // MARK: - Methods
-    
+
     private func setWeekPeriod() {
         startDate = Date.startOfCurrentWeek
         endDate = Date.endOfCurrentWeek
     }
-    
+
     private func setMonthPeriod() {
         startDate = Date.startOfCurrentMonth
         endDate = Date.endOfCurrentMonth
     }
-    
+
     private func setYearPeriod() {
         startDate = Date.startOfCurrentYear
         endDate = Date()
     }
 }
-

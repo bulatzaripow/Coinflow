@@ -13,11 +13,11 @@ struct CategoryListViewBuilder {
         context: ModelContext
     ) -> CategoryListView {
         let categoryService = CategoryManageService(context: context)
-        
-        let vm = CategoryListViewModel(
+
+        let viewModel = CategoryListViewModel(
             categoryService: categoryService
         )
-        
-        return CategoryListView(viewModel: vm)
+
+        return CategoryListView(viewModel: viewModel)
     }
 }

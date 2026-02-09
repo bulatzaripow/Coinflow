@@ -11,13 +11,13 @@ import SwiftData
 @main
 struct CoinflowApp: App {
     @State private var userPreferences = UserPreferences()
-    
+
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-        
+
         setupDefaultCurrencyIfNeeded(userPreferences: userPreferences)
     }
-    
+
     var body: some Scene {
         WindowGroup {
             AppEntryView()
@@ -25,26 +25,26 @@ struct CoinflowApp: App {
         }
         .modelContainer(sharedModelContainer)
     }
-    
+
     var sharedModelContainer: ModelContainer {
         let schema = Schema(versionedSchema: SchemaLatestVersion.self)
-        
+
         do {
             let localConfig = ModelConfiguration(
                 schema: schema,
                 isStoredInMemoryOnly: false
             )
-            
+
             let container = try ModelContainer(
                 for: schema,
                 migrationPlan: UpgradeMigrationPlan.self,
                 configurations: [localConfig]
             )
             print("ModelContainer created successfully")
-            
+
             createDefaultDataIfNeeded(context: container.mainContext)
             return container
-            
+
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
@@ -55,18 +55,25 @@ struct CoinflowApp: App {
 
 private func createDefaultDataIfNeeded(context: ModelContext) {
     let hasCreatedDefaults = UserDefaults.standard.bool(forKey: "defaultDataCreated")
-        
+
     guard !hasCreatedDefaults else {
         print("Default data already exists")
         return
     }
-    
+
     print("Creating default data...")
-    
-    let currencyService: CurrencyInitializerProtocol = CurrencyInitializerService(context: context)
-    let categoryService: CategoryInitializerProtocol = CategoryInitializerService(context: context)
-    let accountService: AccountInitializerProtocol = AccountInitializerService(context: context, currencyService: currencyService)
-    
+
+    let currencyService: CurrencyInitializerProtocol = CurrencyInitializerService(
+        context: context
+    )
+    let categoryService: CategoryInitializerProtocol = CategoryInitializerService(
+        context: context
+    )
+    let accountService: AccountInitializerProtocol = AccountInitializerService(
+        context: context,
+        currencyService: currencyService
+    )
+
     currencyService.setupDefaultCurrenciesIfNeeded()
     categoryService.setupDefaultCategoriesIfNeeded()
     accountService.setupDefaultAccountIfNeeded()

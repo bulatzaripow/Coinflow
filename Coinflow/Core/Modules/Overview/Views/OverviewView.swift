@@ -9,11 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct OverviewView: View {
-    
+
     // MARK: - Props
-    
+
     @ObservedObject var viewModel: OverviewViewModel
-    
+
     // MARK: - UI
 
     var body: some View {
@@ -26,7 +26,7 @@ struct OverviewView: View {
                 Spacer()
             }
             .padding(.horizontal, 16)
-            
+
             if !viewModel.expenseCategories.isEmpty {
                 OverviewSectionViewBuilder
                     .build(
@@ -37,7 +37,7 @@ struct OverviewView: View {
                         selectedAccount: viewModel.selectedAccount
                     )
             }
-            
+
             if !viewModel.incomeCategories.isEmpty {
                 OverviewSectionViewBuilder
                     .build(
@@ -49,7 +49,7 @@ struct OverviewView: View {
                         type: .income
                     )
             }
-            
+
             if viewModel.expenseCategories.isEmpty && viewModel.incomeCategories.isEmpty {
                 VStack(spacing: 8) {
                     Image(systemName: "chart.bar.xaxis")
@@ -57,11 +57,11 @@ struct OverviewView: View {
                         .scaledToFit()
                         .frame(width: 60, height: 60)
                         .foregroundStyle(.secondary)
-                    
+
                     Text("Nothing here yet!")
                         .font(.title3)
                         .fontWeight(.semibold)
-                    
+
                     Text("Add income and expenses to start tracking")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
@@ -75,7 +75,7 @@ struct OverviewView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                PopoverMenuButton() {
+                PopoverMenuButton {
                     Image("calendar-clock")
                         .resizable()
                         .renderingMode(.template)

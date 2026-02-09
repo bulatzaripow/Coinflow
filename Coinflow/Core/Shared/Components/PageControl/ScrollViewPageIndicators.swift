@@ -17,13 +17,13 @@ struct ScrollViewPageIndicators: View {
     var shouldTruncate: Bool {
         count > maxVisibleDots
     }
-    
+
     var body: some View {
         HStack(spacing: spacing) {
             if shouldTruncate {
                 let startIndex = max(Int(scrollProgressX.rounded()) - maxVisibleDots/2, 0)
                 let endIndex = min(startIndex + maxVisibleDots, count)
-                
+
                 ForEach(startIndex..<endIndex, id: \.self) { index in
                     Circle()
                         .fill(index == Int(scrollProgressX.rounded()) ? Color.primary : Color.secondary.opacity(0.5))

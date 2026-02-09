@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
+
     @Environment(UserPreferences.self) var userPreferences
-        
+
     var body: some View {
         ZStack {
             LinearGradient(
@@ -19,25 +19,25 @@ struct OnboardingView: View {
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
-            
+
             VStack(spacing: 20) {
                 Image(systemName: "banknote.fill")
                     .font(.system(size: 100))
                     .foregroundColor(.white)
-                
+
                 VStack(spacing: 10) {
                     Text("Coinflow")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
-                    
+
                     Text("Take control of your finances")
                         .font(.title3)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white.opacity(0.8))
                         .padding(.horizontal)
                 }
-                
+
                 Button(action: {
                     userPreferences.setHasSeenOnboarding(true)
                 }) {

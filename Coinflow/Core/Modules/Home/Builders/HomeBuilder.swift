@@ -14,14 +14,14 @@ struct HomeBuilder {
     ) -> HomeView {
         let accountService = AccountManageService(context: context)
         let transactionService = TransactionManageService(context: context)
-        
+
         let viewModel = HomeViewModel(
             accountService: accountService,
             transactionService: transactionService
         )
-        
+
         let view = HomeView(viewModel: viewModel)
-        
+
         return view
     }
 }

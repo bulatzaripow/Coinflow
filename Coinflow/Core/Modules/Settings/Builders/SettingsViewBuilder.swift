@@ -11,10 +11,10 @@ struct SettingsViewBuilder {
     static func build(
         onNavigate: @escaping (MainRoutes) -> Void
     ) -> SettingsView {
-        let vm = SettingsViewModel(onNavigate: onNavigate)
-        
+        let viewModel = SettingsViewModel(onNavigate: onNavigate)
+
         return SettingsView(
-            viewModel: vm
+            viewModel: viewModel
         )
     }
 }

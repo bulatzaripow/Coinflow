@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct CategoryListView: View {
-    
+
     @Environment(\.modelContext) var modelContext
-    
+
     @StateObject var viewModel: CategoryListViewModel
-    
+
     @State private var editMode: EditMode = .inactive
-    
+
     var body: some View {
         VStack {
             Picker("", selection: $viewModel.selectedType) {
@@ -26,7 +26,7 @@ struct CategoryListView: View {
             .onChange(of: viewModel.selectedType) { _, newValue in
                 viewModel.changeType(newValue)
             }
-            
+
             List {
                 ForEach(viewModel.categories) { category in
                     CategoryRow(category: category)
@@ -101,7 +101,7 @@ struct CategoryListView: View {
             )
             .presentationDragIndicator(.visible)
         }
-        .sheet(item: $viewModel.categoryToEdit) { account in
+        .sheet(item: $viewModel.categoryToEdit) { _ in
             if let category = viewModel.categoryToEdit {
                 CategoryManageViewBuilder.build(
                     category,
@@ -113,6 +113,3 @@ struct CategoryListView: View {
         }
     }
 }
-
-
-

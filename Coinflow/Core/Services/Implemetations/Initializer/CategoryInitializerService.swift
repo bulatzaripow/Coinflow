@@ -9,25 +9,25 @@ import Foundation
 import SwiftData
 
 final class CategoryInitializerService: CategoryInitializerProtocol {
-    
+
     // MARK: - Props
-    
+
     let context: ModelContext
-    
+
     // MARK: - Init
-    
+
     init(context: ModelContext) {
         self.context = context
     }
-    
+
     // MARK: - Methods
-    
+
     func setupDefaultCategoriesIfNeeded() {
         guard !checkIfCategoriesExists() else {
             print("Categories already exists in database")
             return
         }
-        
+
         let defaultCategories = getDefaultCategories()
         var sortOrder = 0
         for categoryData in defaultCategories {
@@ -44,10 +44,10 @@ final class CategoryInitializerService: CategoryInitializerProtocol {
             context.insert(category)
         }
     }
-    
+
     private func checkIfCategoriesExists() -> Bool {
         let descriptor = FetchDescriptor<Category>()
-        
+
         do {
             let count = try context.fetchCount(descriptor)
             return count > 0
@@ -56,9 +56,9 @@ final class CategoryInitializerService: CategoryInitializerProtocol {
             return false
         }
     }
-    
+
     private func getDefaultCategories() -> [(name: String, icon: String, type: CategoryType, color: String)] {
-        
+
         return [
             // Expenses
             ("categoryOther", "interrogation", CategoryType.expense, "#757575"),
@@ -95,7 +95,7 @@ final class CategoryInitializerService: CategoryInitializerProtocol {
             ("categoryCashbackRefund", "refund-alt", CategoryType.income, "#7CB342"),
             ("categoryDividends", "investment", CategoryType.income, "#00695C"),
             ("categoryRentalIncome", "rent", CategoryType.income, "#5E35B1"),
-            ("categoryGovernmentSupport", "government-budget", CategoryType.income, "#455A64"),
+            ("categoryGovernmentSupport", "government-budget", CategoryType.income, "#455A64")
         ]
     }
 }
