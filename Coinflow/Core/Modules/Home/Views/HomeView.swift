@@ -122,7 +122,7 @@ struct HomeView: View {
                             }
                         }
                         .padding(.horizontal, 20)
-                        .padding(.bottom, 10)
+                        .padding(.vertical, 15)
                     }
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
