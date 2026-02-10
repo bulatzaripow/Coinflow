@@ -27,7 +27,7 @@ final class GreetingHelperTests: XCTestCase {
         
         for date in dates {
             let greeting = GreetingHelper.greeting(for: date)
-            XCTAssertEqual(greeting.stringKey, "Good morning".localized)
+            XCTAssertEqual(greeting.stringKey, "Good morning")
         }
     }
     
@@ -39,7 +39,7 @@ final class GreetingHelperTests: XCTestCase {
         ]
         for date in dates {
             let greeting = GreetingHelper.greeting(for: date)
-            XCTAssertEqual(greeting.stringKey, "Good afternoon".localized)
+            XCTAssertEqual(greeting.stringKey, "Good afternoon")
         }
     }
     
@@ -51,7 +51,7 @@ final class GreetingHelperTests: XCTestCase {
         ]
         for date in dates {
             let greeting = GreetingHelper.greeting(for: date)
-            XCTAssertEqual(greeting.stringKey, "Good evening".localized)
+            XCTAssertEqual(greeting.stringKey, "Good evening")
         }
     }
     
@@ -65,7 +65,7 @@ final class GreetingHelperTests: XCTestCase {
         ]
         for date in dates {
             let greeting = GreetingHelper.greeting(for: date)
-            XCTAssertEqual(greeting.stringKey, "Good night".localized)
+            XCTAssertEqual(greeting.stringKey, "Good night")
         }
     }
     
