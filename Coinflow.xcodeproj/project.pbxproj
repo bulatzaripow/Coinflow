@@ -9,24 +9,62 @@
 /* Begin PBXBuildFile section */
 		FE08CD262EF310EA002CFC28 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FE08CD252EF310EA002CFC28 /* README.md */; };
 		FE08CD282EF31108002CFC28 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FE08CD272EF31108002CFC28 /* .gitignore */; };
+		FEFCC14A2F3A7609009F26DD /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FEFCC1492F3A7609009F26DD /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE76EEF42F36949C001A4ED7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE08CD0D2EF31040002CFC28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE08CD142EF31040002CFC28;
+			remoteInfo = Coinflow;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FE08CD152EF31040002CFC28 /* Coinflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coinflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE08CD252EF310EA002CFC28 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FE08CD272EF31108002CFC28 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoinflowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEFCC1492F3A7609009F26DD /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FEFCC1452F393388009F26DD /* Exceptions for "Coinflow" folder in "Coinflow" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Info.plist,
+			);
+			target = FE08CD142EF31040002CFC28 /* Coinflow */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FE08CD172EF31040002CFC28 /* Coinflow */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FEFCC1452F393388009F26DD /* Exceptions for "Coinflow" folder in "Coinflow" target */,
+			);
 			path = Coinflow;
+			sourceTree = "<group>";
+		};
+		FE76EEF12F36949C001A4ED7 /* CoinflowTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoinflowTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FE08CD122EF31040002CFC28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE76EEED2F36949C001A4ED7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,8 +78,10 @@
 			isa = PBXGroup;
 			children = (
 				FE08CD172EF31040002CFC28 /* Coinflow */,
-				FE08CD252EF310EA002CFC28 /* README.md */,
+				FE76EEF12F36949C001A4ED7 /* CoinflowTests */,
 				FE08CD272EF31108002CFC28 /* .gitignore */,
+				FEFCC1492F3A7609009F26DD /* .swiftlint.yml */,
+				FE08CD252EF310EA002CFC28 /* README.md */,
 				FE08CD162EF31040002CFC28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				FE08CD152EF31040002CFC28 /* Coinflow.app */,
+				FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,6 +109,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FEFCC1482F3A64DE009F26DD /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FE08CD172EF31040002CFC28 /* Coinflow */,
@@ -79,6 +121,29 @@
 			productReference = FE08CD152EF31040002CFC28 /* Coinflow.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FE76EEEF2F36949C001A4ED7 /* CoinflowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE76EEF62F36949C001A4ED7 /* Build configuration list for PBXNativeTarget "CoinflowTests" */;
+			buildPhases = (
+				FE76EEEC2F36949C001A4ED7 /* Sources */,
+				FE76EEED2F36949C001A4ED7 /* Frameworks */,
+				FE76EEEE2F36949C001A4ED7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE76EEF52F36949C001A4ED7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FE76EEF12F36949C001A4ED7 /* CoinflowTests */,
+			);
+			name = CoinflowTests;
+			packageProductDependencies = (
+			);
+			productName = CoinflowTests;
+			productReference = FE76EEF02F36949C001A4ED7 /* CoinflowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -86,11 +151,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					FE08CD142EF31040002CFC28 = {
 						CreatedOnToolsVersion = 26.1.1;
+					};
+					FE76EEEF2F36949C001A4ED7 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = FE08CD142EF31040002CFC28;
 					};
 				};
 			};
@@ -99,16 +168,21 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 				Base,
 			);
 			mainGroup = FE08CD0C2EF31040002CFC28;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FEFCC1462F3A64B4009F26DD /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FE08CD162EF31040002CFC28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				FE08CD142EF31040002CFC28 /* Coinflow */,
+				FE76EEEF2F36949C001A4ED7 /* CoinflowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -118,8 +192,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEFCC14A2F3A7609009F26DD /* .swiftlint.yml in Resources */,
 				FE08CD262EF310EA002CFC28 /* README.md in Resources */,
 				FE08CD282EF31108002CFC28 /* .gitignore in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE76EEEE2F36949C001A4ED7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +215,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE76EEEC2F36949C001A4ED7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE76EEF52F36949C001A4ED7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE08CD142EF31040002CFC28 /* Coinflow */;
+			targetProxy = FE76EEF42F36949C001A4ED7 /* PBXContainerItemProxy */;
+		};
+		FEFCC1482F3A64DE009F26DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = FEFCC1472F3A64DE009F26DD /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FE08CD1E2EF31042002CFC28 /* Debug */ = {
@@ -141,6 +242,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -194,7 +296,9 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -204,6 +308,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -250,7 +355,9 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -261,15 +368,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = U3DGQCH46P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Coinflow/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Coinflow;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,7 +399,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -297,15 +409,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = U3DGQCH46P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Coinflow/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Coinflow;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,7 +440,49 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		FE76EEF72F36949C001A4ED7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bulatzaripov.CoinflowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinflow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Coinflow";
+			};
+			name = Debug;
+		};
+		FE76EEF82F36949C001A4ED7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bulatzaripov.CoinflowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Coinflow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Coinflow";
 			};
 			name = Release;
 		};
@@ -348,7 +507,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		FE76EEF62F36949C001A4ED7 /* Build configuration list for PBXNativeTarget "CoinflowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE76EEF72F36949C001A4ED7 /* Debug */,
+				FE76EEF82F36949C001A4ED7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FEFCC1462F3A64B4009F26DD /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.63.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FEFCC1472F3A64DE009F26DD /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEFCC1462F3A64B4009F26DD /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE08CD0D2EF31040002CFC28 /* Project object */;
 }
