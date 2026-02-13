@@ -11,6 +11,11 @@ Coinflow is a personal cash flow manager for iOS that helps you keep your financ
     <img src="https://s3.twcstorage.ru/8d49c780-94e9-4c1a-a979-70aaeeb62313/Projects/Coinflow/screen_4.jpg" width="200" />
 </div>
 
+## Download
+<a href="https://apps.apple.com/us/app/coinflow-cash-flow-tracker/id6759005629?itscg=30200&itsct=apps_box_badge&mttnsubad=6759005629" style="display: inline-block;">
+    <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1770854400" alt="Download on the App Store" style="height: 65px; vertical-align: middle; object-fit: contain;" />
+</a>
+
 ## Features
 - Track income and expenses
 - Simple and clean transaction management
