@@ -37,7 +37,7 @@ class TransactionManageViewModel: ObservableObject {
 
     var canModify: Bool {
         guard !amount.isEmpty,
-              Double(amount) != nil else { return false }
+              amount.asDouble != nil else { return false }
 
         switch type {
         case .expense, .income:
