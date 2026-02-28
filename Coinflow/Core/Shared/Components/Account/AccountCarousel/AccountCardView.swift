@@ -12,9 +12,7 @@ struct AccountCardView: View {
 
     var body: some View {
         ZStack {
-            if let color = account.backgroundColor {
-                AppColors(rawValue: color)?.gradient
-            }
+            account.backgroundColor?.gradient
 
             if let pattern = account.backgroundPattern {
                 Image(pattern)
