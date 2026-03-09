@@ -110,15 +110,12 @@ struct TransactionManageView: View {
                             displayedComponents: [.date, .hourAndMinute]
                         )
 
-                        ZStack(alignment: .leading) {
-                            if viewModel.note.isEmpty {
-                                Text("Note")
-                                    .foregroundColor(.gray)
-                                    .padding(.leading, 6)
-                            }
-
-                            TextEditor(text: $viewModel.note)
-                        }
+                        TextField(
+                            "Note",
+                            text: $viewModel.note,
+                            axis: .vertical
+                        )
+                        .lineLimit(1...10)
                     }
 
                     Section {
