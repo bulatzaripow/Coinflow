@@ -88,7 +88,7 @@ class TransactionManageViewModel: ObservableObject {
             date = transaction.date
 
             selectedAccount = transaction.account
-            selectedToAccount = transaction.toAccount ?? accounts.first
+            selectedToAccount = transaction.toAccount
             selectedCategory = transaction.category
         } else {
             self.selectedAccount = accounts.first
