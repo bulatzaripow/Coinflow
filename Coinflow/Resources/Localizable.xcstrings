@@ -8,6 +8,18 @@
             "state" : "translated",
             "value" : " "
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
         }
       }
     },
@@ -26,6 +38,18 @@
             "state" : "translated",
             "value" : "%1$@ > %2$@"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ > %2$@"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ > %2$@"
+          }
         }
       }
     },
@@ -40,8 +64,20 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Аккаунт"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисап"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисап"
           }
         }
       }
@@ -55,6 +91,18 @@
             "state" : "translated",
             "value" : "Добавить"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Өстәргә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Өстәргә"
+          }
         }
       }
     },
@@ -66,6 +114,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавить аккаунт"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисап өстәргә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисап өстәргә"
           }
         }
       }
@@ -79,6 +139,18 @@
             "state" : "translated",
             "value" : "Добавить аккаунт"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисап өстәргә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисап өстәргә"
+          }
         }
       }
     },
@@ -90,6 +162,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добавьте доходы и расходы, чтобы начать отслеживание"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Күзәтүне башлау өчен керем һәм чыгымнар өстәгез"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Күзәтүне башлау өчен керем һәм чыгымнар өстәгез"
           }
         }
       }
@@ -103,6 +187,18 @@
             "state" : "translated",
             "value" : "Добавьте первую транзакцию, чтобы увидеть её здесь"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Монда күрү өчен беренче транзакцияне өстәгез"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Монда күрү өчен беренче транзакцияне өстәгез"
+          }
         }
       }
     },
@@ -114,6 +210,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Все транзакции будут удалены. Вы уверены?"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Барлык транзакцияләр бетереләчәк. Дәвам итәргәме?"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Барлык транзакцияләр бетереләчәк. Дәвам итәргәме?"
           }
         }
       }
@@ -132,6 +240,18 @@
             "state" : "translated",
             "value" : "Армянский драм"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Әрмән драмы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Әрмән драмы"
+          }
         }
       }
     },
@@ -143,6 +263,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Авторство"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авторлык"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авторлык"
           }
         }
       }
@@ -160,6 +292,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Азербайджанский манат"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Азәрбайҗан манаты"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Азәрбайҗан манаты"
           }
         }
       }
@@ -179,6 +323,18 @@
             "state" : "translated",
             "value" : "Баланс"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калдык"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Калдык"
+          }
         }
       }
     },
@@ -195,6 +351,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Белорусский рубль"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Беларусь рублесе"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Беларусь рублесе"
           }
         }
       }
@@ -213,6 +381,18 @@
             "state" : "translated",
             "value" : "Британский фунт"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Британия фунты"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Британия фунты"
+          }
         }
       }
     },
@@ -225,6 +405,18 @@
             "state" : "translated",
             "value" : "Отмена"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кире кайтару"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кире кайтару"
+          }
         }
       }
     },
@@ -236,6 +428,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Категории"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категорияләр"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категорияләр"
           }
         }
       }
@@ -254,6 +458,18 @@
             "state" : "translated",
             "value" : "Категория"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категория"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категория"
+          }
         }
       }
     },
@@ -265,6 +481,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Название категории"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категория исеме"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категория исеме"
           }
         }
       }
@@ -279,6 +507,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бонус"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бонус"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Бонус"
@@ -300,6 +540,18 @@
             "state" : "translated",
             "value" : "Книги"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Китаплар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Китаплар"
+          }
         }
       }
     },
@@ -313,6 +565,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бизнес"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бизнес"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Бизнес"
@@ -334,6 +598,18 @@
             "state" : "translated",
             "value" : "Кэшбэк / Возврат"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кэшбэк / Кайтарым"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кэшбэк / Кайтарым"
+          }
         }
       }
     },
@@ -347,6 +623,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кино"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кино"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кино"
@@ -368,6 +656,18 @@
             "state" : "translated",
             "value" : "Одежда"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кием"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кием"
+          }
         }
       }
     },
@@ -381,6 +681,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кофе"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кофе"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кофе"
@@ -402,6 +714,18 @@
             "state" : "translated",
             "value" : "Курсы"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Курслар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Курслар"
+          }
         }
       }
     },
@@ -418,6 +742,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доставка"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Китерү"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Китерү"
           }
         }
       }
@@ -436,6 +772,18 @@
             "state" : "translated",
             "value" : "Дивиденды"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дивидендлар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дивидендлар"
+          }
         }
       }
     },
@@ -453,6 +801,18 @@
             "state" : "translated",
             "value" : "Врач"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Табиб"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Табиб"
+          }
         }
       }
     },
@@ -466,6 +826,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Электроника"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Электроника"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Электроника"
@@ -487,6 +859,18 @@
             "state" : "translated",
             "value" : "Топливо"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ягулык"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ягулык"
+          }
         }
       }
     },
@@ -503,6 +887,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Подарок"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Алынган бүләк"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Алынган бүләк"
           }
         }
       }
@@ -521,6 +917,18 @@
             "state" : "translated",
             "value" : "Подарки"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бүләкләр"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бүләкләр"
+          }
         }
       }
     },
@@ -537,6 +945,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Государственная поддержка"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дәүләт ярдәме"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дәүләт ярдәме"
           }
         }
       }
@@ -555,6 +975,18 @@
             "state" : "translated",
             "value" : "Продукты"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Азык-төлек"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Азык-төлек"
+          }
         }
       }
     },
@@ -571,6 +1003,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Хобби"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мавыгулар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мавыгулар"
           }
         }
       }
@@ -589,6 +1033,18 @@
             "state" : "translated",
             "value" : "Доход от инвестиций"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Инвестиция керемнәре"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Инвестиция керемнәре"
+          }
         }
       }
     },
@@ -605,6 +1061,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Другое"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Башка"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Башка"
           }
         }
       }
@@ -623,6 +1091,18 @@
             "state" : "translated",
             "value" : "Другое"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Башка"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Башка"
+          }
         }
       }
     },
@@ -636,6 +1116,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Парковка"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Парковка"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Парковка"
@@ -657,6 +1149,18 @@
             "state" : "translated",
             "value" : "Питомцы"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хайван карау"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хайван карау"
+          }
         }
       }
     },
@@ -670,6 +1174,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аптека"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аптека"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Аптека"
@@ -691,6 +1207,18 @@
             "state" : "translated",
             "value" : "Общественный транспорт"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Җәмәгать транспорты"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Җәмәгать транспорты"
+          }
         }
       }
     },
@@ -704,6 +1232,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аренда"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аренда"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Аренда"
@@ -725,6 +1265,18 @@
             "state" : "translated",
             "value" : "Доход от аренды"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аренда кереме"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аренда кереме"
+          }
         }
       }
     },
@@ -738,6 +1290,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ресторан"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ресторан"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ресторан"
@@ -759,6 +1323,18 @@
             "state" : "translated",
             "value" : "Зарплата"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хезмәт хакы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хезмәт хакы"
+          }
         }
       }
     },
@@ -775,6 +1351,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Покупки"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сатып алулар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сатып алулар"
           }
         }
       }
@@ -793,6 +1381,18 @@
             "state" : "translated",
             "value" : "Подписки"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Язылулар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Язылулар"
+          }
         }
       }
     },
@@ -806,6 +1406,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Такси"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Такси"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Такси"
@@ -827,6 +1439,18 @@
             "state" : "translated",
             "value" : "Коммунальные услуги"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коммуналь хезмәтләр"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Коммуналь хезмәтләр"
+          }
         }
       }
     },
@@ -844,6 +1468,18 @@
             "state" : "translated",
             "value" : "Китайский юань"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кытай юане"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кытай юане"
+          }
         }
       }
     },
@@ -852,6 +1488,18 @@
       "isCommentAutoGenerated" : true,
       "localizations" : {
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coinflow"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coinflow"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Coinflow"
@@ -868,6 +1516,18 @@
             "state" : "translated",
             "value" : "Продолжить"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дәвам итәргә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дәвам итәргә"
+          }
         }
       }
     },
@@ -880,6 +1540,18 @@
             "state" : "translated",
             "value" : "Created by Bulat Zaripov"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created by Bulat Zaripov"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created by Bulat Zaripov"
+          }
         }
       }
     },
@@ -888,6 +1560,18 @@
       "isCommentAutoGenerated" : true,
       "localizations" : {
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дата"
@@ -909,6 +1593,18 @@
             "state" : "translated",
             "value" : "По умолчанию"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гадәттәгечә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гадәттәгечә"
+          }
         }
       }
     },
@@ -920,6 +1616,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Счёт по умолчанию"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гадәти хисап"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гадәти хисап"
           }
         }
       }
@@ -933,6 +1641,18 @@
             "state" : "translated",
             "value" : "Валюта по умолчанию"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гадәти валюта"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гадәти валюта"
+          }
         }
       }
     },
@@ -944,6 +1664,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Удалить"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бетерергә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бетерергә"
           }
         }
       }
@@ -957,6 +1689,18 @@
             "state" : "translated",
             "value" : "Удалить аккаунт"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапны бетерергә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапны бетерергә"
+          }
         }
       }
     },
@@ -969,6 +1713,18 @@
             "state" : "translated",
             "value" : "Удалить аккаунт?"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапны бетерергәме?"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапны бетерергәме?"
+          }
         }
       }
     },
@@ -977,6 +1733,18 @@
       "isCommentAutoGenerated" : true,
       "localizations" : {
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дизайн"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дизайн"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дизайн"
@@ -993,6 +1761,18 @@
             "state" : "translated",
             "value" : "Изменить"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Үзгәртергә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Үзгәртергә"
+          }
         }
       }
     },
@@ -1004,6 +1784,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Изменить аккаунт"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапны үзгәртергә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапны үзгәртергә"
           }
         }
       }
@@ -1022,6 +1814,18 @@
             "state" : "translated",
             "value" : "Образование"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белем"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Белем"
+          }
         }
       }
     },
@@ -1037,8 +1841,20 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "по"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ахыры"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ахыры"
           }
         }
       }
@@ -1057,6 +1873,18 @@
             "state" : "translated",
             "value" : "Развлечение"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Күңел ачу"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Күңел ачу"
+          }
         }
       }
     },
@@ -1074,6 +1902,18 @@
             "state" : "translated",
             "value" : "Евро"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Евро"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Евро"
+          }
         }
       }
     },
@@ -1085,6 +1925,48 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Расход"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чыгым"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чыгым"
+          }
+        }
+      }
+    },
+    "Expenses" : {
+      "comment" : "Title of a block in overview screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Расходы"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чыгымнар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чыгымнар"
           }
         }
       }
@@ -1103,6 +1985,18 @@
             "state" : "translated",
             "value" : "Семья"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гаилә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гаилә"
+          }
         }
       }
     },
@@ -1120,6 +2014,18 @@
             "state" : "translated",
             "value" : "Финансы"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Финанс"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Финанс"
+          }
         }
       }
     },
@@ -1131,6 +2037,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Флаги"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Байраклар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Байраклар"
           }
         }
       }
@@ -1149,6 +2067,18 @@
             "state" : "translated",
             "value" : "Еда и напитки"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ашамлык һәм эчемлек"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ашамлык һәм эчемлек"
+          }
         }
       }
     },
@@ -1165,6 +2095,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "от"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дан/дән"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дан/дән"
           }
         }
       }
@@ -1183,6 +2125,18 @@
             "state" : "translated",
             "value" : "Из аккаунта"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисаптан"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисаптан"
+          }
         }
       }
     },
@@ -1199,6 +2153,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Грузинский лари"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Грузия ларие"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Грузия ларие"
           }
         }
       }
@@ -1217,6 +2183,18 @@
             "state" : "translated",
             "value" : "Добрый день"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле көн"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле көн"
+          }
         }
       }
     },
@@ -1233,6 +2211,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Добрый вечер"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле кич"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле кич"
           }
         }
       }
@@ -1251,6 +2241,18 @@
             "state" : "translated",
             "value" : "Доброе утро"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле иртә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле иртә"
+          }
         }
       }
     },
@@ -1267,6 +2269,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доброй ночи"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле кич"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хәерле кич"
           }
         }
       }
@@ -1285,6 +2299,18 @@
             "state" : "translated",
             "value" : "Здоровье"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сәламәтлек"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сәламәтлек"
+          }
         }
       }
     },
@@ -1302,6 +2328,18 @@
             "state" : "translated",
             "value" : "Дом"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Өй"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Өй"
+          }
         }
       }
     },
@@ -1310,6 +2348,18 @@
       "isCommentAutoGenerated" : true,
       "localizations" : {
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иконка"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иконка"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Иконка"
@@ -1325,6 +2375,48 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доход"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Керем"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Керем"
+          }
+        }
+      }
+    },
+    "Incomes" : {
+      "comment" : "Title of a block in overview screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incomes"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доходы"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Керемнәр"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Керемнәр"
           }
         }
       }
@@ -1343,6 +2435,18 @@
             "state" : "translated",
             "value" : "Индийская рупия"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Һиндстан рупиясе"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Һиндстан рупиясе"
+          }
         }
       }
     },
@@ -1354,6 +2458,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Иконки интерфейса"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Интерфейс иконкалары"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Интерфейс иконкалары"
           }
         }
       }
@@ -1372,6 +2488,18 @@
             "state" : "translated",
             "value" : "Японская иена"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Япония иенасы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Япония иенасы"
+          }
         }
       }
     },
@@ -1388,6 +2516,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Казахский тенге"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Казакъстан тәңкәсе"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Казакъстан тәңкәсе"
           }
         }
       }
@@ -1406,6 +2546,18 @@
             "state" : "translated",
             "value" : "Киргизский сом"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кыргызстан сомы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кыргызстан сомы"
+          }
         }
       }
     },
@@ -1418,6 +2570,18 @@
             "state" : "translated",
             "value" : "Язык"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тел"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тел"
+          }
         }
       }
     },
@@ -1428,6 +2592,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Основной"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Төп"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Төп"
           }
         }
       }
@@ -1446,6 +2622,18 @@
             "state" : "translated",
             "value" : "месяц"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ай"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ай"
+          }
         }
       }
     },
@@ -1457,6 +2645,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Название"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исем"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исем"
           }
         }
       }
@@ -1470,6 +2670,18 @@
             "state" : "translated",
             "value" : "Новая категория"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яңа категория"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Яңа категория"
+          }
         }
       }
     },
@@ -1481,6 +2693,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет аккаунтов"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисаплар юк"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисаплар юк"
           }
         }
       }
@@ -1494,6 +2718,18 @@
             "state" : "translated",
             "value" : "Пока нет элементов"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Әлегә элементлар юк"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Әлегә элементлар юк"
+          }
         }
       }
     },
@@ -1505,6 +2741,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Транзакций пока нет"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Әлегә транзакцияләр юк"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Әлегә транзакцияләр юк"
           }
         }
       }
@@ -1518,6 +2766,18 @@
             "state" : "translated",
             "value" : "Заметка"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Искәрмә"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Искәрмә"
+          }
         }
       }
     },
@@ -1529,6 +2789,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Здесь пока пусто!"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Монда әлегә берни юк!"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Монда әлегә берни юк!"
           }
         }
       }
@@ -1547,6 +2819,18 @@
             "state" : "translated",
             "value" : "Другое"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Башка"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Башка"
+          }
         }
       }
     },
@@ -1558,6 +2842,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обзор"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гомуми күзәтү"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гомуми күзәтү"
           }
         }
       }
@@ -1571,6 +2867,18 @@
             "state" : "translated",
             "value" : "Политика конфиденциальности"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хосусыйлык сәясәте"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хосусыйлык сәясәте"
+          }
         }
       }
     },
@@ -1580,6 +2888,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Последние действия"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Соңгы эшчәнлек"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Соңгы эшчәнлек"
           }
         }
       }
@@ -1598,6 +2918,18 @@
             "state" : "translated",
             "value" : "Российский рубль"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Россия рублесе"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Россия рублесе"
+          }
         }
       }
     },
@@ -1610,6 +2942,18 @@
             "state" : "translated",
             "value" : "Сохранить"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сакларга"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сакларга"
+          }
         }
       }
     },
@@ -1621,6 +2965,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Көйләүләр"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Көйләүләр"
           }
         }
       }
@@ -1639,6 +2995,18 @@
             "state" : "translated",
             "value" : "Покупки"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сатып алулар"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сатып алулар"
+          }
         }
       }
     },
@@ -1652,6 +3020,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорт"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорт"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Спорт"
@@ -1674,6 +3054,18 @@
             "state" : "translated",
             "value" : "с"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "башы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "башы"
+          }
         }
       }
     },
@@ -1691,6 +3083,18 @@
             "state" : "translated",
             "value" : "Таджикский сомони"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таҗикстан сомонисе"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таҗикстан сомонисе"
+          }
         }
       }
     },
@@ -1703,6 +3107,18 @@
             "state" : "translated",
             "value" : "Возьмите контроль над своими финансами"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Финансыгызны үз кулыгызга алыгыз"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Финансыгызны үз кулыгызга алыгыз"
+          }
         }
       }
     },
@@ -1714,6 +3130,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Условия обслуживания"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хезмәт күрсәтү шартлары"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хезмәт күрсәтү шартлары"
           }
         }
       }
@@ -1732,6 +3160,18 @@
             "state" : "translated",
             "value" : "Тайский бат"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таиланд баты"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таиланд баты"
+          }
         }
       }
     },
@@ -1748,6 +3188,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "до"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "кадәр"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "кадәр"
           }
         }
       }
@@ -1766,6 +3218,18 @@
             "state" : "translated",
             "value" : "На аккаунт"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапка"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хисапка"
+          }
         }
       }
     },
@@ -1778,6 +3242,18 @@
             "state" : "translated",
             "value" : "Общий баланс"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гомуми калдык"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гомуми калдык"
+          }
         }
       }
     },
@@ -1789,6 +3265,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Перевод"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Күчерү"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Күчерү"
           }
         }
       }
@@ -1803,6 +3291,18 @@
           }
         },
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Транспорт"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Транспорт"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Транспорт"
@@ -1824,6 +3324,18 @@
             "state" : "translated",
             "value" : "Путешествия"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сәяхәт"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сәяхәт"
+          }
         }
       }
     },
@@ -1841,6 +3353,18 @@
             "state" : "translated",
             "value" : "Турецкая лира"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Төркия лирасы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Төркия лирасы"
+          }
         }
       }
     },
@@ -1851,6 +3375,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дирхам ОАЭ"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дирһәм"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дирһәм"
           }
         }
       }
@@ -1869,6 +3405,18 @@
             "state" : "translated",
             "value" : "Украинская гривна"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Украина гривнасы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Украина гривнасы"
+          }
         }
       }
     },
@@ -1885,6 +3433,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Доллар США"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Америка доллары"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Америка доллары"
           }
         }
       }
@@ -1903,6 +3463,18 @@
             "state" : "translated",
             "value" : "Узбекский сум"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Үзбәкстан сомы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Үзбәкстан сомы"
+          }
         }
       }
     },
@@ -1911,6 +3483,18 @@
       "isCommentAutoGenerated" : true,
       "localizations" : {
         "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        },
+        "tt-RU" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version %@"
@@ -1932,6 +3516,18 @@
             "state" : "translated",
             "value" : "Вьетнамский донг"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вьетнам донгы"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вьетнам донгы"
+          }
         }
       }
     },
@@ -1949,6 +3545,18 @@
             "state" : "translated",
             "value" : "неделя"
           }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "атна"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "атна"
+          }
         }
       }
     },
@@ -1965,6 +3573,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "год"
+          }
+        },
+        "tt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ел"
+          }
+        },
+        "tt-RU" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ел"
           }
         }
       }

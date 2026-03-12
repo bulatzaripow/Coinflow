@@ -170,6 +170,8 @@
 				en,
 				ru,
 				Base,
+				"tt-RU",
+				tt,
 			);
 			mainGroup = FE08CD0C2EF31040002CFC28;
 			minimizedProjectReferenceProxies = 1;

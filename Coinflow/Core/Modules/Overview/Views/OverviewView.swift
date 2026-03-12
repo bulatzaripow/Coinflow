@@ -30,7 +30,7 @@ struct OverviewView: View {
             if !viewModel.expenseCategories.isEmpty {
                 OverviewSectionViewBuilder
                     .build(
-                        title: "Expenses",
+                        title: "Expenses".localized,
                         totalAmount: viewModel.getTotalAmount(for: .expense),
                         categories: viewModel.expenseCategories,
                         transactions: viewModel.getTransactions(for: .expense),
@@ -41,7 +41,7 @@ struct OverviewView: View {
             if !viewModel.incomeCategories.isEmpty {
                 OverviewSectionViewBuilder
                     .build(
-                        title: "Incomes",
+                        title: "Incomes".localized,
                         totalAmount: viewModel.getTotalAmount(for: .income),
                         categories: viewModel.incomeCategories,
                         transactions: viewModel.getTransactions(for: .income),
