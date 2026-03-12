@@ -129,7 +129,7 @@ class AccountManageViewModel: ObservableObject {
     }
 
     func selectColor(_ color: AppColors?) {
-        accountDraft.backgroundColor = color != nil ? color?.rawValue : nil
+        accountDraft.backgroundColor = color
     }
 
     func selectPattern(_ pattern: String?) {
@@ -174,7 +174,7 @@ class AccountManageViewModel: ObservableObject {
             account.currency = draft.currency
             account.sortIndex = sortIndex
             account.isDefault = draft.isDefault ? 1 : 0
-            account.backgroundColor = draft.backgroundColor
+            account.backgroundColor = draft.backgroundColor?.rawValue
             account.backgroundPattern = draft.backgroundPattern
             return account
         } else {
@@ -186,7 +186,7 @@ class AccountManageViewModel: ObservableObject {
                 sortIndex: sortIndex,
                 isDefault: draft.isDefault ? 1 : 0,
                 backgroundPattern: draft.backgroundPattern,
-                backgroundColor: draft.backgroundColor,
+                backgroundColor: draft.backgroundColor?.rawValue,
             )
         }
     }

@@ -67,13 +67,15 @@ class HomeViewModel: ObservableObject {
     }
 
     func reloadTransactions() {
-        if let account = selectedAccount {
-            self.transactions = transactionService.fetchByAccountAndDateRange(
-                account: account,
-                startDate: startDate,
-                endDate: endDate
-            )
+        guard let account = selectedAccount else {
+            return
         }
+
+        self.transactions = transactionService.fetchByAccountAndDateRange(
+            account: account,
+            startDate: startDate,
+            endDate: endDate
+        )
     }
 
     func onNavigate(_ route: MainRoutes) {

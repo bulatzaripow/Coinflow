@@ -93,16 +93,7 @@ struct AccountManageView: View {
 
                 Section("Design") {
                     ColorPicker(
-                        selectedColor: Binding(
-                            get: {
-                                AppColors(
-                                    rawValue: viewModel.accountDraft.backgroundColor ?? "autumn"
-                                ) ?? AppColors.autumn
-                            },
-                            set: { newValue in
-                                viewModel.accountDraft.backgroundColor = newValue?.rawValue
-                            }
-                        ),
+                        selectedColor: $viewModel.accountDraft.backgroundColor,
                         action: { color in
                             viewModel.selectColor(color)
                         }
