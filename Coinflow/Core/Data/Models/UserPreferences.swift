@@ -25,11 +25,19 @@ class UserPreferences {
         }
     }
 
+    private(set) var currentLocale: String {
+        didSet {
+            let currentLocale = Locale.current.language.languageCode?.identifier
+            UserDefaults.standard.set(currentLocale, forKey: "currentLocale")
+        }
+    }
+
     // MARK: - Init
 
     init() {
         self.defaultCurrencyCode = UserDefaults.standard.string(forKey: "defaultCurrencyCode") ?? "USD"
         self.hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
+        self.currentLocale = UserDefaults.standard.string(forKey: "currentLocale") ?? "en"
     }
 
     // MARK: - Methods
@@ -41,5 +49,9 @@ class UserPreferences {
 
     func setHasSeenOnboarding(_ hasSeen: Bool) {
         self.hasSeenOnboarding = hasSeen
+    }
+
+    func setCurrentLocale(_ locale: String = "en") {
+        self.currentLocale = locale
     }
 }

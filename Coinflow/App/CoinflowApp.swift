@@ -43,6 +43,10 @@ struct CoinflowApp: App {
             print("ModelContainer created successfully")
 
             createDefaultDataIfNeeded(context: container.mainContext)
+            translateCategoriesIfLanguageChanged(
+                context: container.mainContext,
+                userPreferences: userPreferences
+            )
             return container
 
         } catch {

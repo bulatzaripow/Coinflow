@@ -21,6 +21,8 @@ extension SchemaV1 {
         var color: String = ""
         var sortOrder: Int = 0
         var isDefault: Bool = false
+        var isModified: Bool = false
+        var localizationName = ""
         var createdAt: Date = Date()
 
         init(
@@ -30,6 +32,8 @@ extension SchemaV1 {
             color: String,
             sortOrder: Int,
             isDefault: Bool,
+            isModified: Bool = false,
+            localizationName: String = "",
             createdAt: Date
         ) {
             self.name = name
@@ -38,6 +42,8 @@ extension SchemaV1 {
             self.color = color
             self.sortOrder = sortOrder
             self.isDefault = isDefault
+            self.isModified = isModified
+            self.localizationName = localizationName
             self.createdAt = createdAt
         }
     }
