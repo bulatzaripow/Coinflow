@@ -8,17 +8,32 @@
 import SwiftUI
 
 struct AccountCardView: View {
+
+    // MARK: - Props
+
+    @Environment(\.colorScheme) private var colorScheme
+
     let account: AccountDraft
+
+    // MARK: - UI
 
     var body: some View {
         ZStack {
-            account.backgroundColor?.gradient
+            if let gradient = account.backgroundColor?.gradient {
+                gradient
+            } else {
+                Color(.tertiarySystemBackground)
+            }
 
             if let pattern = account.backgroundPattern {
                 Image(pattern)
                     .resizable(resizingMode: .tile)
                     .renderingMode(.template)
-                    .foregroundColor(.appPrimary.opacity(0.1))
+                    .foregroundColor(
+                        colorScheme == .dark ?
+                            .white.opacity(0.1) :
+                            .appPrimary.opacity(0.2)
+                    )
             }
 
             HStack {

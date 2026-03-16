@@ -60,7 +60,7 @@ struct TransactionRowView: View {
             ZStack {
                 Circle()
                     .fill(
-                        Color(.systemGray6)
+                        Color(.appLightGray)
                     )
                 transactionIcon
                     .resizable()
@@ -68,6 +68,7 @@ struct TransactionRowView: View {
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                     .font(.system(size: 18))
+                    .foregroundColor(.black)
             }
             .frame(width: 40, height: 40)
 
@@ -104,7 +105,7 @@ struct TransactionRowView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.white)
+        .background(Color.init(.tertiarySystemBackground))
         .cornerRadius(15)
         .clipped()
         .shadow(

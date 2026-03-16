@@ -13,8 +13,6 @@ struct CoinflowApp: App {
     @State private var userPreferences = UserPreferences()
 
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
         setupDefaultCurrencyIfNeeded(userPreferences: userPreferences)
     }
 

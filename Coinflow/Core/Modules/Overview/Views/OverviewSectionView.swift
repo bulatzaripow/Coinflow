@@ -45,7 +45,7 @@ struct OverviewSectionView: View {
                     VStack {
                         ZStack {
                             Circle()
-                                .fill(Color.appBackground)
+                                .fill(.appLightGray)
                                 .frame(width: 50, height: 50)
 
                             Image(category.icon)
