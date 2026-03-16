@@ -23,9 +23,13 @@ struct DateFilterView: View {
             HStack(spacing: 8) {
                 Image("wednesday")
                     .resizable()
+                    .renderingMode(.template)
                     .frame(width: 18, height: 18)
+                    .foregroundColor(.primary)
+
                 Text("week")
-                .foregroundStyle(.primary)
+                    .foregroundStyle(.primary)
+
                 Spacer()
             }
             .contentShape(Rectangle())
@@ -37,9 +41,13 @@ struct DateFilterView: View {
             HStack(spacing: 8) {
                 Image("october-calendar")
                     .resizable()
+                    .renderingMode(.template)
                     .frame(width: 18, height: 18)
+                    .foregroundColor(.primary)
+
                 Text("month")
-                .foregroundStyle(.primary)
+                    .foregroundStyle(.primary)
+
                 Spacer()
             }
             .contentShape(Rectangle())
@@ -51,9 +59,13 @@ struct DateFilterView: View {
             HStack(spacing: 8) {
                 Image("calendar-swap")
                     .resizable()
+                    .renderingMode(.template)
                     .frame(width: 18, height: 18)
+                    .foregroundColor(.primary)
+
                 Text("year")
-                .foregroundStyle(.primary)
+                    .foregroundStyle(.primary)
+
                 Spacer()
             }
             .contentShape(Rectangle())
@@ -67,7 +79,10 @@ struct DateFilterView: View {
             HStack(spacing: 8) {
                 Image("calendar-arrow-down")
                     .resizable()
+                    .renderingMode(.template)
                     .frame(width: 18, height: 18)
+                    .foregroundColor(.primary)
+
                 DatePicker("startDate", selection: $startDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
             }
@@ -75,7 +90,10 @@ struct DateFilterView: View {
             HStack(spacing: 8) {
                 Image("calendar-arrow-up")
                     .resizable()
+                    .renderingMode(.template)
                     .frame(width: 18, height: 18)
+                    .foregroundColor(.primary)
+
                 DatePicker("endDate", selection: $endDate, displayedComponents: [.date])
                     .datePickerStyle(.compact)
             }

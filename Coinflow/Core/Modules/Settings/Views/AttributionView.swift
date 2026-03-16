@@ -40,6 +40,7 @@ struct AttributionView: View {
 
                         Image("angle-small-right")
                             .resizable()
+                            .renderingMode(.template)
                             .frame(width: 20, height: 20)
                             .font(.system(size: 14))
                             .foregroundColor(.secondary)
@@ -58,13 +59,13 @@ struct AttributionView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
-                                .foregroundStyle(Color.primary)
                         }
 
                         Spacer()
 
                         Image("angle-small-right")
                             .resizable()
+                            .renderingMode(.template)
                             .frame(width: 20, height: 20)
                             .font(.system(size: 14))
                             .foregroundColor(.secondary)

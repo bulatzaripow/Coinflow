@@ -73,6 +73,7 @@ struct OverviewView: View {
         }
         .navigationBarTitle("Overview")
         .navigationBarTitleDisplayMode(.large)
+        .tint(.primary)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 PopoverMenuButton {

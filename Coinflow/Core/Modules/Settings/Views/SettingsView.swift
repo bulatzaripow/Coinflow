@@ -37,8 +37,10 @@ struct SettingsView: View {
                         } icon: {
                             Image("globe")
                                 .resizable()
+                                .renderingMode(.template)
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
+                                .foregroundColor(.primary)
                         }
 
                         Spacer()
@@ -58,8 +60,10 @@ struct SettingsView: View {
                         } icon: {
                             Image("coins")
                                 .resizable()
+                                .renderingMode(.template)
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
+                                .foregroundColor(.primary)
                         }
 
                         Spacer()
@@ -79,8 +83,10 @@ struct SettingsView: View {
                         } icon: {
                             Image("apps")
                                 .resizable()
+                                .renderingMode(.template)
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 25, height: 25)
+                                .foregroundColor(.primary)
                         }
                     }
                     .foregroundStyle(Color.primary)
@@ -96,9 +102,10 @@ struct SettingsView: View {
                     } icon: {
                         Image("info")
                             .resizable()
+                            .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 25)
-                            .foregroundStyle(Color.primary)
+                            .foregroundColor(.primary)
                     }
                 }
 
@@ -110,8 +117,10 @@ struct SettingsView: View {
                     } icon: {
                         Image("user-lock")
                             .resizable()
+                            .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 25)
+                            .foregroundColor(.primary)
                     }
                     .foregroundStyle(Color.primary)
                 }
@@ -124,8 +133,10 @@ struct SettingsView: View {
                     } icon: {
                         Image("terms-check")
                             .resizable()
+                            .renderingMode(.template)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25, height: 25)
+                            .foregroundColor(.primary)
                     }
                     .foregroundStyle(Color.primary)
                 }
@@ -139,8 +150,9 @@ struct SettingsView: View {
                         } label: {
                             Image("github")
                                 .resizable()
+                                .renderingMode(.template)
                                 .frame(width: 24, height: 24)
-                                .foregroundStyle(.secondary)
+                                .foregroundColor(.primary)
                         }
                         .buttonStyle(.plain)
                     }

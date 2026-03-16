@@ -115,7 +115,7 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
                                     .frame(width: 48, height: 48)
 
                                 Circle()
-                                    .fill(Color(.systemGray6))
+                                    .fill(.appLightGray)
                                     .frame(width: 44, height: 44)
 
                                 icon(item)
@@ -124,7 +124,7 @@ struct HorizontalItemPicker<Item: Identifiable>: View {
                                     .scaledToFit()
                                     .frame(width: 25, height: 25)
                                     .foregroundColor(
-                                        isSelected ? .appPrimary : .primary
+                                        isSelected ? .appPrimary : .black
                                     )
                             }
 

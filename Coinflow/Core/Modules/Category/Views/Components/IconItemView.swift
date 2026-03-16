@@ -24,8 +24,10 @@ struct IconItemView: View {
 
             Image(icon)
                 .resizable()
+                .renderingMode(.template)
                 .scaledToFit()
                 .frame(width: 26, height: 26)
+                .foregroundColor(.primary)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 12)

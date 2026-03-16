@@ -59,9 +59,12 @@ struct HomeView: View {
                                 } label: {
                                     Image("menu-dots-vertical")
                                         .resizable()
+                                        .renderingMode(.template)
                                         .scaledToFit()
                                         .padding(6)
                                         .frame(width: 35, height: 35)
+                                        .foregroundColor(.primary)
+                                        .rotationEffect(Angle(degrees: 90))
                                 }
                                 .buttonStyle(.plain)
                             }
@@ -141,11 +144,13 @@ struct HomeView: View {
                     }) {
                         Image("chart-simple")
                             .resizable()
+                            .renderingMode(.template)
                             .scaledToFit()
                             .padding(13)
                             .font(.system(size: 20, weight: .semibold))
                             .frame(width: 45, height: 45)
-                            .background(.white)
+                            .foregroundColor(.primary)
+                            .background(Color.init(.tertiarySystemBackground))
                             .clipShape(Circle())
                             .shadow(
                                 color: Color.black.opacity(0.06),

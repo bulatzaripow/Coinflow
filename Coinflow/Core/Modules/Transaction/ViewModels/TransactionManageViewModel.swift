@@ -116,7 +116,7 @@ class TransactionManageViewModel: ObservableObject {
 
         transactionService.save(
             transaction,
-            amount: Double(amount) ?? 0,
+            amount: amount.asDouble ?? 0,
             note: note,
             type: type,
             date: date,

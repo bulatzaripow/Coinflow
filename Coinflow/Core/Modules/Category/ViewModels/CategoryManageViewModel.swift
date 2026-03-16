@@ -68,6 +68,7 @@ final class CategoryManageViewModel: ObservableObject {
         if let category = self.category {
             category.name = name
             category.icon = icon
+            category.isModified = true
 
             do {
                 try categoryService.saveContext()

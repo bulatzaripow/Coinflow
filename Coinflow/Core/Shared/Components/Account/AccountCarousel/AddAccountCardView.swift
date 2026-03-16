@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct AddAccountCardView: View {
+
+    // MARK: - Props
+
+    @Environment(\.colorScheme) private var colorScheme
+
     var action: () -> Void
+
+    // MARK: - UI
 
     var body: some View {
         Button {
@@ -23,11 +30,19 @@ struct AddAccountCardView: View {
             }
             .frame(minHeight: 160)
             .containerRelativeFrame(.horizontal)
-            .foregroundColor(.appPrimary)
-            .background(.white)
+            .foregroundColor(
+                Color(
+                    UIColor { traitCollection in
+                        traitCollection.userInterfaceStyle == .dark
+                            ? .white
+                            : UIColor(.appPrimary)
+                    }
+                )
+            )
+            .background(Color.init(.tertiarySystemBackground))
             .cornerRadius(15)
             .shadow(
-                color: Color.gray.opacity(0.3),
+                color: colorScheme == .light ? .gray.opacity(0.3) : .clear,
                 radius: 10,
                 y: 5
             )

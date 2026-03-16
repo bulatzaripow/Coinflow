@@ -13,8 +13,6 @@ struct CoinflowApp: App {
     @State private var userPreferences = UserPreferences()
 
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
         setupDefaultCurrencyIfNeeded(userPreferences: userPreferences)
     }
 
@@ -43,6 +41,10 @@ struct CoinflowApp: App {
             print("ModelContainer created successfully")
 
             createDefaultDataIfNeeded(context: container.mainContext)
+            translateCategoriesIfLanguageChanged(
+                context: container.mainContext,
+                userPreferences: userPreferences
+            )
             return container
 
         } catch {
